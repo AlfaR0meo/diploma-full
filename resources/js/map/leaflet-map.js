@@ -1,4 +1,5 @@
-//import * as L from './../../../node_modules/leaflet/dist/leaflet.js';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const SEVASTOPOL_COORDS = [44.556972, 33.526402];
 const INITIAL_MAP_ZOOM = 12;
@@ -102,11 +103,6 @@ const paperMarkers = paperPoints.map(point => {
     );
 })
 
-// paperMarkers.forEach(marker => {
-//     marker.addEventListener('click', () => {
-//         console.log('click on test marker');
-//     });
-// })
 
 
 

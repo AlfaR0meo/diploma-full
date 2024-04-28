@@ -32,9 +32,9 @@ function errorLocation(error) {
 
 const customLayersCheckboxes = document.querySelectorAll('.filter-layers__custom-checkbox input[type=checkbox]');
 let checkedCustomCheckboxesCounter = 0;
-const clearFiltersBtnSpan = document.querySelector('.filter-layers__clear-button > span');
-clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 const clearFiltersBtn = document.querySelector('.filter-layers__clear-button');
+const clearFiltersBtnSpan = clearFiltersBtn.querySelector('span');
+clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 const foundPointsSpan = document.querySelector('.filter-layers__found-points > span');
 
 clearFiltersBtn.addEventListener('click', () => {

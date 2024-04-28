@@ -7,8 +7,8 @@
     <!-- Иконка сайта во вкладке браузера -->
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
     <!-- Подключение стилей -->
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    @vite(['resources/scss/index.scss'])
     <!-- Подключение скриптов -->
-    <script src="{{ asset('js/index.js') }}" defer></script>
+    @vite(['resources/js/index.js'])
     <!-- Цвет окружающего UI в некоторых моб. браузерах -->
     <meta name="theme-color" content="limegreen">

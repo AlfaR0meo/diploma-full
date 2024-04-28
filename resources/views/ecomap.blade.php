@@ -5,8 +5,6 @@
 
     @include('blocks.head', ['title' => 'Экокарта'])
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
     <style>
         .leaflet-touch .leaflet-control-layers, 
         .leaflet-touch .leaflet-bar {
@@ -14,9 +12,7 @@
         }
     </style>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-    <script src="{{ asset('js/map/map.js') }}" type="module"></script>
+    @vite(['resources/js/map/ecomap.js'])
 
 </head>
 
@@ -32,8 +28,8 @@
                 Помочь городу можно простым действием!
                 Не выбрасывать мусор, а отдать его на переработку.
                 А куда — подскажет интерактивная карта.
-                </p>
-                <img class="ecomap__illustration" src="{{ asset('img/ecomap-intro-illustration.svg') }}" alt="">
+
+                <img class="ecomap__illustration" src="{{ Vite::asset('resources/img/ecomap-intro-illustration.svg') }}" alt="">
             </div>
 
             <div class="ecomap__map">
