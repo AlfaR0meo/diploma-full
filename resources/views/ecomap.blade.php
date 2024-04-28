@@ -10,6 +10,28 @@
         .leaflet-touch .leaflet-bar {
             border: none !important;
         }
+        .leaflet-control-layers-expanded {
+            font-size: var(--fs-300) !important;
+            padding: 0.5em 0.7em 0.5em 0.5em !important;
+        }
+        .leaflet-control-layers-base > label {
+            padding: 0.3em 0.5em;
+            font-weight: 600;
+            color: var(--clr-text);
+            cursor: pointer;
+        }
+        .leaflet-control-layers-base > label > span {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .leaflet-control-layers-base > label > span > input[type=radio] {
+            accent-color: forestgreen;
+            cursor: pointer;
+        }
+        .leaflet-control-layers-separator {
+            display: none !important;
+        }
     </style>
 
     @vite(['resources/js/map/ecomap.js'])

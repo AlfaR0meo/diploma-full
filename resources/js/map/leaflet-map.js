@@ -1,4 +1,4 @@
-import L from 'leaflet';
+import L, { popup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const SEVASTOPOL_COORDS = [44.556972, 33.526402];
@@ -89,7 +89,9 @@ const paperPoints = [
 
 const batteriesMarkers = batteriesPoints.map(point => {
     return (
-        L.marker(point.geoPosition, { icon: batteriesIcon }).bindPopup(point.popup)
+        L.marker(point.geoPosition, { icon: batteriesIcon }).bindPopup(function (layer) {
+            return layer.options.pane
+        })
     );
 })
 const lightbulbsMarkers = lightbulbsPoints.map(point => {
@@ -116,23 +118,34 @@ let metalLayer = L.layerGroup([]);
 let technicLayer = L.layerGroup([]);
 let clothesLayer = L.layerGroup([]);
 
-
-
-
-const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+// Tile layer - OSM
+const OSM = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 });
 
+//
+const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});
+
+// Map
 const map = L.map('map', {
     center: SEVASTOPOL_COORDS,
     zoom: INITIAL_MAP_ZOOM,
     minZoom: MIN_MAP_ZOOM,
-    layers: [osm, batteriesLayer, lightbulbsLayer]
+    layers: [
+        OSM,
+        Esri_WorldImagery,
+
+        batteriesLayer,
+        lightbulbsLayer
+    ]
 });
 
 const baseMaps = {
-    "OpenStreetMap": osm,
+    "Спутник ESRI": Esri_WorldImagery,
+    "OpenStreetMap": OSM,
 };
 
 const overlayLayers = {
@@ -146,13 +159,11 @@ const overlayLayers = {
     "Одежда": clothesLayer,
 };
 
-const layerControlOptions = {
-    collapsed: false,
+const layerControl = L.control.layers(baseMaps, overlayLayers, {
+    collapsed: true,
     hideSingleBase: true,
     position: 'topright'
-}
+}).addTo(map);
 
-const layerControl = L.control.layers(baseMaps, overlayLayers, layerControlOptions).addTo(map);
-
-const leafletControlLayers = document.querySelector('.leaflet-control-layers');
-leafletControlLayers.style.display = 'none';
+const leafletControlLayersOverlays = document.querySelector('.leaflet-control-layers-overlays');
+leafletControlLayersOverlays.style.display = 'none';
