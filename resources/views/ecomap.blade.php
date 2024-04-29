@@ -3,6 +3,7 @@
 
 <head>
     @include('blocks.head', ['title' => 'Экокарта'])
+
     <style>
         .leaflet-touch .leaflet-control-layers, 
         .leaflet-touch .leaflet-bar {
@@ -30,6 +31,9 @@
         .leaflet-control-layers-separator {
             display: none !important;
         }
+        .leaflet-control-layers-overlays {
+            display: none !important;
+        }
         .leaflet-control-attribution {
             padding: .35em !important;
             font-family: var(--ff-logo) !important;
@@ -38,6 +42,7 @@
             border-top-left-radius: .35em;
         }
     </style>
+
     @vite(['resources/js/map/ecomap.js'])
 </head>
 
