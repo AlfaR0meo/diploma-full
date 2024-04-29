@@ -114,28 +114,28 @@
         cursor: pointer;
 
         &--batteries {
-            --custom-color: #663399;
+            --custom-color: var(--clr-batteries);
         }
         &--lightbulbs {
-            --custom-color: #ffd10f;
+            --custom-color: var(--clr-lightbulbs);
         }
         &--paper {
-            --custom-color: #6f7278;
+            --custom-color: var(--clr-paper);
         }
         &--plastic {
-            --custom-color: #1e90ff;
+            --custom-color: var(--clr-plastic);
         }
         &--glass {
-            --custom-color: #588f27;
+            --custom-color: var(--clr-glass);
         }
         &--metal {
-            --custom-color: #00305a;
+            --custom-color: var(--clr-metal);
         }
         &--technic {
-            --custom-color: #796138;
+            --custom-color: var(--clr-technic);
         }
         &--clothes {
-            --custom-color: #ff1d23;
+            --custom-color: var(--clr-clothes);
         }
 
         @media (any-hover: hover) {

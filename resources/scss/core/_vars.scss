@@ -11,6 +11,15 @@
     --clr-light-grey: hsl(0 0% 90%);
     --clr-accent: limegreen; //#32cd32
 
+    --clr-batteries: #663399;
+    --clr-lightbulbs: #ff943d;
+    --clr-paper: #6f7278;
+    --clr-plastic: #1e90ff;
+    --clr-glass: #588f27;
+    --clr-metal: #00305a;
+    --clr-technic: #796138;
+    --clr-clothes: #ff1d23;
+
     --fs-100: calc(var(--fs-400) * 0.625);  //10px
     --fs-200: calc(var(--fs-400) * 0.75);   //12px
     --fs-300: calc(var(--fs-400) * 0.875);  //14px
