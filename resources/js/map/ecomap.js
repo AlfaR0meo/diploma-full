@@ -19,6 +19,7 @@ function successLocation(userPosition) {
     const lat = userPosition.coords.latitude;
     const lng = userPosition.coords.longitude;
 
+    //FIXME:
     L.marker([lat, lng], { icon: userLocationIcon, alt: 'Ваше местоположение' }).bindPopup('Ваше местоположение').addTo(map);
 }
 function errorLocation(error) {

@@ -142,7 +142,7 @@
                         Найдено <span>0</span> пунктов
                     </div>
 
-                    <!-- <button class="filter-layers__location-btn" type="button">Показать моё местоположение</button> -->
+                    {{-- <button class="filter-layers__location-btn" type="button">Показать моё местоположение</button> --}}
                 </div>
                 
                 <div id="map">
