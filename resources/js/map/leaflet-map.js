@@ -1,4 +1,4 @@
-import L, { popup } from 'leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const SEVASTOPOL_COORDS = [44.556972, 33.526402];
@@ -54,6 +54,131 @@ const userLocationIcon = createLeafletCustomIcon('user-location-icon.svg');
 // ];
 
 
+const locations = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.524180424436196,
+                    44.5647952763899
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52698320701606,
+                    44.564981035056746
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52383397897444,
+                    44.568798942944255
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.523379775887776,
+                    44.569824203689365
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52493631455545,
+                    44.56883893572365
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.5256507913212,
+                    44.56916978402356
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52443107741374,
+                    44.56986056012124
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52090054292873,
+                    44.57538172204514
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52149965305412,
+                    44.57390675147727
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    33.52913042411339,
+                    44.57291093800998
+                ],
+                "type": "Point"
+            }
+        }
+    ]
+}
+
+let geoJsonPoints = L.geoJSON(locations, {
+    onEachFeature: function (feature, geoJsonPoint) {
+        geoJsonPoint.on('click', function () {
+            console.log(feature.geometry.coordinates);
+        })
+    }
+});
+
+
 const batteriesPoints = [
     {
         geoPosition: [44.59328565361207, 33.47680099676464],
@@ -89,9 +214,7 @@ const paperPoints = [
 
 const batteriesMarkers = batteriesPoints.map(point => {
     return (
-        L.marker(point.geoPosition, { icon: batteriesIcon }).bindPopup(function (layer) {
-            return layer.options.pane
-        })
+        L.marker(point.geoPosition, { icon: batteriesIcon }).bindPopup(point.info)
     );
 })
 const lightbulbsMarkers = lightbulbsPoints.map(point => {
@@ -112,7 +235,7 @@ const paperMarkers = paperPoints.map(point => {
 let batteriesLayer = L.layerGroup(batteriesMarkers);
 let lightbulbsLayer = L.layerGroup(lightbulbsMarkers);
 let paperLayer = L.layerGroup(paperMarkers);
-let plasticLayer = L.layerGroup([]);
+let plasticLayer = L.layerGroup([geoJsonPoints]);
 let glassLayer = L.layerGroup([]);
 let metalLayer = L.layerGroup([]);
 let technicLayer = L.layerGroup([]);
@@ -124,9 +247,10 @@ const OSM = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 });
 
-//
+// Esri satellite
 const Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    //attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    attribution: 'Tiles &copy; Esri'
 });
 
 // Map
@@ -135,11 +259,13 @@ const map = L.map('map', {
     zoom: INITIAL_MAP_ZOOM,
     minZoom: MIN_MAP_ZOOM,
     layers: [
-        OSM,
         Esri_WorldImagery,
+        OSM,
 
         batteriesLayer,
-        lightbulbsLayer
+        lightbulbsLayer,
+        paperLayer,
+        plasticLayer
     ]
 });
 
@@ -147,7 +273,6 @@ const baseMaps = {
     "Спутник ESRI": Esri_WorldImagery,
     "OpenStreetMap": OSM,
 };
-
 const overlayLayers = {
     "Батарейки": batteriesLayer,
     "Лампочки": lightbulbsLayer,
@@ -158,7 +283,6 @@ const overlayLayers = {
     "Техника": technicLayer,
     "Одежда": clothesLayer,
 };
-
 const layerControl = L.control.layers(baseMaps, overlayLayers, {
     collapsed: true,
     hideSingleBase: true,

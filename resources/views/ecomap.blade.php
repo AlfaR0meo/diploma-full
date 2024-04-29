@@ -2,9 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
     @include('blocks.head', ['title' => 'Экокарта'])
-
     <style>
         .leaflet-touch .leaflet-control-layers, 
         .leaflet-touch .leaflet-bar {
@@ -32,10 +30,15 @@
         .leaflet-control-layers-separator {
             display: none !important;
         }
+        .leaflet-control-attribution {
+            padding: .35em !important;
+            font-family: var(--ff-logo) !important;
+            font-size: var(--fs-300);
+            line-height: 1 !important;
+            border-top-left-radius: .35em;
+        }
     </style>
-
     @vite(['resources/js/map/ecomap.js'])
-
 </head>
 
 <body>

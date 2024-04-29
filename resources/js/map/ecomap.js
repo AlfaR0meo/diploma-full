@@ -70,7 +70,7 @@ function resetLeafletLayersCheckboxes() {
 function clearAllLeafletMarkers() {
     leafletMarkersPane.innerHTML = '';
 }
-resetLeafletControls();
+// resetLeafletControls();
 
 
 
