@@ -39,7 +39,7 @@
     }
 
     &__map {
-        display: grid;
+        //display: grid;
         //grid-template-columns: 420px 1fr;
         gap: 1.5em;
     }
@@ -192,6 +192,7 @@
 
     &__found-points {
         color: var(--clr-grey);
+        margin-bottom: 1.5em;
 
         &:has(span:empty) {
             display: none;
@@ -217,9 +218,38 @@
     }
 }
 
+.map__row {
+    // width: 75%;
+    // margin-inline: auto;
+    height: 60vmin;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+
+    > .info-about-point {
+        padding: 1em;
+        font-size: var(--fs-400);
+        line-height: 1.5;
+        overflow-y: auto;
+        border-top: 2px solid var(--clr-light-grey);
+
+        > p {
+            &:not(:last-child) {
+                margin-block-end: .5em;
+            }
+            &:first-child {
+                font-weight: 500;
+                font-size: var(--fs-700);
+            }
+            > span {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
 #map {
     position: relative;
-    aspect-ratio: 2.25;
+    height: 100%;
     font-family: var(--ff-body, sans-serif) !important;
     outline-offset: 0 !important;
 

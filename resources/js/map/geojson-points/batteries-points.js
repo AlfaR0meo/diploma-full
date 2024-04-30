@@ -3,7 +3,11 @@ const batteriesGeoJsonPoints = {
     "features": [
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 1",
+                "address": "Address 1",
+                "description": "Description of the point 1"
+            },
             "geometry": {
                 "coordinates": [
                     33.524180424436196,
@@ -14,7 +18,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 2",
+                "address": "Address 2",
+                "description": "Description of the point 2"
+            },
             "geometry": {
                 "coordinates": [
                     33.52698320701606,
@@ -25,7 +33,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 3",
+                "address": "Address 3",
+                "description": "Description of the point 3"
+            },
             "geometry": {
                 "coordinates": [
                     33.52383397897444,
@@ -36,7 +48,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 4",
+                "address": "Address 4",
+                "description": "Description of the point 4"
+            },
             "geometry": {
                 "coordinates": [
                     33.523379775887776,
@@ -47,7 +63,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 5",
+                "address": "Address 5",
+                "description": "Description of the point 5"
+            },
             "geometry": {
                 "coordinates": [
                     33.52493631455545,
@@ -58,7 +78,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 6",
+                "address": "Address 6",
+                "description": "Description of the point 6"
+            },
             "geometry": {
                 "coordinates": [
                     33.5256507913212,
@@ -69,7 +93,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 7",
+                "address": "Address 7",
+                "description": "Description of the point 7"
+            },
             "geometry": {
                 "coordinates": [
                     33.52443107741374,
@@ -80,7 +108,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 8",
+                "address": "Address 8",
+                "description": "Description of the point 8"
+            },
             "geometry": {
                 "coordinates": [
                     33.52090054292873,
@@ -92,7 +124,9 @@ const batteriesGeoJsonPoints = {
         {
             "type": "Feature",
             "properties": {
-                "address": "Qwerty, 12A-B 8'"
+                "name": "Name 9",
+                "address": "Address 9",
+                "description": "Description of the point 9"
             },
             "geometry": {
                 "coordinates": [
@@ -104,7 +138,11 @@ const batteriesGeoJsonPoints = {
         },
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {
+                "name": "Name 10",
+                "address": "Address 10",
+                "description": "Description of the point 10"
+            },
             "geometry": {
                 "coordinates": [
                     33.52913042411339,

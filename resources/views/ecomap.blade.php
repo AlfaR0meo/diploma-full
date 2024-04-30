@@ -4,6 +4,8 @@
 <head>
     @include('blocks.head', ['title' => 'Экокарта'])
 
+    @vite(['resources/js/map/ecomap.js'])
+
     <style>
         .leaflet-touch .leaflet-control-layers, 
         .leaflet-touch .leaflet-bar {
@@ -42,8 +44,6 @@
             border-top-left-radius: .35em;
         }
     </style>
-
-    @vite(['resources/js/map/ecomap.js'])
 </head>
 
 <body>
@@ -145,12 +145,18 @@
                     {{-- <button class="filter-layers__location-btn" type="button">Показать моё местоположение</button> --}}
                 </div>
                 
-                <div id="map">
+                {{-- <div id="map">
                     <div class="custom-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
-                </div>
+                </div> --}}
 
             </div>
 
+        </div>
+        <div class="map__row">
+            <div class="info-about-point"></div>
+            <div id="map">
+                <div class="custom-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
+            </div>
         </div>
     </div>
 </body>

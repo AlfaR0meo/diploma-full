@@ -11,6 +11,5 @@
 
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 .page-wrapper {
-    min-height: 150vh;
-    padding-block: var(--nav-height) 2rem;
+    padding-block-start: var(--nav-height);
 }
