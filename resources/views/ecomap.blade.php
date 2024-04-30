@@ -43,6 +43,17 @@
             line-height: 1 !important;
             border-top-left-radius: .35em;
         }
+        /* .leaflet-tooltip {
+            max-width: 150px;
+            padding: 1em !important;
+            background-color: white !important;
+            border: none !important;
+            border-radius: .25em !important;
+            font-size: var(--fs-300) !important;
+            color: var(--clr-text) !important;
+            white-space: normal !important;
+            box-shadow: 0 0 1em hsl(0 0% 30% / .1) !important;
+	    } */
     </style>
 </head>
 
@@ -77,7 +88,7 @@
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#batteries-filter-icon') }}"></use>
                             </svg>
-                            <span>Батарейки</span>
+                            <span title="Батарейки">Батарейки</span>
                         </label>
 
                         <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--lightbulbs" for="lightbulbs-custom-checkbox" >
@@ -138,13 +149,14 @@
 
                     </div>
 
-                    <div class="filter-layers__found-points">
+                    <!-- <div class="filter-layers__found-points">
                         Найдено <span>0</span> пунктов
-                    </div>
+                    </div> -->
 
-                    {{-- <button class="filter-layers__location-btn" type="button">Показать моё местоположение</button> --}}
                 </div>
                 
+                {{-- <button class="filter-layers__location-btn" type="button">Показать моё местоположение</button> --}}
+
                 {{-- <div id="map">
                     <div class="custom-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
                 </div> --}}
@@ -152,12 +164,19 @@
             </div>
 
         </div>
+
         <div class="map__row">
-            <div class="info-about-point"></div>
+            <div class="info-about-point-block">
+                <div class="found-points">
+                    Найдено <span></span> пунктов
+                </div>
+                <div class="point-info"></div>
+            </div>
             <div id="map">
                 <div class="custom-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
             </div>
         </div>
+
     </div>
 </body>
 

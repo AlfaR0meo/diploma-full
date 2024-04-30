@@ -5,13 +5,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 1",
-                "address": "Address 1",
-                "description": "Description of the point 1"
+                "address": "Address for point 1",
+                "description": "Description for point 1"
             },
             "geometry": {
                 "coordinates": [
-                    33.524180424436196,
-                    44.5647952763899
+                    33.53246886120584,
+                    44.5496840171071
                 ],
                 "type": "Point"
             }
@@ -20,13 +20,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 2",
-                "address": "Address 2",
-                "description": "Description of the point 2"
+                "address": "Address for point 2",
+                "description": "Description for point 2"
             },
             "geometry": {
                 "coordinates": [
-                    33.52698320701606,
-                    44.564981035056746
+                    33.53147771283281,
+                    44.559849100641486
                 ],
                 "type": "Point"
             }
@@ -35,13 +35,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 3",
-                "address": "Address 3",
-                "description": "Description of the point 3"
+                "address": "Address for point 3",
+                "description": "Description for point 3"
             },
             "geometry": {
                 "coordinates": [
-                    33.52383397897444,
-                    44.568798942944255
+                    33.52253110365663,
+                    44.55985213666099
                 ],
                 "type": "Point"
             }
@@ -50,13 +50,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 4",
-                "address": "Address 4",
-                "description": "Description of the point 4"
+                "address": "Address for point 4",
+                "description": "Description for point 4"
             },
             "geometry": {
                 "coordinates": [
-                    33.523379775887776,
-                    44.569824203689365
+                    33.516139461344096,
+                    44.573386424828726
                 ],
                 "type": "Point"
             }
@@ -65,13 +65,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 5",
-                "address": "Address 5",
-                "description": "Description of the point 5"
+                "address": "Address for point 5",
+                "description": "Description for point 5"
             },
             "geometry": {
                 "coordinates": [
-                    33.52493631455545,
-                    44.56883893572365
+                    33.515744487012455,
+                    44.57974913653439
                 ],
                 "type": "Point"
             }
@@ -80,13 +80,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 6",
-                "address": "Address 6",
-                "description": "Description of the point 6"
+                "address": "Address for point 6",
+                "description": "Description for point 6"
             },
             "geometry": {
                 "coordinates": [
-                    33.5256507913212,
-                    44.56916978402356
+                    33.51190297880609,
+                    44.587558264726084
                 ],
                 "type": "Point"
             }
@@ -95,13 +95,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 7",
-                "address": "Address 7",
-                "description": "Description of the point 7"
+                "address": "Address for point 7",
+                "description": "Description for point 7"
             },
             "geometry": {
                 "coordinates": [
-                    33.52443107741374,
-                    44.56986056012124
+                    33.49986767650225,
+                    44.59732282751429
                 ],
                 "type": "Point"
             }
@@ -110,13 +110,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 8",
-                "address": "Address 8",
-                "description": "Description of the point 8"
+                "address": "Address for point 8",
+                "description": "Description for point 8"
             },
             "geometry": {
                 "coordinates": [
-                    33.52090054292873,
-                    44.57538172204514
+                    33.504419059885265,
+                    44.600601628280685
                 ],
                 "type": "Point"
             }
@@ -125,13 +125,13 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 9",
-                "address": "Address 9",
-                "description": "Description of the point 9"
+                "address": "Address for point 9",
+                "description": "Description for point 9"
             },
             "geometry": {
                 "coordinates": [
-                    33.52149965305412,
-                    44.57390675147727
+                    33.56717327584303,
+                    44.62097506914202
                 ],
                 "type": "Point"
             }
@@ -140,18 +140,153 @@ const batteriesGeoJsonPoints = {
             "type": "Feature",
             "properties": {
                 "name": "Name 10",
-                "address": "Address 10",
-                "description": "Description of the point 10"
+                "address": "Address for point 10",
+                "description": "Description for point 10"
             },
             "geometry": {
                 "coordinates": [
-                    33.52913042411339,
-                    44.57291093800998
+                    33.56399213653802,
+                    44.62750061694422
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 11",
+                "address": "Address for point 11",
+                "description": "Description for point 11"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.54167274969913,
+                    44.63854674997796
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 12",
+                "address": "Address for point 12",
+                "description": "Description for point 12"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.4576470310254,
+                    44.56131757393439
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 13",
+                "address": "Address for point 13",
+                "description": "Description for point 13"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.415210530579,
+                    44.56561752679028
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 14",
+                "address": "Address for point 14",
+                "description": "Description for point 14"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.414339889956324,
+                    44.56704979305454
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 15",
+                "address": "Address for point 15",
+                "description": "Description for point 15"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.404379375496234,
+                    44.5596704519468
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 16",
+                "address": "Address for point 16",
+                "description": "Описание точки 16"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.602322194268254,
+                    44.50180351259658
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 17",
+                "address": "Address for point 17",
+                "description": "Description for point 17"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.614963143088545,
+                    44.512640366317584
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 18",
+                "address": "Address for point 18",
+                "description": "Description for point 18"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.59853226404229,
+                    44.517322566602786
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 19",
+                "address": "Address for point 19",
+                "description": "Описание 19 точки"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.619298111151664,
+                    44.49304850976699
                 ],
                 "type": "Point"
             }
         }
     ]
-}
+};
 
 export default batteriesGeoJsonPoints;

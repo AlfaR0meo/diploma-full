@@ -40,11 +40,11 @@ const clothesIcon = createLeafletCustomIcon('clothes-location-icon.svg');
 
 //const userLocationIcon = createLeafletCustomIcon('user-location-icon.svg');
 
-const infoAboutPointElement = document.querySelector('.info-about-point');
+const infoAboutPointElement = document.querySelector('.point-info');
 
 function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
     infoAboutPointElement.innerHTML = `
-        <p>Информация о точке</p>
+        <p>Информация о пункте</p>
         <p><span>Название: </span>${pointName}.</p>
         <p><span>Адрес: </span>${pointAddress}.</p>
         <p><span>Описание: </span>${pointDescription}.</p>
@@ -62,6 +62,10 @@ function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
 const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, { icon: batteriesIcon, title: geoJsonPoint.properties.name })
+        // .bindTooltip(geoJsonPoint.properties.name, {
+        //     opacity: 1,
+        //     sticky: true,
+        // })
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -269,7 +273,7 @@ let checkedCustomCheckboxesCounter = 0;
 const clearFiltersBtn = document.querySelector('.filter-layers__clear-button');
 const clearFiltersBtnSpan = clearFiltersBtn.querySelector('span');
 clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
-const foundPointsSpan = document.querySelector('.filter-layers__found-points > span');
+const foundPointsSpan = document.querySelector('.found-points > span');
 
 
 
@@ -287,9 +291,11 @@ clearFiltersBtn.addEventListener('click', () => {
     infoAboutPointElement.innerHTML = '';
 });
 
+// TODO: Найденные точки
 function setFoundPoints(number) {
     foundPointsSpan.textContent = number || 0;
 }
+setFoundPoints(0)
 
 
 
@@ -324,7 +330,7 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
             this.checked ? checkedCustomCheckboxesCounter++ : checkedCustomCheckboxesCounter--;
             clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
-            //setFoundPoints(11)
+            setFoundPoints(19)
 
             const leafletLayersCheckbox = leafletLayersCheckboxes[index];
 

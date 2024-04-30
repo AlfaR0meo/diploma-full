@@ -49,6 +49,7 @@
     display: grid;
     align-content: start;
     gap: 1.5em;
+    margin-block-end: 1.5em;
 
     &__header {
         display: flex;
@@ -110,12 +111,12 @@
         --tr: 100ms;
 
         font-size: var(--fs-300);
-        min-width: 7.25em;
+        width: 7.25em;
         padding: var(--pd);
 
         border: 2px solid hsl(0 0% 95%);
         border-radius: 1em;
-        
+        transition: border-color var(--tr);
 
         -webkit-user-select: none;
         user-select: none;
@@ -148,6 +149,8 @@
 
         @media (any-hover: hover) {
             &:hover {
+                border-color: hsl(0 0% 90%);
+
                 > .filter-icon {
                     background-color: hsl(0 0% 90%);
                 }
@@ -187,17 +190,20 @@
             display: block;
             text-align: center;
             transition: font-weight var(--tr);
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 
-    &__found-points {
-        color: var(--clr-grey);
-        margin-bottom: 1.5em;
+    // &__found-points {
+    //     color: var(--clr-grey);
 
-        &:has(span:empty) {
-            display: none;
-        }
-    }
+    //     &:has(span:empty) {
+    //         display: none;
+    //     }
+    // }
 
     &__location-btn {
         width: fit-content;
@@ -218,6 +224,11 @@
     }
 }
 
+.found-points {
+    color: var(--clr-grey);
+    margin-block-end: 1em;
+}
+
 .map__row {
     // width: 75%;
     // margin-inline: auto;
@@ -225,23 +236,26 @@
     display: grid;
     grid-template-columns: 420px 1fr;
 
-    > .info-about-point {
+    > .info-about-point-block {
         padding: 1em;
         font-size: var(--fs-400);
-        line-height: 1.5;
+        border-top: 2px solid hsl(0 0% 95%);
         overflow-y: auto;
-        border-top: 2px solid var(--clr-light-grey);
 
-        > p {
-            &:not(:last-child) {
-                margin-block-end: .5em;
-            }
-            &:first-child {
-                font-weight: 500;
-                font-size: var(--fs-700);
-            }
-            > span {
-                font-weight: 700;
+        > .point-info {
+            line-height: 1.6;
+
+            > p {
+                &:not(:last-child) {
+                    margin-block-end: .5em;
+                }
+                &:first-child {
+                    font-size: var(--fs-700);
+                    font-weight: 500;
+                }
+                > span {
+                    font-weight: 700;
+                }
             }
         }
     }
@@ -261,17 +275,21 @@
         font-family: inherit;
     }
 
+    .leaflet-marker-icon {
+        background-color: transparent !important;
+
+        @media (any-hover: hover) {
+            &:hover {
+                filter: brightness(1.25);
+            }
+        }
+    }
+
     svg.leaflet-attribution-flag {
         display: none !important;
     }
-
-    img.leaflet-marker-icon {
-        background-color: transparent !important;
-    }
-
+    
     .leaflet-control-layers {
-        // display: none !important;
-
         .leaflet-control-layers-overlays {
             > label {
                 > span {
@@ -287,8 +305,8 @@
     .custom-watermark {
         position: absolute;
         z-index: 1000;
-        bottom: 0;
-        left: 0;
+        bottom: 10px;
+        left: 10px;
 
         padding: .35em .5em;
 
@@ -297,7 +315,7 @@
         font-weight: 600;
         text-align: center;
 
-        border-top-right-radius: .35em;
+        border-radius: .3em;
         color: var(--clr-text);
         background-color: hsl(0 0% 100% / .8);
 
