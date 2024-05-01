@@ -231,7 +231,7 @@ const batteriesGeoJsonPoints = {
             "properties": {
                 "name": "Name 16",
                 "address": "Address for point 16",
-                "description": "Описание точки 16"
+                "description": "Description for point 16"
             },
             "geometry": {
                 "coordinates": [
@@ -276,7 +276,7 @@ const batteriesGeoJsonPoints = {
             "properties": {
                 "name": "Name 19",
                 "address": "Address for point 19",
-                "description": "Описание 19 точки"
+                "description": "Description for point 19"
             },
             "geometry": {
                 "coordinates": [
