@@ -1,4 +1,5 @@
 'use strict';
+
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import batteriesGeoJsonPoints from './geojson-points/batteries-points.js';
@@ -276,7 +277,6 @@ clearFiltersBtn.addEventListener('click', () => {
     setFoundPoints(0);
     resetInfoAboutPoint();
 });
-
 // TODO: Найденные точки
 function setFoundPoints(number) {
     foundPointsSpan.textContent = number || 0;

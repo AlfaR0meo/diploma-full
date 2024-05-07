@@ -232,7 +232,8 @@
 .map__row {
     // width: 75%;
     // margin-inline: auto;
-    height: calc(100dvh - var(--nav-height));
+    // height: calc(100dvh - var(--nav-height));
+    height: 65vh;
     display: grid;
     grid-template-columns: 420px 1fr;
 
