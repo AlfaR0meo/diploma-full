@@ -10,6 +10,9 @@
 @import "./pages/all";
 
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
+
+// sass --watch resources/scss/index.scss resources/css/index.css
+
 .page-wrapper {
     padding-block-start: var(--nav-height);
 }
