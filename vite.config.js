@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/index.js',
                 'resources/js/map/ecomap.js',
 
+                // 'resources/views/**',
                 'resources/js/app.js'
             ],
             refresh: true,

@@ -232,7 +232,7 @@
 .map__row {
     // width: 75%;
     // margin-inline: auto;
-    height: 60vmin;
+    height: calc(100dvh - var(--nav-height));
     display: grid;
     grid-template-columns: 420px 1fr;
 
@@ -271,10 +271,6 @@
         aspect-ratio: 1;
     }
 
-    * {
-        font-family: inherit;
-    }
-
     .leaflet-marker-icon {
         background-color: transparent !important;
 
@@ -285,24 +281,20 @@
         }
     }
 
-    svg.leaflet-attribution-flag {
-        display: none !important;
-    }
-    
-    .leaflet-control-layers {
-        .leaflet-control-layers-overlays {
-            > label {
-                > span {
-                    display: flex;
-                    gap: 0.5em;
-                    -webkit-user-select: none;
-                    user-select: none;
-                }
-            }
-        }
-    }
+    // .leaflet-control-layers {
+    //     .leaflet-control-layers-overlays {
+    //         > label {
+    //             > span {
+    //                 display: flex;
+    //                 gap: 0.5em;
+    //                 -webkit-user-select: none;
+    //                 user-select: none;
+    //             }
+    //         }
+    //     }
+    // }
 
-    .custom-watermark {
+    .custom-map-watermark {
         position: absolute;
         z-index: 1000;
         bottom: 10px;

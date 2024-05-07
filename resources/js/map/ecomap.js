@@ -49,12 +49,14 @@ function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
         <p><span>Адрес: </span>${pointAddress}.</p>
         <p><span>Описание: </span>${pointDescription}.</p>
     `
-    console.clear();
     console.group('%cИнформация о точке', 'font-size: 1rem; font-weight: bold; color: limegreen');
     console.log('Название: ', pointName);
     console.log('Адрес: ', pointAddress);
     console.log('Описание: ', pointDescription);
     console.groupEnd();
+}
+function resetInfoAboutPoint() {
+    infoAboutPointElement.innerHTML = '';
 }
 
 
@@ -184,6 +186,7 @@ const map = L.map('map', {
     layers: [
         EsriWorldImagery,
         OSM,
+
         batteriesLayer,
         lightbulbsLayer,
         paperLayer,
@@ -219,23 +222,6 @@ const layerControl = L.control.layers(baseMaps, overlayLayers, {
     hideSingleBase: true,
     position: 'topright'
 }).addTo(map);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -288,7 +274,7 @@ clearFiltersBtn.addEventListener('click', () => {
 
     resetLeafletControls();
     setFoundPoints(0);
-    infoAboutPointElement.innerHTML = '';
+    resetInfoAboutPoint();
 });
 
 // TODO: Найденные точки
@@ -321,16 +307,18 @@ resetLeafletControls();
 
 
 
-// Filters custom checkboxes eventlistener
+// Filters custom checkboxes 'change' eventlistener
 if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
-    console.log('%cКол-во кастомных и leaflet чекбоксов совпадает. Продолжение работы скрипта', 'font-weight: bold; color: limegreen;');
-
     customLayersCheckboxes.forEach((customCheckbox, index) => {
+
         customCheckbox.addEventListener('change', function () {
             this.checked ? checkedCustomCheckboxesCounter++ : checkedCustomCheckboxesCounter--;
+
+            if (checkedCustomCheckboxesCounter === 0) resetInfoAboutPoint();
+
             clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
-            setFoundPoints(19)
+            // setFoundPoints(19)
 
             const leafletLayersCheckbox = leafletLayersCheckboxes[index];
 
