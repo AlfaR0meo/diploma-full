@@ -13,10 +13,11 @@
         <div class="container container--lg">
 
             <div class="home__intro">
-                <h1 class="home__title">Веб-сервис экосообщества города Севастополя</h1>
+                <h1 class="home__title">Экосообщество города Севастополя</h1>
+                <p class="home__subtitle">Экосообщество города Севастополя</p>
             </div>
 
-            <img src="{{ asset('img/sevastopol-icon-2.svg') }}" alt="">
+            <img src="{{ asset('img/icons/sevastopol-icon-2.svg') }}" alt="">
 
             <ul class="home__list">
                 <li>Сайт экосообщества города Севастополя</li>
