@@ -246,8 +246,6 @@ function successLocation(userPosition) {
 }
 function errorLocation(error) {
     console.log(error);
-    console.log(error.code);
-    console.log(error.message);
 }
 
 
@@ -259,7 +257,6 @@ let checkedCustomCheckboxesCounter = 0;
 const clearFiltersBtn = document.querySelector('.filter-layers__clear-button');
 const clearFiltersBtnSpan = clearFiltersBtn.querySelector('span');
 clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
-const foundPointsSpan = document.querySelector('.found-points > span');
 
 
 
@@ -273,15 +270,8 @@ clearFiltersBtn.addEventListener('click', () => {
     clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
     resetLeafletControls();
-    setFoundPoints(0);
     resetInfoAboutPoint();
 });
-
-// TODO: Найденные точки
-function setFoundPoints(number) {
-    foundPointsSpan.textContent = number || 0;
-}
-setFoundPoints(0)
 
 
 
@@ -317,8 +307,6 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
             if (checkedCustomCheckboxesCounter === 0) resetInfoAboutPoint();
 
             clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
-
-            // setFoundPoints(19)
 
             const leafletLayersCheckbox = leafletLayersCheckboxes[index];
 

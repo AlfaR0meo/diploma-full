@@ -181,16 +181,12 @@
 
         <div class="map__row">
             <div class="info-about-point-block">
-                <div class="found-points">
-                    Найдено <span></span> пунктов
-                </div>
                 <div class="point-info"></div>
             </div>
             <div id="map">
                 <div class="custom-map-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
             </div>
         </div>
-
     </div>
 </body>
 

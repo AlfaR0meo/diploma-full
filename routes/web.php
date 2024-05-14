@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\ForumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::redirect('/home', '/');
 Route::redirect('/main', '/');
 
 Route::get('/ecomap', [MapController::class, 'show'])->name('ecomap');
+Route::get('/forum', [ForumController::class, 'show'])->name('forum');
 
 
 Route::get('/login', function () {
