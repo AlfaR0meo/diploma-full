@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <div class="page-wrapper ecomap">
+    <div class="page-wrapper">
         @include('blocks.nav')
 
         <div class="container container--lg">

@@ -17,7 +17,7 @@
 
 html {
     @supports (scrollbar-width: auto) {
-        scrollbar-width: auto; // auto*, thin, none
-        scrollbar-color: var(--clr-accent) transparent; // thumb track
+        scrollbar-width: auto;
+        scrollbar-color: var(--clr-accent) transparent;
     }
 }

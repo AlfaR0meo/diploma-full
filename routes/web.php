@@ -24,10 +24,9 @@ Route::redirect('/main', '/');
 Route::get('/ecomap', [MapController::class, 'show'])->name('ecomap');
 Route::get('/forum', [ForumController::class, 'show'])->name('forum');
 
-
 Route::get('/login', function () {
-    return "<h1>Я похож на бэкэндера?</h1>";
+    return view('login');
 });
 Route::get('/register', function () {
-    return "<h1>Я похож на бэкэндера?</h1>";
+    return view('register');
 });
