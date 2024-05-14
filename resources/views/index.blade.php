@@ -19,7 +19,7 @@
 
             <img src="{{ asset('img/icons/sevastopol-icon-2.svg') }}" alt="">
 
-            <ul class="home__list none">
+            <ul class="home__list">
                 <li>Сайт экосообщества города Севастополя</li>
                 <li>Форум, темы, заявки, комментарии</li>
                 <li>Личный кабинет (регистрация), войти (аутентификация и авторизация)</li>
