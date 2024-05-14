@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', [IndexController::class, 'show'])->name('index');
+Route::redirect('/home', '/');
+Route::redirect('/main', '/');
+
+Route::get('/ecomap', [MapController::class, 'show'])->name('ecomap');
+
+
+Route::get('/login', function () {
+    return "<h1>Я похож на бэкэндера?</h1>";
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/register', function () {
+    return "<h1>Я похож на бэкэндера?</h1>";
 });
-
-require __DIR__.'/auth.php';
-
