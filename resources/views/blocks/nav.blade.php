@@ -15,10 +15,23 @@
                 <a class="nav__link" href="{{ route('forum') }}">Форум</a>
             </li>
 
-            <li class="nav__item nav__item--account">
-                <a class="nav__btn nav__btn--login" href="/login">Войти</a>
-                <a class="nav__btn nav__btn--register" href="/register">Присоединиться</a>
-            </li>
+            @auth
+                <li class="nav__item nav__item--account">
+                    <div>{{ Auth::User()->name }}</div>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="nav__btn nav__btn--logout" type="submit">Выйти</button>
+                    </form>
+                </li>
+            @endauth
+
+            @guest
+                <li class="nav__item nav__item--account">
+                    <a class="nav__btn nav__btn--login" href="{{ route('login') }}">Войти</a>
+                    <a class="nav__btn nav__btn--register" href="{{ route('register') }}">Присоединиться</a>
+                </li>
+            @endguest
 
         </ul>
     </div>

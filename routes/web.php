@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +20,15 @@ use App\Http\Controllers\ForumController;
 
 Route::get('/', [IndexController::class, 'show'])->name('index');
 Route::redirect('/home', '/');
-Route::redirect('/main', '/');
 
 Route::get('/ecomap', [MapController::class, 'show'])->name('ecomap');
 Route::get('/forum', [ForumController::class, 'show'])->name('forum');
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-    return view('register');
-});
+
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register_post'])->name('register');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login_post'])->name('login');
+
+Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+

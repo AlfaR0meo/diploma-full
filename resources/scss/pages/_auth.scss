@@ -1,0 +1,87 @@
+/* ■■■■■ REGISTER / LOGIN ■■■■■■■■■■■■ */
+
+.register, .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1em;
+
+    &__wrapper {
+        width: min(400px, 100%);
+        padding: 2em;
+        border: 1px solid var(--clr-light-grey);
+        border-radius: .25em;
+        box-shadow: 0 .5em 1em var(--clr-light-grey);
+
+        > *:not(:first-child) {
+            margin-block-start: 2em;
+        }
+    }
+
+    &__title {
+        font-size: 1.5em;
+        font-weight: 700;
+        text-align: center;
+        color: var(--clr-accent);
+    }
+
+    &__form {
+        --brr: .25em;
+        display: grid;
+        gap: 1em;
+
+        > fieldset {
+            > label {
+                margin-block-end: .75em;
+                font-size: var(--fs-400);
+            }
+
+            > input {
+                width: 100%;
+                border: 2px solid var(--clr-light-grey);
+                padding: .5em;
+                border-radius: var(--brr);
+
+                transition: var(--tr-dur);
+
+                &:focus {
+                    border-color: var(--clr-accent);
+                    outline: none;
+                }
+            }
+        }
+
+        > button {
+            padding: 1em;
+            background-color: var(--clr-accent);
+            color: #fff;
+            border-radius: var(--brr);
+            will-change: box-shadow;
+            transition: box-shadow var(--tr-dur);
+
+            @media (any-hover: hover) {
+                &:hover {
+                    box-shadow: 0 .5em 1em color-mix(in lab, var(--clr-accent), white);
+                }
+            }
+        }
+    }
+}
+
+
+.info {
+    width: fit-content;
+    margin-block: 1em;
+    padding: 1em;
+    border-radius: .25em;
+    font-weight: 500;
+    background-color: color-mix(in lab, currentColor, white 90%);
+
+    &--success {
+        color: var(--clr-accent);
+    }
+    &--error {
+        color: hsl(0, 80%, 50%);
+    }
+}

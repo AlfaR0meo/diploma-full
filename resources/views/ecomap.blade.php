@@ -65,8 +65,8 @@
     </style>
 </head>
 
-<body>
-    <div class="page-wrapper">
+<body class="page">
+    <div class="page__wrapper">
         @include('blocks.nav')
 
         <div class="container container--lg">

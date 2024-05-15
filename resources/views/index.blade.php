@@ -5,8 +5,8 @@
     @include('blocks.head', ['title' => 'СевЭко Главная Диплом'])
 </head>
 
-<body>
-    <div class="page-wrapper home">
+<body class="page">
+    <div class="page__wrapper home">
 
         @include('blocks.nav')
 
@@ -16,6 +16,14 @@
                 <h1 class="home__title">Веб-сервис экосообщества города Севастополя</h1>
             </div>
 
+            @auth
+                The user is authenticated...
+            @endauth
+
+            @guest
+                The user is not authenticated...
+            @endguest
+            
         </div>
 
     </div>

@@ -1,5 +1,8 @@
 'use strict';
 
-const pageWrapperElement = document.querySelector('.page-wrapper');
+const pageWrapperElement = document.querySelector('.page__wrapper');
 const navElement = document.querySelector('.nav');
-pageWrapperElement.style.setProperty('--nav-height', `${navElement.offsetHeight}px`);
+
+if (pageWrapperElement && navElement) {
+    pageWrapperElement.style.setProperty('--nav-height', `${navElement.offsetHeight}px`);
+}

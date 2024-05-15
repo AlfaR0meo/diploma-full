@@ -5,13 +5,13 @@
     @include('blocks.head', ['title' => 'Форум'])
 </head>
 
-<body>
-    <div class="page-wrapper">
+<body class="page">
+    <div class="page__wrapper forum">
         @include('blocks.nav')
 
         <div class="container container--lg">
 
-            <h1>Forum test</h1>
+            <h1 class="forum__title">Forum test</h1>
 
             @auth
                 The user is authenticated...
@@ -20,7 +20,6 @@
             @guest
                 The user is not authenticated...
             @endguest
-
 
         </div>
     </div>
