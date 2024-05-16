@@ -2,7 +2,7 @@
 
 .register, .login {
     padding: 1em;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,9 +21,9 @@
 
     &__title {
         font-size: 2em;
+        font-family: var(--ff-heading);
         font-weight: 700;
         text-align: center;
-        font-family: var(--ff-heading);
         color: var(--clr-accent);
     }
 
@@ -102,4 +102,11 @@
     &--error {
         color: hsl(0, 80%, 50%);
     }
+}
+
+.error {
+    padding: .5em;
+    line-height: 1.4;
+    color: hsl(0, 80%, 50%);
+    background-color: color-mix(in lab, currentColor, white 90%);
 }

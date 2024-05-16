@@ -13,16 +13,20 @@ class LoginController extends Controller
     }
 
     public function store(Request $request) {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+        $credentials = $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
 
-        if (Auth::attempt($credentials)) {
-            return redirect('home');
+        if (!Auth::attempt($credentials)) {
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'smth' => 'Неправильный email или пароль'
+                ]);    
         }
 
-        return back()->with('login-error', 'Ошибка входа');
+        return to_route('user.profile');
     }
 
     public function destroy() {

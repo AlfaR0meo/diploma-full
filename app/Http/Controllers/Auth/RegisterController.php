@@ -15,10 +15,8 @@ class RegisterController extends Controller
     }
 
     public function store(Request $request) {
-        //User::truncate();
-
         $request->validate([
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:60'],
             'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:4'],
         ]);
