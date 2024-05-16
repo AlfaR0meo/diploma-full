@@ -9,7 +9,7 @@
     <div class="page__wrapper login">
 
         <div class="login__wrapper">
-            <div class="login__title">Войти</div>
+            <div class="login__title">Вход в аккаунт</div>
 
             <form class="login__form" action="{{ route('user.login') }}" method="POST" novalidate>
                 @csrf

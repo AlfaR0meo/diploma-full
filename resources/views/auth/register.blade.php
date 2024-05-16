@@ -9,7 +9,7 @@
     <div class="page__wrapper register">
 
         <div class="register__wrapper">
-            <div class="register__title">Присоединиться</div>
+            <div class="register__title">Регистрация аккаунта</div>
 
             <form class="register__form" action="{{ route('user.register') }}" method="POST" novalidate>
                 @csrf

@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('blocks.head', ['title' => 'СевЭко Главная Диплом'])
+    @include('blocks.head', ['title' => 'СевЭко'])
 </head>
 
 <body class="page">
@@ -17,13 +17,13 @@
             </div>
 
             @auth
-                The user is <span class="accent-color">authenticated</span>
+            The user is <span class="accent-color">authenticated</span>
             @endauth
 
             @guest
-                The user is not authenticated...
+            The user is not authenticated...
             @endguest
-            
+
         </div>
 
     </div>

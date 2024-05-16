@@ -29,9 +29,13 @@ class LoginController extends Controller
         return to_route('user.profile');
     }
 
-    public function destroy() {
+    public function destroy(Request $request) {
         Auth::logout();
 
-        return redirect('home');
+        $request->session()->invalidate();
+ 
+        $request->session()->regenerateToken();
+
+        return redirect()->intended('profile');
     }
 }

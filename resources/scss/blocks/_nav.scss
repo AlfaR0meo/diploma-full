@@ -95,25 +95,30 @@
         color: inherit;
         border-radius: .25em;
 
-        transition: outline-color 200ms;
+        transition: outline-color var(--tr-dur);
         outline: 2px solid var(--clr-light-grey);
-
-        @media (any-hover: hover) {
-            &:hover {
-                outline-color: var(--clr-accent);
+        
+        &--login, &--register {
+            @media (any-hover: hover) {
+                &:hover {
+                    outline-color: var(--clr-accent);
+                }
             }
         }
+
+        &--profile {
+            width: 2em;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            outline-color: grey;
+        }
         
-        &--login {
-            
-        }
-        &--register {
-            
-        }
         &--logout {
-            background-color: hsl(0, 80%, 50%);
-            color: #fff;
-            outline: none;
+            @media (any-hover: hover) {
+                &:hover {
+                    outline-color: grey;
+                }
+            }
         }
     }
 }
