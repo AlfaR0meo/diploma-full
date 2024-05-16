@@ -12,7 +12,7 @@
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 
 .page__wrapper {
-    padding-block-start: var(--nav-height);
+    padding-block-start: var(--nav-height, 1em);
 }
 
 html {

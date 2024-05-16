@@ -11,22 +11,20 @@
         <div class="login__wrapper">
             <div class="login__title">Войти</div>
 
-            @if (Session::has('login-error'))
-                <div class="info info--error">{{ Session::get('login-error') }}</div>
-            @endif
-
-            <form class="login__form" action="{{ route('login') }}" method="post">
+            <form class="login__form" action="{{ route('user.login') }}" method="POST" novalidate>
                 @csrf
                 <fieldset>
                     <label for="input-email">Email</label>
-                    <input type="email" name="email" id="input-email" required>
+                    <input type="email" name="email" id="input-email">
                 </fieldset>
                 <fieldset>
                     <label for="input-password">Пароль</label>
-                    <input type="password" name="password" id="input-password" required>
+                    <input type="password" name="password" id="input-password">
                 </fieldset>
                 <button type="submit">Войти</button>
             </form>
+
+            <div class="login__have-account">Нет аккаунта? <a href="{{ route('user.register') }}">Присоединиться</a></div>
         </div>
 
     </div>

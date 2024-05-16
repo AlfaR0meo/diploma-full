@@ -1,7 +1,7 @@
 /* ■■■■■ ПЕРЕМЕННЫЕ ■■■■■■■■■■■■■■■■■■ */
 :root {
     --ff-body: "Rubik", sans-serif;
-    --ff-heading: var(--ff-body);
+    --ff-heading: var(--ff-logo);
     --ff-logo: "PT Sans", sans-serif;
     --ff-system: system-ui;
 
@@ -14,6 +14,7 @@
     --clr-grey: hsl(0 0% 50%);
     --clr-light-grey: hsl(0 0% 90%);
     --clr-accent: limegreen; //#32cd32
+    // --clr-secondary: dodgerblue;
 
     --clr-batteries: #663399;
     --clr-lightbulbs: #ff943d;

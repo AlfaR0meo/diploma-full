@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\MapController;
+use App\Http\Controllers\EcomapController;
 use App\Http\Controllers\ForumController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserProfileController;
+
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +24,23 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [IndexController::class, 'show'])->name('index');
 Route::redirect('/home', '/');
 
-Route::get('/ecomap', [MapController::class, 'show'])->name('ecomap');
+Route::get('/ecomap', [EcomapController::class, 'show'])->name('ecomap');
 Route::get('/forum', [ForumController::class, 'show'])->name('forum');
 
+Route::name('user.')->group(function () {
 
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'register_post'])->name('register');
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'login_post'])->name('login');
+    Route::middleware('guest')->group(function () {
+        Route::get('/register', [RegisterController::class, 'show'])->name('register');
+        Route::post('/register', [RegisterController::class, 'store'])->name('register');
+        
+        Route::get('/login', [LoginController::class, 'show'])->name('login');
+        Route::post('/login', [LoginController::class, 'store'])->name('login');
+    });
 
-Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::middleware('auth')->group(function () {
+        Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');
+        Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+    });
+
+});
 

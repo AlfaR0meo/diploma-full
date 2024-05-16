@@ -17,7 +17,7 @@
             </div>
 
             @auth
-                The user is authenticated...
+                The user is <span class="accent-color">authenticated</span>
             @endauth
 
             @guest

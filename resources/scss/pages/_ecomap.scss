@@ -197,14 +197,6 @@
         }
     }
 
-    // &__found-points {
-    //     color: var(--clr-grey);
-
-    //     &:has(span:empty) {
-    //         display: none;
-    //     }
-    // }
-
     &__location-btn {
         width: fit-content;
         padding: 0.75em 1em;
@@ -222,11 +214,6 @@
             }
         }
     }
-}
-
-.found-points {
-    color: var(--clr-grey);
-    margin-block-end: 1em;
 }
 
 .map__row {

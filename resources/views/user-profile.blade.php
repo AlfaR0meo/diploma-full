@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('blocks.head', ['title' => 'Форум'])
+    @include('blocks.head', ['title' => 'Профиль'])
 </head>
 
 <body class="page">
@@ -11,10 +11,10 @@
 
         <div class="container container--lg">
 
-            <h1 class="forum__title">Forum test</h1>
+            <h1 class="forum__title">Профиль</h1>
 
             @auth
-                The user is <span class="accent-color">authenticated</span>
+                The user <b>{{ Auth::User()->name }}</b> <b>{{ Auth::User()->email }}</b> is <span class="accent-color">authenticated</span>
             @endauth
 
             @guest

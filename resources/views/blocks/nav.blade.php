@@ -17,8 +17,9 @@
 
             @auth
                 <li class="nav__item nav__item--account">
-                    <div>{{ Auth::User()->name }}</div>
-                    <form action="{{ route('logout') }}" method="post">
+                    <b><a href="{{ route('user.profile') }}" style="color: inherit;">{{ Auth::User()->name }}</a></b>
+
+                    <form action="{{ route('user.logout') }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="nav__btn nav__btn--logout" type="submit">Выйти</button>
@@ -28,8 +29,8 @@
 
             @guest
                 <li class="nav__item nav__item--account">
-                    <a class="nav__btn nav__btn--login" href="{{ route('login') }}">Войти</a>
-                    <a class="nav__btn nav__btn--register" href="{{ route('register') }}">Присоединиться</a>
+                    <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Войти</a>
+                    <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Присоединиться</a>
                 </li>
             @endguest
 

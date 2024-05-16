@@ -10,7 +10,16 @@
 
         <div class="register__wrapper">
             <div class="register__title">Присоединиться</div>
-            <form class="register__form" action="{{ route('register') }}" method="post">
+
+            {{-- <div class="info info--success">
+                <ul>
+                    @foreach ( as )
+                        
+                    @endforeach
+                </ul>
+            </div> --}}
+
+            <form class="register__form" action="{{ route('user.register') }}" method="POST" novalidate>
                 @csrf
                 <fieldset>
                     <label for="input-name">Имя</label>
@@ -18,18 +27,20 @@
                 </fieldset>
                 <fieldset>
                     <label for="input-email">Email</label>
-                    <input type="email" name="email" id="input-email" required>
+                    <input type="email" name="email" id="input-email">
                 </fieldset>
                 <fieldset>
                     <label for="input-password">Пароль</label>
-                    <input type="password" name="password" id="input-password" required>
+                    <input type="password" name="password" id="input-password">
                 </fieldset>
                 <fieldset>
                     <label for="input-password-confirmation">Подтвердите пароль</label>
-                    <input type="password" name="password_confirmation" id="input-password-confirmation" required>
+                    <input type="password" name="password_confirmation" id="input-password-confirmation">
                 </fieldset>
                 <button type="submit">Зарегистрироваться</button>
             </form>
+
+            <div class="login__have-account">Есть аккаунт? <a href="{{ route('user.login') }}">Войти</a></div>
         </div>
 
     </div>
