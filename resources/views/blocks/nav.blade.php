@@ -13,7 +13,7 @@
                 <a class="nav__link" href="{{ route('ecomap') }}">Экокарта</a>
             </li>
             <li class="nav__item">
-                <a class="nav__link" href="{{ route('forum') }}">Экозаявка</a>
+                <a class="nav__link" href="{{ route('forum') }}">ЧТО-ТО</a>
             </li>
             <li class="nav__item">
                 <a class="nav__link" href="/events">Мероприятия</a>
@@ -24,14 +24,19 @@
 
             @auth
             <li class="nav__item nav__item--account">
-                <div class="nav__btn nav__btn--profile-name">
-                    {{ Str::of(Auth::User()->name)->ucfirst() }}
+                <div class="nav__user-avatar-name">
+                    @if (true) 
+                    <div class="user-avatar">{{ Str::of(Auth::User()->name)->ucfirst()->charAt(0) }}</div>
+                    @endif
+
+                    <div class="user-name">{{ Str::of(Auth::User()->name)->ucfirst() }}</div>
                 </div>
-                <div class="nav__account-menu">
+                
+                <div class="nav__user-account-menu">
                     <a class="profile-link" href="{{ route('user.profile') }}">Профиль</a>
                     <form class="logout-form" action="{{ route('user.logout') }}" method="POST">
                         @csrf
-                        <button>Выход</button>
+                        <button>Выйти</button>
                     </form>
                 </div>
             </li>

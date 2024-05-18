@@ -16,9 +16,9 @@
     box-shadow: 0 0 1em hsl(0 0% 30% / .1);
 
     font-size: 1.125rem;
+    color: var(--clr-text);
     line-height: 1;
     text-align: center;
-    color: var(--clr-text);
 
     &__list {
         display: flex;
@@ -32,11 +32,14 @@
             margin-right: auto;
         }
         &--account {
-            display: flex;
-            align-items: center;
-            gap: 1em;
             margin-left: auto;
+            align-self: stretch;
             position: relative;
+
+            &:not(:has(.nav__btn--profile)) {
+                display: flex;
+                gap: 1em;
+            }
         }
     }
 
@@ -99,40 +102,66 @@
         transition: outline-color var(--tr-dur);
         outline: 2px solid var(--clr-light-grey);
         
-        &--login, &--register {
-            @media (any-hover: hover) {
-                &:hover {
-                    outline-color: var(--clr-accent);
-                }
-            }
-        }
-
-        &--profile-name {
-            padding-inline: .5em;
-            font-family: var(--ff-logo);
-            font-weight: 700;
-            outline-color: var(--clr-accent);
-            cursor: pointer;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        
-        &--logout {
-            @media (any-hover: hover) {
-                &:hover {
-                    outline-color: grey;
-                }
+        @media (any-hover: hover) {
+            &:hover {
+                outline-color: var(--clr-accent);
             }
         }
     }
 
-    &__account-menu {
-        display: grid;
-        gap: 1em;
-        padding: 1em;
+    &__user-avatar-name {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        cursor: pointer;
+
+        @media (any-hover: hover) {
+            &:hover {
+                > .user-avatar {
+                    box-shadow: 0 0 0 .25em color-mix(in lab, var(--clr-accent), white 60%);
+                }
+            }
+        }
+
+        &--active {
+            > .user-avatar {
+                box-shadow: 0 0 0 .25em color-mix(in lab, var(--clr-accent), white 60%);
+            }
+        }
+
+        > .user-avatar {
+            width: 2em;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: var(--clr-accent);
+            color: #fff;
+            transition: box-shadow var(--tr-dur);
+        }
+
+        > .user-name {
+            max-width: 15ch;
+            
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            font-weight: 500;
+            transition: color var(--tr-dur);
+        }
+    }
+
+    &__user-account-menu {
         position: absolute;
         top: calc(100% + .5em);
         right: 0;
+        
+        display: grid;
+        padding: .5em 1em;
+        
+        font-weight: 500;
         border-radius: .25em;
         border: 1px solid var(--clr-light-grey);
         background-color: #fff;
@@ -142,7 +171,7 @@
         opacity: 0;
         pointer-events: none;
 
-        transition: 200ms;
+        transition: var(--tr-dur);
         
         &--active {
             visibility: visible;
@@ -152,6 +181,9 @@
         }
 
         > .profile-link {
+            padding-block: .5em;
+            transition: color var(--tr-dur);
+
             @media (any-hover: hover) {
                 &:hover {
                     color: var(--clr-accent);
@@ -161,13 +193,15 @@
 
         > .logout-form {
             > button {
+                padding-block: .5em;
                 width: 100%;
                 text-align: left;
-            }
-
-            @media (any-hover: hover) {
-                &:hover {
-                    color: var(--clr-accent);
+                transition: color var(--tr-dur);
+                
+                @media (any-hover: hover) {
+                    &:hover {
+                        color: var(--clr-grey);
+                    }
                 }
             }
         }

@@ -9,13 +9,14 @@
 
     &__wrapper {
         width: min(400px, 100%);
+        position: relative;
         padding: 2em;
         border-radius: .25em;
         box-shadow: 0 .5em 1em var(--clr-light-grey),
                     0 0 4em var(--clr-light-grey);
 
-        > *:not(:first-child) {
-            margin-block-start: 2em;
+        > *:not(:first-child, :last-child) {
+            margin-block-end: 2em;
         }
     }
 
@@ -55,6 +56,7 @@
 
         > button {
             padding: 1em;
+            font-weight: 500;
             background-color: var(--clr-accent);
             color: #fff;
             border-radius: var(--brr);
@@ -88,24 +90,37 @@
     }
 }
 
-.info {
-    width: fit-content;
-    margin-block: 1em;
-    padding: 1em;
-    border-radius: .25em;
-    font-weight: 500;
-    background-color: color-mix(in lab, currentColor, white 90%);
+.link-back-to-main {
+    position: absolute;
+    bottom: calc(100% + 1em);
+    left: 0;
 
-    &--success {
-        color: var(--clr-accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    font-size: var(--fs-400);
+    border-radius: .25em;
+
+    @media (any-hover: hover) {
+        &:hover {
+            > svg {
+                transform: translateX(-.25em);
+            }
+        }
     }
-    &--error {
-        color: hsl(0, 80%, 50%);
+
+    > svg {
+        width: 2em;
+        transition: transform var(--tr-dur);
+        fill: var(--clr-accent);
     }
 }
 
 .error {
+    width: fit-content;
     padding: .5em;
+    border-radius: .25em;
     line-height: 1.4;
     color: hsl(0, 80%, 50%);
     background-color: color-mix(in lab, currentColor, white 90%);

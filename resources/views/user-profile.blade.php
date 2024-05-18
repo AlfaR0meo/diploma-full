@@ -14,11 +14,10 @@
             <h1 class="forum__title">Профиль</h1>
 
             @auth
-                The user 
-                <div><b>{{ Auth::User()->name }}</b></div>
-                <div><b>{{ Auth::User()->email }}</b></div>
-                <div><b>{{ Auth::User()->created_at }}</b></div>
-                is <span class="accent-color">authenticated</span>
+                <div>Имя: <b>{{ Auth::User()->name }}</b></div>
+                <div>Email: <b>{{ Auth::User()->email }}</b></div>
+                <div>Дата регистрации: <b>{{ Auth::User()->created_at }}</b></div>
+                <div>Пароль (хешированный): <b>{{ Auth::User()->password }}</b></div>
             @endauth
 
             @guest
