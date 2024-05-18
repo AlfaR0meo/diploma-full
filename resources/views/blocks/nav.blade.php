@@ -13,25 +13,34 @@
                 <a class="nav__link" href="{{ route('ecomap') }}">Экокарта</a>
             </li>
             <li class="nav__item">
-                <a class="nav__link" href="{{ route('forum') }}">Форум</a>
+                <a class="nav__link" href="{{ route('forum') }}">Экозаявка</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="/events">Мероприятия</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="/">Полезные ресурсы</a>
             </li>
 
             @auth
             <li class="nav__item nav__item--account">
-                <a class="nav__btn nav__btn--profile" href="{{ route('user.profile') }}">{{ Auth::User()->name }}</a>
-
-                <form action="{{ route('user.logout') }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="nav__btn nav__btn--logout" type="submit">Выход</button>
-                </form>
+                <div class="nav__btn nav__btn--profile-name">
+                    {{ Str::of(Auth::User()->name)->ucfirst() }}
+                </div>
+                <div class="nav__account-menu">
+                    <a class="profile-link" href="{{ route('user.profile') }}">Профиль</a>
+                    <form class="logout-form" action="{{ route('user.logout') }}" method="POST">
+                        @csrf
+                        <button>Выход</button>
+                    </form>
+                </div>
             </li>
             @endauth
 
             @guest
             <li class="nav__item nav__item--account">
-                <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Вход</a>
                 <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Регистрация</a>
+                <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Вход</a>
             </li>
             @endguest
 

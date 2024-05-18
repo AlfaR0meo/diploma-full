@@ -16,14 +16,6 @@
                 <h1 class="home__title">Веб-сервис экосообщества города Севастополя</h1>
             </div>
 
-            @auth
-            The user is <span class="accent-color">authenticated</span>
-            @endauth
-
-            @guest
-            The user is not authenticated...
-            @endguest
-
         </div>
 
     </div>

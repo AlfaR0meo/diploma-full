@@ -13,14 +13,6 @@
 
             <h1 class="forum__title">Forum test</h1>
 
-            @auth
-                The user is <span class="accent-color">authenticated</span>
-            @endauth
-
-            @guest
-                The user is not authenticated...
-            @endguest
-
         </div>
     </div>
 </body>

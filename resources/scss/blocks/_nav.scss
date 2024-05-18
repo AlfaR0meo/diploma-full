@@ -36,6 +36,7 @@
             align-items: center;
             gap: 1em;
             margin-left: auto;
+            position: relative;
         }
     }
 
@@ -106,17 +107,67 @@
             }
         }
 
-        &--profile {
-            width: 2em;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            outline-color: grey;
+        &--profile-name {
+            padding-inline: .5em;
+            font-family: var(--ff-logo);
+            font-weight: 700;
+            outline-color: var(--clr-accent);
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
         }
         
         &--logout {
             @media (any-hover: hover) {
                 &:hover {
                     outline-color: grey;
+                }
+            }
+        }
+    }
+
+    &__account-menu {
+        display: grid;
+        gap: 1em;
+        padding: 1em;
+        position: absolute;
+        top: calc(100% + .5em);
+        right: 0;
+        border-radius: .25em;
+        border: 1px solid var(--clr-light-grey);
+        background-color: #fff;
+
+        transform: translateY(-0.5em);
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 200ms;
+        
+        &--active {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        > .profile-link {
+            @media (any-hover: hover) {
+                &:hover {
+                    color: var(--clr-accent);
+                }
+            }
+        }
+
+        > .logout-form {
+            > button {
+                width: 100%;
+                text-align: left;
+            }
+
+            @media (any-hover: hover) {
+                &:hover {
+                    color: var(--clr-accent);
                 }
             }
         }

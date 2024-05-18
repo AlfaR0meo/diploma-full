@@ -38,8 +38,8 @@ Route::name('user.')->group(function () {
     });
 
     Route::middleware('auth')->group(function () {
-        Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+        Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
     });
 
 });

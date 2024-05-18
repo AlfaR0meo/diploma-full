@@ -14,7 +14,11 @@
             <h1 class="forum__title">Профиль</h1>
 
             @auth
-                The user <b>{{ Auth::User()->name }}</b> <b>{{ Auth::User()->email }}</b> is <span class="accent-color">authenticated</span>
+                The user 
+                <div><b>{{ Auth::User()->name }}</b></div>
+                <div><b>{{ Auth::User()->email }}</b></div>
+                <div><b>{{ Auth::User()->created_at }}</b></div>
+                is <span class="accent-color">authenticated</span>
             @endauth
 
             @guest
