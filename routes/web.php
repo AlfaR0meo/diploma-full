@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EcomapController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\UserProfileController;
-
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -26,6 +26,7 @@ Route::redirect('/home', '/');
 
 Route::get('/ecomap', [EcomapController::class, 'show'])->name('ecomap');
 Route::get('/events', [EventController::class, 'show'])->name('events');
+Route::get('/materials', [MaterialController::class, 'show'])->name('materials');
 
 Route::name('user.')->group(function () {
 
@@ -39,8 +40,8 @@ Route::name('user.')->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-        Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+        Route::delete('/profile/delete', [UserProfileController::class, 'delete'])->name('profile.delete');
+        Route::post('/logout', [LoginController::class, 'delete'])->name('logout');
     });
 
 });
-

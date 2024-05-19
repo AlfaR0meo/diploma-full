@@ -13,13 +13,13 @@
                 <a class="nav__link" href="{{ route('ecomap') }}">Экокарта</a>
             </li>
             <li class="nav__item">
-                <a class="nav__link" href="{{ route('index') }}">ЧТО-ТО</a>
+                <a class="nav__link" href="{{ route('index') }}">Экодоска</a>
             </li>
             <li class="nav__item">
                 <a class="nav__link" href="{{ route('events') }}">Мероприятия</a>
             </li>
             <li class="nav__item">
-                <a class="nav__link" href="{{ route('index') }}">Полезные материалы</a>
+                <a class="nav__link" href="{{ route('materials') }}">Полезные материалы</a>
             </li>
 
             @auth

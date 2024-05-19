@@ -2,21 +2,7 @@
 .home {
     line-height: 1.5;
 
-    &__intro {
-        margin-block: 3em 2em;
-    }
-
     &__title {
         width: 70%;
-        margin-block: 0.5em;
-    }
-
-    &__list {
-        margin-block-start: 2em;
-        
-        > li {
-            list-style-type: disc;
-            list-style-position: inside;
-        }
     }
 }

@@ -1,0 +1,23 @@
+/* ■■■■■ PROFILE ■■■■■■■■■■■■■■■■■■■■■ */
+
+.profile {
+    &__info {
+        line-height: 1.5;
+    }
+
+    &__btn-delete-user {
+        font-size: var(--fs-400);
+        margin-block: 1em;
+        padding: .5em;
+        border-radius: .35em;
+        background-color: rgb(202, 57, 57);
+        color: #fff;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: hsl(0, 58%, 46%);
+            }
+        }
+    }
+}
+

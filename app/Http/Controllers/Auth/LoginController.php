@@ -29,7 +29,7 @@ class LoginController extends Controller
         return to_route('user.profile');
     }
 
-    public function destroy(Request $request) {
+    public function delete(Request $request) {
         Auth::logout();
 
         $request->session()->invalidate();
