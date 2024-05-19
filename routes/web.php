@@ -29,7 +29,6 @@ Route::get('/events', [EventController::class, 'show'])->name('events');
 Route::get('/materials', [MaterialController::class, 'show'])->name('materials');
 
 Route::name('user.')->group(function () {
-
     Route::middleware('guest')->group(function () {
         Route::get('/register', [RegisterController::class, 'show'])->name('register');
         Route::post('/register', [RegisterController::class, 'store'])->name('register');
@@ -37,11 +36,9 @@ Route::name('user.')->group(function () {
         Route::get('/login', [LoginController::class, 'show'])->name('login');
         Route::post('/login', [LoginController::class, 'store'])->name('login');
     });
-
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
         Route::delete('/profile/delete', [UserProfileController::class, 'delete'])->name('profile.delete');
         Route::post('/logout', [LoginController::class, 'delete'])->name('logout');
     });
-
 });
