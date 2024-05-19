@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
+@section('head')  
     @include('blocks.head', ['title' => 'Профиль'])
-</head>
+@endsection
 
-<body class="page">
-    <div class="page__wrapper forum">
+@section('page-content')
+    <div class="page__wrapper profile">
         @include('blocks.nav')
 
         <div class="container container--lg">
 
-            <h1 class="forum__title">Профиль</h1>
+            <h1 class="profile__title">Профиль</h1> 
 
-            @auth
-                <div>Имя: <b>{{ Auth::User()->name }}</b></div>
-                <div>Email: <b>{{ Auth::User()->email }}</b></div>
-                <div>Дата регистрации: <b>{{ Auth::User()->created_at }}</b></div>
-                <div>Пароль (хешированный): <b>{{ Auth::User()->password }}</b></div>
-            @endauth
-
-            @guest
-                The user is not authenticated...
-            @endguest
+            <div><b>Имя: </b>{{ Auth::User()->name }}</div>
+            <div><b>Email: </b>{{ Auth::User()->email }}</div>
+            <div><b>Дата регистрации: </b>{{ Auth::User()->created_at }}</div>
+            <div><b>Пароль (хешированный): </b>{{ Auth::User()->password }}</div>
 
         </div>
     </div>
-</body>
-
-</html>
+@endsection

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EcomapController;
-use App\Http\Controllers\ForumController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserProfileController;
 
 use App\Http\Controllers\Auth\RegisterController;
@@ -25,7 +25,7 @@ Route::get('/', [IndexController::class, 'show'])->name('index');
 Route::redirect('/home', '/');
 
 Route::get('/ecomap', [EcomapController::class, 'show'])->name('ecomap');
-Route::get('/forum', [ForumController::class, 'show'])->name('forum');
+Route::get('/events', [EventController::class, 'show'])->name('events');
 
 Route::name('user.')->group(function () {
 

@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
+@section('head')  
     @include('blocks.head', ['title' => 'Экокарта'])
 
     @vite(['resources/js/map/ecomap.js'])
@@ -61,11 +60,11 @@
             color: var(--clr-text) !important;
             white-space: normal !important;
             box-shadow: 0 0 1em hsl(0 0% 30% / .1) !important;
-	    } */
+        } */
     </style>
-</head>
+@endsection
 
-<body class="page">
+@section('page-content')
     <div class="page__wrapper">
         @include('blocks.nav')
 
@@ -187,7 +186,6 @@
                 <div class="custom-map-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
             </div>
         </div>
+        
     </div>
-</body>
-
-</html>
+@endsection

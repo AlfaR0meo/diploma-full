@@ -33,10 +33,9 @@
         }
         &--account {
             margin-left: auto;
-            align-self: stretch;
             position: relative;
 
-            &:not(:has(.nav__btn--profile)) {
+            &:not(:has(.nav__user-avatar-name)) {
                 display: flex;
                 gap: 1em;
             }
@@ -114,11 +113,16 @@
         align-items: center;
         gap: 0.5em;
         cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
 
         @media (any-hover: hover) {
             &:hover {
                 > .user-avatar {
                     box-shadow: 0 0 0 .25em color-mix(in lab, var(--clr-accent), white 60%);
+                }
+                > .user-name {
+                    color: var(--clr-accent);
                 }
             }
         }
@@ -126,6 +130,9 @@
         &--active {
             > .user-avatar {
                 box-shadow: 0 0 0 .25em color-mix(in lab, var(--clr-accent), white 60%);
+            }
+            > .user-name {
+                color: var(--clr-accent);
             }
         }
 
@@ -200,7 +207,7 @@
                 
                 @media (any-hover: hover) {
                     &:hover {
-                        color: var(--clr-grey);
+                        color: hsl(0 60% 60%);
                     }
                 }
             }

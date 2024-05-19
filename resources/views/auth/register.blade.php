@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
+@section('head')  
     @include('blocks.head', ['title' => 'Регистрация аккаунта'])
-</head>
+@endsection
 
-<body class="page">
+@section('page-content')
     <div class="page__wrapper register">
-
 
         <div class="register__wrapper">
             @include('auth.blocks.link-back-to-main')
+            
             <div><div class="register__title">Регистрация аккаунта</div></div>
 
-            <form class="register__form" action="{{ route('user.register') }}" method="POST" novalidate>
+            <form class="register__form" action="{{ route('user.register') }}" method="POST">
                 @csrf
 
                 <fieldset>
@@ -55,6 +54,4 @@
         </div>
 
     </div>
-</body>
-
-</html>
+@endsection

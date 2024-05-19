@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
+@section('head')  
     @include('blocks.head', ['title' => 'Вход в аккаунт'])
-</head>
+@endsection
 
-<body class="page">
+@section('page-content')
     <div class="page__wrapper login">
 
         <div class="login__wrapper">
             @include('auth.blocks.link-back-to-main')
+            
             <div><div class="login__title">Вход в аккаунт</div></div>
 
-            <form class="login__form" action="{{ route('user.login') }}" method="POST" novalidate>
+            <form class="login__form" action="{{ route('user.login') }}" method="POST">
                 @csrf
 
                 <fieldset>
@@ -41,6 +41,4 @@
         </div>
 
     </div>
-</body>
-
-</html>
+@endsection

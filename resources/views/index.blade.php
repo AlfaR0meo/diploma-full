@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
+@section('head')  
     @include('blocks.head', ['title' => 'СевЭко'])
-</head>
+@endsection
 
-<body class="page">
+@section('page-content')
     <div class="page__wrapper home">
-
         @include('blocks.nav')
 
         <div class="container container--lg">
@@ -17,9 +15,5 @@
             </div>
 
         </div>
-
     </div>
-
-</body>
-
-</html>
+@endsection

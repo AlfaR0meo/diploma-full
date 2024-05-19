@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ForumController extends Controller
+class EventController extends Controller
 {
     public function show() {
-        return view('forum');
+        return view('events');
     }
 }
