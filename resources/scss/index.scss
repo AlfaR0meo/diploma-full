@@ -23,7 +23,9 @@ html {
 }
 
 ul.test {
-    line-height: 1.3;
+    line-height: 1.4;
+    font-family: var(--ff-mono);
+
     li {
         list-style-position: inside;
         list-style-type: disc;
@@ -32,4 +34,8 @@ ul.test {
             color: var(--clr-accent);
         }
     }
+}
+
+.mb-1 {
+    margin-block: 1em;
 }
