@@ -11,17 +11,7 @@
 
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 
-.page__wrapper {
-    padding-block-start: var(--nav-height, 1em);
-}
-
-html {
-    @supports (scrollbar-width: auto) {
-        scrollbar-width: auto;
-        scrollbar-color: var(--clr-accent) transparent;
-    }
-}
-
+//tests
 ul.test {
     line-height: 1.4;
     font-family: var(--ff-mono);
@@ -36,6 +26,9 @@ ul.test {
     }
 }
 
-.mb-1 {
-    margin-block: 1em;
+.mbs-1 {
+    margin-block-start: 1em;
+}
+.mbs-2 {
+    margin-block-start: 2em;
 }

@@ -14,13 +14,13 @@
                 <h1 class="home__title">Веб-сервис экосообщества города Севастополя</h1>
             </div>
 
-            <ul class="test mb-1">
+            <ul class="test mbs-1">
                 @foreach ($users as $user)
-                <li>{{ $user->email }}</li>
+                <li>{{ $user->id }} | {{ $user->email }} | {{ $user->avatar }}</li>
                 @endforeach
             </ul>
 
-            <div class="mb-1">
+            <div class="mbs-1">
                 <div>{{ fake()->address() }}</div>
                 <div>{{ fake()->name() }}</div>
                 <div>{{ fake()->country() }}</div>

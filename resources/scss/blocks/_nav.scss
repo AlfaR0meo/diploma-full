@@ -146,6 +146,17 @@
             background-color: var(--clr-accent);
             color: #fff;
             transition: box-shadow var(--tr-dur);
+            overflow: hidden;
+
+            &:has(> img) {
+                background-color: color-mix(in srgb, var(--clr-accent), transparent 90%);
+            }
+
+            > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
 
         > .user-name {

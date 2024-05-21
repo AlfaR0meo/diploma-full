@@ -25,8 +25,12 @@
             @auth
             <li class="nav__item nav__item--account">
                 <div class="nav__user-avatar-name">
-                    @if (true) 
+                    @if (Auth::User()->avatar === null)
                     <div class="user-avatar">{{ Str::of(Auth::User()->name)->ucfirst()->charAt(0) }}</div>
+                    @else
+                    <div class="user-avatar">
+                        <img src="/storage/{{ Auth::User()->avatar }}" alt="">
+                    </div>
                     @endif
 
                     <div class="user-name">{{ Str::of(Auth::User()->name)->ucfirst() }}</div>

@@ -1,8 +1,8 @@
 /* ■■■■■ ПЕРЕМЕННЫЕ ■■■■■■■■■■■■■■■■■■ */
 :root {
     --ff-body: "Rubik", sans-serif;
-    --ff-heading: var(--ff-logo);
-    --ff-logo: "PT Sans", sans-serif;
+    --ff-heading: "PT Sans", sans-serif;
+    --ff-logo: var(--ff-heading);
     --ff-system: system-ui;
     --ff-mono: "Consolas", monospace;
 
@@ -15,6 +15,7 @@
     --clr-grey: hsl(0 0% 50%);
     --clr-light-grey: hsl(0 0% 90%);
     --clr-accent: color-mix(in lab, forestgreen, lime); //#32cd32
+    --clr-action: dodgerblue;
 
     --clr-batteries: #663399;
     --clr-lightbulbs: #ff943d;
