@@ -12,8 +12,28 @@
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 
 //tests
-ul.test {
-    line-height: 1.4;
+
+.block {
+    margin-block: 1em;
+    padding: 1em;
+    background-color: color-mix(in srgb, currentColor, white 90%);
+    border-radius: .25em;
+
+    &--error {
+        color: red;
+    }
+    &--success {
+        color: limegreen;
+    }
+    &--info {
+        color: dodgerblue;
+    }
+    &--empty {
+        color: grey;
+    }
+}
+
+ul.list {
     font-family: var(--ff-mono);
 
     li {

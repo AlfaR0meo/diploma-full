@@ -98,12 +98,12 @@
         color: inherit;
         border-radius: .25em;
 
-        transition: outline-color var(--tr-dur);
-        outline: 2px solid var(--clr-light-grey);
+        border: 2px solid var(--clr-light-grey);
+        transition: border-color var(--tr-dur);
         
         @media (any-hover: hover) {
             &:hover {
-                outline-color: var(--clr-accent);
+                border-color: var(--clr-accent);
             }
         }
     }

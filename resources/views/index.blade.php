@@ -13,18 +13,16 @@
             <div class="home__intro">
                 <h1 class="home__title">Веб-сервис экосообщества города Севастополя</h1>
             </div>
-
-            <ul class="test mbs-1">
-                @foreach ($users as $user)
-                <li>{{ $user->id }} | {{ $user->email }} | {{ $user->avatar }}</li>
-                @endforeach
-            </ul>
-
-            <div class="mbs-1">
-                <div>{{ fake()->address() }}</div>
-                <div>{{ fake()->name() }}</div>
-                <div>{{ fake()->country() }}</div>
-            </div>
+            
+            @if (!$users->count())
+                <div class="block block--empty">Список пользователей пуст.</div>
+            @else
+                <ul class="list mbs-1">
+                    @foreach ($users as $user)
+                        <li>{{ $user->id }} | {{ $user->email }} | {{ $user->name }} | {{ $user->avatar }}</li>
+                    @endforeach
+                </ul>
+            @endif
 
         </div>
     </div>

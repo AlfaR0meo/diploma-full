@@ -1,16 +1,13 @@
 /* ■■■■■ PROFILE ■■■■■■■■■■■■■■■■■■■■■ */
 
 .profile {
-    &__group {
-        &:not(:last-of-type) {
-            margin-block-end: 2em;
-        }
-    }
-
     &__info {
         display: grid;
-        gap: .5em;
-        line-height: 1.5;
+        gap: 1em;
+
+        > .info {
+            line-height: 1.5;
+        }
     }
 
     &__avatar {
@@ -27,34 +24,64 @@
         }
     }
 
-    h2 {
-        font-size: 1.5em;
-        margin-block-end: .5em;
-        text-transform: uppercase;
-    }
-
-    &__upload-avatar-form {
-        display: grid;
-        justify-items: start;
-        gap: 1em;
-    }
-
-    &__btn-upload-avatar, &__btn-delete-avatar, &__btn-delete-profile {
-        padding: 1em;
-        border-radius: .25em;
-        color: #fff;
-        background-color: var(--clr-action);
-        will-change: box-shadow;
-        transition: box-shadow var(--tr-dur);
-
-        @media (any-hover: hover) {
-            &:hover {
-                box-shadow: 0 .5em 1em color-mix(in lab, var(--clr-action), white);
-            }
+    &__group {
+        &:not(:last-of-type) {
+            margin-block-end: 2em;
         }
 
-        &:active {
-            transform: translateY(1px);
+        h2 {
+            font-size: 1.5em;
+            margin-block-end: .5em;
+            text-transform: uppercase;
+        }
+    
+        form {
+            display: grid;
+            justify-items: start;
+            gap: 1em;
+    
+            textarea {
+                width: 50%;
+                min-height: 100px;
+                height: 200px;
+                max-height: 300px;
+
+                padding: 1em;
+
+                line-height: 1.5;
+                border: 2px solid var(--clr-light-grey);
+                border-radius: .25em;
+                outline: none;
+                resize: none;
+                
+                @supports (scrollbar-width: thin) {
+                    scrollbar-width: thin;
+                    scrollbar-color: var(--clr-accent) transparent;
+                }
+
+                &:focus {
+                    border-color: var(--clr-accent);
+                }
+            }
+    
+            button {
+                font-size: var(--fs-400);
+                padding: .5em;
+                border-radius: .25em;
+                font-weight: 500;
+                color: #fff;
+                background-color: var(--clr-accent);
+                will-change: box-shadow;
+                transition: box-shadow var(--tr-dur);
+
+                &.delete-account {
+                    background-color: hsl(0 60% 60%);
+                }
+        
+                &:active {
+                    transform: translateY(1px);
+                }
+            }
         }
     }
 }

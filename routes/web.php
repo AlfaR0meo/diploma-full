@@ -42,6 +42,9 @@ Route::name('user.')->group(function () {
 
         Route::post('/profile/avatar/create', [UserProfileController::class, 'createAvatar'])->name('profile.avatar.create');
         Route::post('/profile/avatar/delete', [UserProfileController::class, 'deleteAvatar'])->name('profile.avatar.delete');
+        
+        Route::post('/profile/bio/add', [UserProfileController::class, 'addBio'])->name('profile.bio.add');
+        Route::post('/profile/bio/delete', [UserProfileController::class, 'deleteBio'])->name('profile.bio.delete');
 
         Route::post('/logout', [LoginController::class, 'delete'])->name('logout');
     });

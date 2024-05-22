@@ -38,6 +38,28 @@ class UserProfileController extends Controller
         return back()->with('success', 'Аватар успешно удален');
     }
 
+    public function addBio(Request $request) {
+        $request->validate([
+            'bio' => ['required', 'string', 'max:200']
+        ]);
+
+        $user = Auth::user();
+
+        $user->bio = $request->bio;
+        $user->save();
+
+        return back()->with('success', 'Текст о себе успешно добавлен');
+    }
+
+    public function deleteBio() {
+        $user = Auth::user();
+
+        $user->bio = null;
+        $user->save();
+        
+        return back()->with('success', 'Текст о себе успешно удален');
+    }
+
     public function delete(Request $request) {
         $user = User::find(Auth::user()->id);
         $user->delete();

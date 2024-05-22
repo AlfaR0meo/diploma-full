@@ -17,27 +17,34 @@
 
                 <div class="profile__info">
 
-                    @if (Auth::user()->avatar !== null)
+                    @if (Auth::user()->avatar)
                     <div class="profile__avatar">
                         <img src="/storage/{{ Auth::user()->avatar }}" alt="">
                     </div>
 
-                    <form class="profile__delete-avatar-form" action="{{ route('user.profile.avatar.delete') }}" method="POST">
+                    <form action="{{ route('user.profile.avatar.delete') }}" method="POST">
                         @csrf
-                        <button class="profile__btn-delete-avatar" type="submit">Удалить аватар</button>
+                        <button type="submit">Удалить аватар</button>
                     </form>
                     @endif
 
-                    <div><b class="action-color">Имя: </b>{{ Auth::user()->name }}</div>
-                    <div><b class="action-color">Email: </b>{{ Auth::user()->email }}</div>
-                    <div><b class="action-color">Дата регистрации: </b>{{ Auth::user()->created_at->format('d.m.Y') }} </div>
+                    {{-- TODO: table view --}}
+                    <div class="info">
+                        <div><b class="accent-color">Имя: </b>{{ Auth::user()->name }}</div>
+                        <div><b class="accent-color">Email: </b>{{ Auth::user()->email }}</div>
+                        <div><b class="accent-color">Дата регистрации: </b>{{ Auth::user()->created_at->format('d.m.Y') }}</div>
+                        
+                        @if (Auth::user()->bio)
+                        <div><b class="accent-color">О себе: </b>{{ Auth::user()->bio }}</div>
+                        @endif
+                    </div>
                 </div>
             </div>
 
             <div class="profile__group">
                 <h2>Аватар</h2>
 
-                <form class="profile__upload-avatar-form" action="{{ route('user.profile.avatar.create') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('user.profile.avatar.create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <input type="file" name="avatar" id="avatar" accept="image/*">
@@ -45,18 +52,38 @@
                     <div class="error">{{ $message }}</div>
                     @enderror
 
-                    <button class="profile__btn-upload-avatar" type="submit">Загрузить</button>
+                    <button type="submit">Загрузить</button>
+                </form>
+            </div>
+
+            <div class="profile__group">
+                <h2>О себе</h2>
+
+                <form action="{{ route('user.profile.bio.add') }}" method="POST">
+                    @csrf
+
+                    <textarea name="bio" maxlength="200" required>{{ Auth::user()->bio ?? old('bio') }}</textarea>
+                    @error('bio')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
+
+                    <button type="submit">Сохранить</button>
+                </form>
+
+                <form action="{{ route('user.profile.bio.delete') }}" method="POST">
+                    @csrf
+                    <button class="mbs-1" type="submit">Удалить о себе</button>
                 </form>
             </div>
 
             <div class="profile__group">
                 <h2>Удалить аккаунт</h2>
 
-                <form class="profile__delete-profile-form" action="{{ route('user.profile.delete') }}" method="POST">
+                <form action="{{ route('user.profile.delete') }}" method="POST">
                     @csrf
                     @method('DELETE')
 
-                    <button class="profile__btn-delete-profile" type="submit">Удалить аккаунт</button>
+                    <button class="delete-account" type="submit">Удалить аккаунт</button>
                 </form>
             </div>
 
