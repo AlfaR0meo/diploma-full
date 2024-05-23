@@ -24,8 +24,10 @@
 
             @auth
             <li class="nav__item nav__item--account">
+                <a class="nav__btn nav__btn--admin" href="{{ route('admin') }}">Админ</a>
+                
                 <div class="nav__user-avatar-name">
-                    @if (Auth::User()->avatar === null)
+                    @if (!Auth::User()->avatar)
                     <div class="user-avatar">{{ Str::of(Auth::User()->name)->ucfirst()->charAt(0) }}</div>
                     @else
                     <div class="user-avatar">
@@ -33,7 +35,7 @@
                     </div>
                     @endif
 
-                    <div class="user-name">{{ Str::of(Auth::User()->name)->ucfirst() }}</div>
+                    <div class="user-name">{{ Str::of(Auth::User()->name)->ucfirst()->limit(15) }}</div>
                 </div>
                 
                 <div class="nav__user-account-menu">
@@ -48,6 +50,7 @@
 
             @guest
             <li class="nav__item nav__item--account">
+                <a class="nav__btn nav__btn--admin" href="{{ route('admin') }}">Админ</a>
                 <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Регистрация</a>
                 <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Вход</a>
             </li>

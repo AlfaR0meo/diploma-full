@@ -10,6 +10,8 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,8 @@ Route::redirect('/home', '/');
 Route::get('/ecomap', [EcomapController::class, 'show'])->name('ecomap');
 Route::get('/events', [EventController::class, 'show'])->name('events');
 Route::get('/materials', [MaterialController::class, 'show'])->name('materials');
+
+Route::get('/admin', [AdminController::class, 'show'])->name('admin');
 
 Route::name('user.')->group(function () {
     Route::middleware('guest')->group(function () {

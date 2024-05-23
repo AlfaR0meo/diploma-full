@@ -16,32 +16,43 @@
 .block {
     margin-block: 1em;
     padding: 1em;
+    font-weight: 500;
     background-color: color-mix(in srgb, currentColor, white 90%);
     border-radius: .25em;
 
     &--error {
-        color: red;
+        color: var(--clr-error);
     }
     &--success {
-        color: limegreen;
+        color: var(--clr-success);
     }
     &--info {
-        color: dodgerblue;
+        color: var(--clr-info);
     }
     &--empty {
-        color: grey;
+        color: var(--clr-empty);
     }
 }
 
 ul.list {
+    line-height: 1.5;
     font-family: var(--ff-mono);
+    font-size: var(--fs-400);
 
     li {
-        list-style-position: inside;
+        list-style-position: outside;
         list-style-type: disc;
+        white-space: pre;
+
+        &:first-child {
+            font-weight: 700;
+            background-color: var(--clr-info);
+            color: #fff;
+            list-style-type: none;
+        }
 
         &::marker {
-            color: var(--clr-accent);
+            color: var(--clr-action);
         }
     }
 }
@@ -51,4 +62,12 @@ ul.list {
 }
 .mbs-2 {
     margin-block-start: 2em;
+}
+
+.wfc {
+    width: fit-content;
+}
+
+.ttu {
+    text-transform: uppercase;
 }

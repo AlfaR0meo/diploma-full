@@ -34,11 +34,8 @@
         &--account {
             margin-left: auto;
             position: relative;
-
-            &:not(:has(.nav__user-avatar-name)) {
-                display: flex;
-                gap: 1em;
-            }
+            display: flex;
+            gap: 1em;
         }
     }
 
@@ -106,6 +103,17 @@
                 border-color: var(--clr-accent);
             }
         }
+
+        &--admin {
+            font-weight: 600;
+            font-style: italic;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    border-color: var(--clr-info);
+                }
+            }
+        }
     }
 
     &__user-avatar-name {
@@ -118,7 +126,7 @@
 
         @media (any-hover: hover) {
             &:hover {
-                > .user-avatar {
+                > .user-avatar:not(:has(> img)) {
                     box-shadow: 0 0 0 .25em color-mix(in lab, var(--clr-accent), white 60%);
                 }
                 > .user-name {
@@ -128,7 +136,7 @@
         }
 
         &--active {
-            > .user-avatar {
+            > .user-avatar:not(:has(> img)) {
                 box-shadow: 0 0 0 .25em color-mix(in lab, var(--clr-accent), white 60%);
             }
             > .user-name {
@@ -160,12 +168,6 @@
         }
 
         > .user-name {
-            max-width: 15ch;
-            
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-
             font-weight: 500;
             transition: color var(--tr-dur);
         }
