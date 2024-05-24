@@ -33,6 +33,9 @@ body {
     background-color: var(--clr-bg, #fff);
 
     padding-block: var(--nav-height, 1em) 1em;
+
+    position: relative;
+    z-index: 1;
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

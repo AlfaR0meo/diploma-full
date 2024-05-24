@@ -11,14 +11,12 @@
 
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 
-//tests
-
 .block {
     margin-block: 1em;
     padding: 1em;
     font-weight: 500;
-    background-color: color-mix(in srgb, currentColor, white 90%);
     border-radius: .25em;
+    background-color: color-mix(in srgb, currentColor, white 90%);
 
     &--error {
         color: var(--clr-error);
@@ -40,15 +38,13 @@ ul.list {
     font-size: var(--fs-400);
 
     li {
-        list-style-position: outside;
-        list-style-type: disc;
+        padding-inline: .5em;
         white-space: pre;
 
         &:first-child {
             font-weight: 700;
             background-color: var(--clr-info);
             color: #fff;
-            list-style-type: none;
         }
 
         &::marker {
@@ -58,16 +54,17 @@ ul.list {
 }
 
 .mbs-1 {
-    margin-block-start: 1em;
+    margin-block-start: 1em !important;
 }
 .mbs-2 {
-    margin-block-start: 2em;
+    margin-block-start: 2em !important;
 }
-
+.mb-0 {
+    margin-block: 0 !important;
+}
 .wfc {
-    width: fit-content;
+    width: fit-content !important;
 }
-
 .ttu {
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 }

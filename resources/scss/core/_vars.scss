@@ -14,8 +14,8 @@
     --clr-text: hsl(0 0% 30%);
     --clr-grey: hsl(0 0% 50%);
     --clr-light-grey: hsl(0 0% 90%);
-    --clr-accent: color-mix(in lab, forestgreen, lime); //#32cd32
-    --clr-error: red;
+    --clr-accent: #1ec31d; // color-mix(in lab, forestgreen, lime)
+    --clr-error: #ff575a; //color-mix(in srgb, orangered, hotpink)
     --clr-success: limegreen;
     --clr-info: dodgerblue;
     --clr-empty: grey;

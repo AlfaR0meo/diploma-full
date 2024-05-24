@@ -11,5 +11,5 @@
 <!-- Подключение скриптов -->
 @vite(['resources/js/index.js'])
 <!-- Цвет окружающего UI в некоторых моб. браузерах -->
-<meta name="theme-color" content="limegreen">
+<meta name="theme-color" content="#1ec31d">
 <meta name="google" content="notranslate">

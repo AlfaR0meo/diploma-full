@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EcomapController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -28,7 +27,6 @@ Route::redirect('/home', '/');
 
 Route::get('/ecomap', [EcomapController::class, 'show'])->name('ecomap');
 Route::get('/events', [EventController::class, 'show'])->name('events');
-Route::get('/materials', [MaterialController::class, 'show'])->name('materials');
 
 Route::get('/admin', [AdminController::class, 'show'])->name('admin');
 

@@ -3,9 +3,9 @@
         <ul class="nav__list">
 
             <li class="nav__item nav__item--logo">
-                <a class="nav__link nav__link--logo" href="{{ route('index') }}">Сев<span
-                        class="accent-color">Эко</span></a>
+                <a class="nav__link nav__link--logo" href="{{ route('index') }}">Сев<span class="accent-color">Эко</span></a>
             </li>
+            
             <li class="nav__item">
                 <a class="nav__link" href="{{ route('index') }}">Главная</a>
             </li>
@@ -17,9 +17,6 @@
             </li>
             <li class="nav__item">
                 <a class="nav__link" href="{{ route('events') }}">Мероприятия</a>
-            </li>
-            <li class="nav__item">
-                <a class="nav__link" href="{{ route('materials') }}">Полезные материалы</a>
             </li>
 
             @auth

@@ -12,40 +12,44 @@
             
             <div><div class="register__title">Регистрация аккаунта</div></div>
 
-            <form class="register__form" action="{{ route('user.register') }}" method="POST">
+            <form class="register__form" action="{{ route('user.register') }}" method="POST" novalidate>
                 @csrf
 
                 <fieldset>
                     <label for="input-name">Имя</label>
-                    <input type="text" name="name" id="input-name" value="{{ old('name') }}" autofocus>
+                    <input name="name" type="text" id="input-name" value="{{ old('name') }}" autofocus required>
+
+                    @error('name')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                 </fieldset>
-                @error('name')
-                    <div class="error">{{ $message }}</div>
-                @enderror
 
                 <fieldset>
                     <label for="input-email">Email</label>
-                    <input type="email" name="email" id="input-email" value="{{ old('email') }}">
+                    <input name="email" type="email" id="input-email" value="{{ old('email') }}" required>
+
+                    @error('email')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                 </fieldset>
-                @error('email')
-                    <div class="error">{{ $message }}</div>
-                @enderror
 
                 <fieldset>
                     <label for="input-password">Пароль</label>
-                    <input type="password" name="password" id="input-password">
+                    <input name="password" type="password" id="input-password" required>
+
+                    @error('password')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                 </fieldset>
-                @error('password')
-                    <div class="error">{{ $message }}</div>
-                @enderror
 
                 <fieldset>
                     <label for="input-password-confirmation">Подтвердите пароль</label>
-                    <input type="password" name="password_confirmation" id="input-password-confirmation">
+                    <input name="password_confirmation" type="password" id="input-password-confirmation" required>
+
+                    @error('password_confirmation')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                 </fieldset>
-                @error('password_confirmation')
-                    <div class="error">{{ $message }}</div>
-                @enderror
                 
                 <button type="submit">Зарегистрироваться</button>
             </form>

@@ -12,28 +12,30 @@
             
             <div><div class="login__title">Вход в аккаунт</div></div>
 
-            <form class="login__form" action="{{ route('user.login') }}" method="POST">
+            <form class="login__form" action="{{ route('user.login') }}" method="POST" novalidate>
                 @csrf
 
                 <fieldset>
                     <label for="input-email">Email</label>
-                    <input type="email" name="email" id="input-email" value="{{ old('email') }}" autofocus>
+                    <input name="email" type="email" id="input-email" value="{{ old('email') }}" autofocus required>
+
+                    @error('email')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                 </fieldset>
-                @error('email')
-                    <div class="error">{{ $message }}</div>
-                @enderror
 
                 <fieldset>
                     <label for="input-password">Пароль</label>
-                    <input type="password" name="password" id="input-password">
+                    <input name="password" type="password" id="input-password" required>
+                    
+                    @error('password')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                 </fieldset>
-                @error('password')
-                    <div class="error">{{ $message }}</div>
-                @enderror
                 
                 <button type="submit">Войти</button>
-                @error('smth')
-                    <div class="error">{{ $message }}</div>
+                @error('login-error')
+                    <div class="error mb-0">{{ $message }}</div>
                 @enderror
             </form>
 

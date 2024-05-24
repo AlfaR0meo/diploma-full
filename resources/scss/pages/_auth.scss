@@ -1,19 +1,22 @@
 /* ■■■■■ REGISTER / LOGIN ■■■■■■■■■■■■ */
 
 .register, .login {
-    padding: 1em;
+    padding: 4em 1em;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     &__wrapper {
-        width: min(400px, 100%);
         position: relative;
+
+        width: min(400px, 100%);
         padding: 2em;
+
         border-radius: .25em;
         box-shadow: 0 .5em 1em var(--clr-light-grey),
                     0 0 4em var(--clr-light-grey);
+        background-color: var(--clr-bg);
 
         > *:not(:first-child, :last-child) {
             margin-block-end: 2em;
@@ -33,28 +36,38 @@
         display: grid;
         gap: 1em;
 
-        > fieldset {
-            > label {
-                margin-block-end: .75em;
-                font-size: var(--fs-400);
-            }
-
-            > input {
-                width: 100%;
-                border: 2px solid var(--clr-light-grey);
-                padding: .5em;
-                border-radius: var(--brr);
-
-                transition: var(--tr-dur);
-
-                &:focus {
-                    border-color: var(--clr-accent);
-                    outline: none;
+        fieldset {
+            &:focus-within {
+                label {
+                    transform: translateX(.5em);
+                    font-weight: 500;
                 }
             }
         }
 
-        > button {
+        label {
+            margin-block-end: .5em;
+            font-size: var(--fs-400);
+
+            transition: var(--tr-dur);
+        }
+
+        input {
+            width: 100%;
+            border: 2px solid var(--clr-light-grey);
+            padding: .5em;
+            border-radius: var(--brr);
+            background-color: var(--clr-bg);
+
+            transition: var(--tr-dur);
+
+            &:focus {
+                border-color: var(--clr-accent);
+                outline: none;
+            }
+        }
+
+        button[type=submit] {
             padding: 1em;
             font-weight: 500;
             background-color: var(--clr-accent);
@@ -69,12 +82,21 @@
                 }
             }
         }
+
+        .error {
+            margin-block-start: .5em;
+            padding: .5em;
+            line-height: 1.5;
+            border-radius: .25em;
+            color: var(--clr-error);
+            background-color: color-mix(in srgb, currentColor, white 90%);
+        }
     }
 
     &__have-account {
         font-size: var(--fs-400);
         text-align: center;
-        line-height: 1.6;   
+        line-height: 1.5;   
 
         > a {
             color: var(--clr-accent);
@@ -119,12 +141,4 @@
         transition: transform var(--tr-dur);
         fill: var(--clr-accent);
     }
-}
-
-.error {
-    padding: .5em;
-    line-height: 1.4;
-    border-radius: .25em;
-    color: hsl(0, 80%, 50%);
-    background-color: color-mix(in lab, currentColor, white 90%);
 }

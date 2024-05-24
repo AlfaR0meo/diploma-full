@@ -11,7 +11,7 @@
         <div class="container container--lg">
 
             <div class="home__intro">
-                <h1 class="home__title">Веб-сервис экосообщества города Севастополя</h1>
+                <h1 class="home__title">Веб-сервис <span class="accent-color">эко</span>сообщества города Севастополя</h1>
             </div>
 
         </div>

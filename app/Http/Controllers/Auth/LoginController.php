@@ -14,15 +14,15 @@ class LoginController extends Controller
 
     public function store(Request $request) {
         $credentials = $request->validate([
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:50'],
+            'password' => ['required', 'string', 'max:20'],
         ]);
 
         if (!Auth::attempt($credentials)) {
             return back()
                 ->withInput()
                 ->withErrors([
-                    'smth' => 'Неправильный email или пароль'
+                    'login-error' => 'Неправильный email или пароль'
                 ]);    
         }
 
