@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EcomapController;
+use App\Http\Controllers\EcoideaController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -18,6 +19,7 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::redirect('/home', '/');
 
 Route::get('/ecomap', [EcomapController::class, 'index'])->name('ecomap');
+Route::get('/ecoideas', [EcoideaController::class, 'index'])->name('ecoideas');
 Route::get('/events', [EventController::class, 'index'])->name('events');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
@@ -45,5 +47,7 @@ Route::name('user.')->group(function () {
 
         Route::post('/logout', [LoginController::class, 'delete'])->name('logout');
     });
+
+    Route::get('/profile/{id}', [UserProfileController::class, 'publicShow'])->name('profile.public.show');
 
 });

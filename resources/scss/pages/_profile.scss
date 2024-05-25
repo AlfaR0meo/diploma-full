@@ -1,21 +1,33 @@
 /* ■■■■■ PROFILE ■■■■■■■■■■■■■■■■■■■■■ */
 
 .profile {
+    text-align: center;
+
+    // * {
+    //     outline: 2px solid rgba(0, 0, 0, 0.15);
+    // }
+
     &__info {
         display: grid;
+        justify-items: center;
         gap: 1em;
 
         > .info {
+            max-width: 600px;
+            text-align: left;
             line-height: 1.5;
         }
     }
 
     &__avatar {
-        max-width: 100px;
+        max-width: 300px;
         aspect-ratio: 1;
         border-radius: 50%;
         overflow: hidden;
         background-color: color-mix(in srgb, var(--clr-action), transparent 90%);
+
+        outline: 4px solid var(--clr-info);
+        outline-offset: 4px;
 
         > img {
             width: 100%;

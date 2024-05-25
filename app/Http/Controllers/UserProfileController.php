@@ -9,7 +9,13 @@ use App\Models\User;
 class UserProfileController extends Controller
 {
     public function index() {
-        return view('user-profile');
+        return view('auth.profile');
+    }
+
+    public function publicShow($id) {
+        $publicUser = User::findOrFail($id);
+
+        return view('profile-public', compact('publicUser'));
     }
 
     public function createAvatar(Request $request) {

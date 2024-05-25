@@ -47,8 +47,20 @@ body {
 .accent-color {
     color: var(--clr-accent);
 }
-.action-color {
-    color: var(--clr-action);
+.ground-color {
+    color: var(--clr-ground);
+}
+.error-color {
+    color: var(--clr-error);
+}
+.success-color {
+    color: var(--clr-success);
+}
+.info-color {
+    color: var(--clr-info);
+}
+.empty-color {
+    color: var(--clr-empty);
 }
 
 h1, h2 {
