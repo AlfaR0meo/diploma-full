@@ -7,11 +7,16 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function show() {
+    public function index() {
         //User::truncate();
         $users = User::all();
-        // dd($users->toArray());
 
         return view('admin', compact('users'));
+    }
+
+    public function show($id) {
+        $user = User::findOrFail($id);
+
+        return view('admin', compact('user'));
     }
 }

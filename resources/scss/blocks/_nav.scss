@@ -106,8 +106,9 @@
         }
 
         &--admin {
-            font-weight: 600;
-            font-style: italic;
+            border-color: var(--clr-info);
+            background-color: var(--clr-info);
+            color: #fff;
 
             @media (any-hover: hover) {
                 &:hover {

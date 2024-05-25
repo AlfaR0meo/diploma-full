@@ -11,35 +11,30 @@ use App\Http\Controllers\Auth\LoginController;
 
 use App\Http\Controllers\AdminController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', [IndexController::class, 'show'])->name('index');
+
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::redirect('/home', '/');
 
-Route::get('/ecomap', [EcomapController::class, 'show'])->name('ecomap');
-Route::get('/events', [EventController::class, 'show'])->name('events');
+Route::get('/ecomap', [EcomapController::class, 'index'])->name('ecomap');
+Route::get('/events', [EventController::class, 'index'])->name('events');
 
-Route::get('/admin', [AdminController::class, 'show'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin.user');
 
 Route::name('user.')->group(function () {
+
     Route::middleware('guest')->group(function () {
-        Route::get('/register', [RegisterController::class, 'show'])->name('register');
+        Route::get('/register', [RegisterController::class, 'index'])->name('register');
         Route::post('/register', [RegisterController::class, 'store'])->name('register');
         
-        Route::get('/login', [LoginController::class, 'show'])->name('login');
+        Route::get('/login', [LoginController::class, 'index'])->name('login');
         Route::post('/login', [LoginController::class, 'store'])->name('login');
     });
+
     Route::middleware('auth')->group(function () {
-        Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+        Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
         Route::delete('/profile/delete', [UserProfileController::class, 'delete'])->name('profile.delete');
 
         Route::post('/profile/avatar/create', [UserProfileController::class, 'createAvatar'])->name('profile.avatar.create');
@@ -50,4 +45,5 @@ Route::name('user.')->group(function () {
 
         Route::post('/logout', [LoginController::class, 'delete'])->name('logout');
     });
+
 });

@@ -12,9 +12,10 @@
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 
 .block {
+    font-family: monospace;
     margin-block: 1em;
     padding: 1em;
-    font-weight: 500;
+    font-weight: 700;
     border-radius: .25em;
     background-color: color-mix(in srgb, currentColor, white 92%);
 
@@ -29,6 +30,9 @@
     }
     &--empty {
         color: var(--clr-empty);
+    }
+    &--contrast {
+        color: black;
     }
 }
 
