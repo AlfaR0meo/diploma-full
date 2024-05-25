@@ -16,7 +16,7 @@
     padding: 1em;
     font-weight: 500;
     border-radius: .25em;
-    background-color: color-mix(in srgb, currentColor, white 90%);
+    background-color: color-mix(in srgb, currentColor, white 92%);
 
     &--error {
         color: var(--clr-error);
@@ -59,8 +59,17 @@ ul.list {
 .mbs-2 {
     margin-block-start: 2em !important;
 }
+.mbe-1 {
+    margin-block-end: 1em !important;
+}
+.mbe-2 {
+    margin-block-end: 2em !important;
+}
 .mb-0 {
     margin-block: 0 !important;
+}
+.m-0 {
+    margin: 0 !important;
 }
 .wfc {
     width: fit-content !important;

@@ -12,6 +12,10 @@ html {
         scrollbar-width: auto;
         scrollbar-color: var(--clr-accent) transparent;
     }
+
+    &:has(.register, .login) {
+        scrollbar-gutter: stable;
+    }
 }
 
 body {

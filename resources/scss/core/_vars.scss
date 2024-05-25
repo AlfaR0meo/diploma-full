@@ -6,7 +6,7 @@
     --ff-system: system-ui;
     --ff-mono: "Consolas", monospace;
 
-    --container-lg-width: 1300px;
+    --container-lg-width: 1200px; //1300px
 
     --tr-dur: 200ms;
 
@@ -15,6 +15,7 @@
     --clr-grey: hsl(0 0% 50%);
     --clr-light-grey: hsl(0 0% 90%);
     --clr-accent: #1ec31d; // color-mix(in lab, forestgreen, lime)
+    --clr-ground: sienna;
     --clr-error: #ff575a; //color-mix(in srgb, orangered, hotpink)
     --clr-success: limegreen;
     --clr-info: dodgerblue;

@@ -2,11 +2,11 @@
 
 @section('head')  
     @include('blocks.head', ['title' => 'Регистрация аккаунта'])
+    @vite(['resources/js/auth.js'])
 @endsection
 
 @section('page-content')
     <div class="page__wrapper register">
-
         <div class="register__wrapper">
             @include('auth.blocks.link-back-to-main')
             
@@ -54,8 +54,7 @@
                 <button type="submit">Зарегистрироваться</button>
             </form>
 
-            <div class="login__have-account">Есть аккаунт? <a href="{{ route('user.login') }}">Войти</a></div>
+            <div class="login__have-account">Уже есть аккаунт? <a href="{{ route('user.login') }}">Войти</a></div>
         </div>
-
     </div>
 @endsection
