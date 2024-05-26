@@ -13,7 +13,7 @@
                 <a class="nav__link" href="{{ route('ecomap') }}">Экокарта</a>
             </li>
             <li class="nav__item">
-                <a class="nav__link" href="{{ route('index') }}">Экоидеи</a>
+                <a class="nav__link" href="{{ route('ecoideas') }}">Экоидеи</a>
             </li>
             <li class="nav__item">
                 <a class="nav__link" href="{{ route('events') }}">Мероприятия</a>
@@ -21,6 +21,8 @@
 
             @auth
             <li class="nav__item nav__item--account">
+                <a class="nav__btn" href="{{ route('admin') }}">АДМИН</a>
+                
                 <div class="nav__user-avatar-name">
                     @if (!Auth::User()->avatar)
                     <div class="user-avatar">{{ Str::of(Auth::User()->name)->ucfirst()->charAt(0) }}</div>
@@ -45,6 +47,8 @@
 
             @guest
             <li class="nav__item nav__item--account">
+                <a class="nav__btn" href="{{ route('admin') }}">АДМИН</a>
+
                 <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Регистрация</a>
                 <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Вход</a>
             </li>

@@ -29,9 +29,9 @@
                     <div class="block block--empty wfc">Список пользователей пуст.</div>
                 @else
                     <ul class="list mbs-1">
-                        <li>{{ Str::of('id')->padRight(4) }} | {{ Str::of('email')->padRight(35) }} | {{ Str::of('name')->padRight(30) }} | {{ Str::of('avatar')->padRight(40) }} | {{ Str::of('bio') }}</li>
+                        <li>{{ Str::of('id')->padRight(4) }} | {{ Str::of('email')->padRight(35) }} | {{ Str::of('name')->padRight(15) }} | {{ Str::of('avatar')->padRight(30) }} | {{ Str::of('bio') }}</li>
                         @foreach ($users as $user)
-                            <li>{{ $user->id }} | {{ Str::of($user->email)->padRight(35) }} | {{ Str::of($user->name)->padRight(30) }} | {{ Str::of($user->avatar)->padRight(40) }} | {{ $user->bio }}</li>
+                            <li>{{ $user->id }} | {{ Str::of($user->email)->padRight(35) }} | {{ Str::of($user->name)->padRight(15) }} | {{ Str::of($user->avatar)->padRight(30) }} | {{ $user->bio }}</li>
                         @endforeach
                     </ul>
                 @endif

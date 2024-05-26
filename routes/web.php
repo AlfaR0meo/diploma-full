@@ -27,6 +27,8 @@ Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin.user');
 
 Route::name('user.')->group(function () {
 
+    Route::get('/profile/{id}', [UserProfileController::class, 'publicShow'])->name('profile.public.show');
+
     Route::middleware('guest')->group(function () {
         Route::get('/register', [RegisterController::class, 'index'])->name('register');
         Route::post('/register', [RegisterController::class, 'store'])->name('register');
@@ -47,7 +49,5 @@ Route::name('user.')->group(function () {
 
         Route::post('/logout', [LoginController::class, 'delete'])->name('logout');
     });
-
-    Route::get('/profile/{id}', [UserProfileController::class, 'publicShow'])->name('profile.public.show');
 
 });

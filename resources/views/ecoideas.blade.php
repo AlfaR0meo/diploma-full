@@ -10,7 +10,7 @@
 
         <div class="container container--lg">
 
-            <h1 class="events__title">Анонсы <span class="accent-color">эко</span>мероприятий</h1>
+            <h1 class="events__title"><span class="accent-color">Эко</span>идеи</h1>
 
         </div>
     </div>
