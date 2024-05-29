@@ -14,6 +14,10 @@ const navUserAccountMenuElement = document.querySelector(`.${NAV_USER_ACCOUNT_ME
 
 if (pageWrapperElement && navElement) {
     pageWrapperElement.style.setProperty('--nav-height', `${navElement.offsetHeight}px`);
+
+    window.addEventListener('resize', () => {
+        pageWrapperElement.style.setProperty('--nav-height', `${navElement.offsetHeight}px`);
+    });
 }
 
 if (bodyElement && navUserAvatarNameElement && navUserAccountMenuElement) {

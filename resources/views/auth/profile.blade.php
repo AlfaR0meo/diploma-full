@@ -49,7 +49,7 @@
                     
                     <input type="file" name="avatar" id="avatar" accept="image/*">
                     @error('avatar')
-                    <div class="error">{{ $message }}</div>
+                    <div class="block block--error">{{ $message }}</div>
                     @enderror
 
                     <button type="submit">Загрузить</button>
@@ -64,7 +64,7 @@
 
                     <textarea name="bio" maxlength="200" required>{{ Auth::user()->bio ?? old('bio') }}</textarea>
                     @error('bio')
-                    <div class="error">{{ $message }}</div>
+                    <div class="block block--error">{{ $message }}</div>
                     @enderror
 
                     <button type="submit">Сохранить</button>

@@ -1,0 +1,45 @@
+/* ■■■■■ ECOIDEAS ■■■■■■■■■■■■■■■■■■■■ */
+
+.ecoideas {
+    h2 {
+        margin-block: 1em;
+        font-size: 3em;
+    }
+
+    &__form-create {
+        display: grid;
+        gap: 1em;
+
+        fieldset {
+            display: grid;
+            gap: 0.5em;
+        }
+
+        select {
+            appearance: none;
+            padding: .5em 1em;
+            border-radius: 1em;
+            outline: none;
+            background-color: var(--clr-light-grey);
+        }
+
+        button {
+            justify-self: start;
+            padding: 1em;
+            background-color: white;
+            border-radius: .25em;
+            color: var(--clr-text);
+            border: 2px solid var(--clr-light-grey);
+        }
+    }
+
+    .register-ecoidea {
+        width: fit-content;
+        display: block;
+        padding: 1em;
+        margin-block-start: 1em;
+        border-radius: .25em;
+        background-color: var(--clr-info);
+        color: #fff;
+    }
+}

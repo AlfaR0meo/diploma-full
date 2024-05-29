@@ -1,0 +1,45 @@
+/* ■■■■■ ФУТЕР ■■■■■■■■■■■■■■■■■■■■■■■ */
+.footer {
+    margin-top: auto;
+
+    &__wave {
+        margin-top: -6vw;
+        position: relative;
+        top: 2px;
+        fill: var(--clr-accent);
+        pointer-events: none;
+    }
+    
+    &__footer {
+        position: relative;
+        padding-block: 0.25em 4em;
+        line-height: 1.5;
+        color: white;
+        background-color: var(--clr-accent);
+
+        @media (max-width: 700px) {
+            padding-block: 1.25em 2em;
+        }
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        flex-wrap: wrap;
+
+        > div {
+            cursor: pointer;
+             
+            &:not(:last-child) {
+                padding: .5em;
+                border-radius: .25em;
+            }
+
+            &:last-child {
+                margin-left: auto;
+                color: #fff;
+            }
+        }
+    }
+}

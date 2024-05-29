@@ -12,16 +12,11 @@
 
             <h1>Админ тесты</h1>
 
-
-
             @if (isset($user))
                 <div class="block block--contrast">
                     <b>{{ $user->id }}</b> | {{ $user->name }} | {{ $user->email }} | {{ $user->created_at->diffForHumans() }} | {{ $user->updated_at->diffForHumans() }}
                 </div>
             @endif
-
-
-
 
             @if (isset($users))
                 {{-- <div class="block block--info">Тестовый вывод БД пользователей сайта</div> --}}
@@ -38,5 +33,7 @@
             @endif
 
         </div>
+
+        @include('blocks.footer')
     </div>
 @endsection

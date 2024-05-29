@@ -21,7 +21,8 @@
 
             @auth
             <li class="nav__item nav__item--account">
-                <a class="nav__btn" href="{{ route('admin') }}">АДМИН</a>
+                {{-- FIXME: --}}
+                <a class="nav__btn nav__btn--admin" href="{{ route('admin') }}">АДМИН</a>
                 
                 <div class="nav__user-avatar-name">
                     @if (!Auth::User()->avatar)
@@ -47,7 +48,8 @@
 
             @guest
             <li class="nav__item nav__item--account">
-                <a class="nav__btn" href="{{ route('admin') }}">АДМИН</a>
+                {{-- FIXME: --}}
+                <a class="nav__btn nav__btn--admin" href="{{ route('admin') }}">АДМИН</a>
 
                 <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Регистрация</a>
                 <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Вход</a>

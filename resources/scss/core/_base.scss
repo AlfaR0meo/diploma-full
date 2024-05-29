@@ -36,10 +36,15 @@ body {
     overflow: clip;
     background-color: var(--clr-bg, #fff);
 
-    padding-block: var(--nav-height, 1em) 1em;
+    padding-block-start: var(--nav-height, 1em);
 
     position: relative;
     z-index: 1;
+
+    &:not(.register, .login) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

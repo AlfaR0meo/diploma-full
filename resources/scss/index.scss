@@ -12,7 +12,6 @@
 /* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
 
 .block {
-    font-family: monospace;
     margin-block: 1em;
     padding: 1em;
     font-weight: 700;
@@ -80,4 +79,12 @@ ul.list {
 }
 .ttu {
     text-transform: uppercase !important;
+}
+
+.text {
+    line-height: 1.5;
+
+    > *:not(:last-child) {
+        margin-block: 2em;
+    }
 }

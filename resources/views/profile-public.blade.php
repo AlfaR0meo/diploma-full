@@ -29,5 +29,7 @@
             </div>
 
         </div>
+
+        @include('blocks.footer')
     </div>
 @endsection

@@ -10,8 +10,10 @@
 
         <div class="container container--lg">
 
-            <h1 class="events__title">Анонсы <span class="accent-color">эко</span>мероприятий</h1>
+            <h1>Анонсы <span class="accent-color">эко</span>мероприятий</h1>
 
         </div>
+
+        @include('blocks.footer')
     </div>
 @endsection

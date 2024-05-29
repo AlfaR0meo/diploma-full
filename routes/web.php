@@ -19,7 +19,10 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::redirect('/home', '/');
 
 Route::get('/ecomap', [EcomapController::class, 'index'])->name('ecomap');
+
 Route::get('/ecoideas', [EcoideaController::class, 'index'])->name('ecoideas');
+Route::post('/ecoideas', [EcoideaController::class, 'store'])->name('ecoideas');
+
 Route::get('/events', [EventController::class, 'index'])->name('events');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
