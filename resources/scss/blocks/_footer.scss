@@ -13,8 +13,6 @@
     &__footer {
         position: relative;
         padding-block: 0.25em 4em;
-        line-height: 1.5;
-        color: white;
         background-color: var(--clr-accent);
 
         @media (max-width: 700px) {
@@ -28,17 +26,12 @@
         gap: 1em;
         flex-wrap: wrap;
 
-        > div {
-            cursor: pointer;
-             
-            &:not(:last-child) {
-                padding: .5em;
-                border-radius: .25em;
-            }
+        line-height: 1.5;
+        color: white;
 
+        > div {
             &:last-child {
-                margin-left: auto;
-                color: #fff;
+                margin-left: auto
             }
         }
     }

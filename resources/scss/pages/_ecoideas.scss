@@ -2,8 +2,15 @@
 
 .ecoideas {
     h2 {
-        margin-block: 1em;
+        text-align: center;
+        margin-block: 1em .5em;
         font-size: 3em;
+    }
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2em;
     }
 
     &__form-create {
@@ -18,28 +25,106 @@
         select {
             appearance: none;
             padding: .5em 1em;
+            background-color: var(--clr-light-grey);
+
             border-radius: 1em;
             outline: none;
-            background-color: var(--clr-light-grey);
+        }
+
+        input[type=text] {
+            padding: 0.5em;
+            border: 2px solid var(--clr-light-grey);
+            border-radius: .25em;
+            outline: none;
+        }
+
+        textarea {
+            height: 20vh;
+            padding: 1em;
+            line-height: 1.5;
+            border: 2px solid var(--clr-light-grey);
+            border-radius: .25em;
+            outline: none;
+            resize: none;
         }
 
         button {
-            justify-self: start;
-            padding: 1em;
-            background-color: white;
+            justify-self: center;
+            padding: 1em 2em;
+
             border-radius: .25em;
-            color: var(--clr-text);
-            border: 2px solid var(--clr-light-grey);
+            background-color: var(--clr-info);
+            color: #fff;
+            transition: var(--tr-dur);
+
+            @media (any-hover: hover) {
+                &:hover {
+                    box-shadow: 0 .5em 1em color-mix(in lab, var(--clr-info), white);
+                }
+            }
         }
     }
 
-    .register-ecoidea {
-        width: fit-content;
-        display: block;
-        padding: 1em;
-        margin-block-start: 1em;
+    &__need-auth {
+        margin-bottom: 1em;
+
+        // font-size: 1.25em;
+        text-align: center;
+        line-height: 1.5;
+        text-wrap: balance;
+    }
+
+    &__auth-btn {
+        padding: .75em;
+
+        text-align: center;
+        line-height: 1;
+
+        color: var(--clr-accent);
+        background-color: #fff;
+        font-weight: 500;
+
         border-radius: .25em;
-        background-color: var(--clr-info);
-        color: #fff;
+        border: 2px solid var(--clr-accent);
+
+        transition: calc(var(--tr-dur) / 2);
+        
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--clr-accent);
+                color: var(--clr-bg);
+            }
+        }
+
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+}
+
+.ecoidea {
+    padding: 2em;
+
+    display: grid;
+    gap: 1em;
+    
+    line-height: 1.5;
+
+    border-radius: 1em 4em 1em 4em;
+    background-color: color-mix(in srgb, var(--clr-accent), transparent 96%);
+    border: 2px solid var(--clr-accent);
+
+
+    &__title {
+        font-size: 1.5em;
+        font-weight: 700;
+    }
+
+    &__published-at {
+        font-style: italic;
+    }
+
+    &__author {
+        font-weight: 600;
     }
 }

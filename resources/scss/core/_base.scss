@@ -70,12 +70,12 @@ body {
 
 h1, h2 {
     font-weight: 700;
+    font-family: var(--ff-heading);
     line-height: 1.25;
     text-wrap: balance;
-    font-family: var(--ff-heading);
 }
 h1 {
-    font-size: var(--fs-800);
+    font-size: 3em;
     text-transform: uppercase;
     margin-block: 3rem;
 }

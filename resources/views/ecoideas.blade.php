@@ -14,54 +14,60 @@
 
             {{-- Здесь выводится список экоидей для всех пользователей --}}
             @if (isset($ecoIdeas))
-                @forelse ($ecoIdeas as $idea)
-                    <div class="block wfc">{{ $idea }}</div>
-                @empty
+                @if (!count($ecoIdeas))
                     <div class="block block--empty">
                         Экоидей пока нет.
                     </div>
-                @endforelse
+                @else
+                    <div class="ecoideas__wrap">
+                        @foreach ($ecoIdeas as $idea)
+                            <div class="ecoideas__ecoidea ecoidea">
+                                <div class="ecoidea__title">{{ $idea->title }}</div>
+                                <div class="ecoidea__content">{{ $idea->content }}</div>
+
+                                <div class="flex fww gap-1">
+                                    <a class="ecoidea__author" href="/profile/{{ $idea->user_id }}">Автор: {{ $idea->user_id }}</a>
+                                    <time class="ecoidea__published-at" datetime="{{ $idea->published_at->format('Y-m-d') }}">Опубликовано {{ $idea->published_at->diffForHumans() }}</time>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             @endif
 
-            <h2>Создать свою экоидею</h2>
+            <h2>Создать свою <span class="accent-color">эко</span>идею</h2>
 
             @auth
                 <form class="ecoideas__form-create" action="{{ route('ecoideas') }}" method="POST">
                     @csrf
 
                     <fieldset>
-                        <label>Выберите пункт:</label>
-                        <select name="test" required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-
-                        @if (Session::has('smth'))
-                            <script>
-                                console.log('{{Session::get('smth')}}');
-                            </script>
-
-                            <div class="block block--info m-0">
-                                {{ Session::get('smth') }}
-                            </div>
-                        @endif
-    
-                        {{-- @error('email')
-                            <div class="error">{{ $message }}</div>
-                        @enderror --}}
+                        <label for="ecoidea-title">Название экоидеи</label>
+                        <input name="title" type="text" id="ecoidea-title" required maxlength="50">
                     </fieldset>
 
-                    <button type="submit">Создать экоидею</button>
+                    <fieldset>
+                        <label for="ecoidea-content">Описание</label>
+                        <textarea name="content"id="ecoidea-content" required maxlength="255">{{ fake()->text() }}</textarea>
+                    </fieldset>
+
+                    @if (Session::has('ecoidea_success'))
+                        <div class="block block--success m-0">
+                            {{ Session::get('ecoidea_success') }}
+                        </div>
+                    @endif
+
+                    <button type="submit">Опубликовать</button>
                 </form>
             @endauth
 
             @guest
-                <div class="block block--info wfc">
-                    Создавать экоидеи могут только зарегистрированные пользователи! 
-                    <a class="register-ecoidea" href="{{ route('user.register') }}">Присоединиться</a>
+                <div class="ecoideas__need-auth">
+                    Создавать свои экоидеи могут только зарегистрированные пользователи!
+                    <div class="flex flex-equal justify-center gap-1 fww mbs-1">
+                        <a class="ecoideas__auth-btn" href="{{ route('user.register') }}">Присоединиться</a>
+                        <a class="ecoideas__auth-btn" href="{{ route('user.login') }}">Войти</a>
+                    </div>
                 </div>
             @endguest
 

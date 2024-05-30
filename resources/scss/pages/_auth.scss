@@ -138,12 +138,16 @@
             color: #fff;
             border-radius: var(--brr);
             will-change: box-shadow;
-            transition: box-shadow var(--tr-dur);
+            transition: box-shadow var(--tr-dur), transform calc(var(--tr-dur) / 2);
 
             @media (any-hover: hover) {
                 &:hover {
                     box-shadow: 0 .5em 1em color-mix(in lab, var(--clr-accent), white);
                 }
+            }
+
+            &:active {
+                transform: translateY(2px);
             }
         }
 

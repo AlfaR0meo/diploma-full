@@ -14,7 +14,6 @@
 .block {
     margin-block: 1em;
     padding: 1em;
-    font-weight: 700;
     border-radius: .25em;
     background-color: color-mix(in srgb, currentColor, white 92%);
 
@@ -32,6 +31,10 @@
     }
     &--contrast {
         color: black;
+    }
+    &--transparent {
+        background-color: transparent;
+        padding: 0;
     }
 }
 
@@ -74,11 +77,42 @@ ul.list {
 .m-0 {
     margin: 0 !important;
 }
+
 .wfc {
     width: fit-content !important;
 }
+
 .ttu {
     text-transform: uppercase !important;
+}
+
+.flex {
+    display: flex;
+}
+.fdc {
+    flex-direction: column;
+}
+.fww {
+    flex-wrap: wrap;
+}
+.gap-1 {
+    gap: 1em;
+}
+.gap-2 {
+    gap: 2em;
+}
+.flex-equal {
+    > * {
+        flex: 1;
+        min-width: fit-content;
+        max-width: 12em;
+    }
+}
+.justify-center {
+    justify-content: center;
+}
+.align-center {
+    align-items: center;
 }
 
 .text {
