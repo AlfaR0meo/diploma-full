@@ -14,12 +14,20 @@
     }
 
     &__form-create {
+        margin-inline: auto;
+        max-width: 500px;
         display: grid;
         gap: 1em;
 
         fieldset {
             display: grid;
             gap: 0.5em;
+
+            &:focus-within {
+                > input, > textarea {
+                    border-color: var(--clr-info);
+                }
+            }
         }
 
         select {
@@ -106,8 +114,9 @@
     padding: 2em;
 
     display: grid;
+    align-items: start;
     gap: 1em;
-    
+
     line-height: 1.5;
 
     border-radius: 1em 4em 1em 4em;
@@ -120,11 +129,15 @@
         font-weight: 700;
     }
 
-    &__published-at {
-        font-style: italic;
+    &__footer {
+        align-self: end;
     }
 
     &__author {
         font-weight: 600;
+    }
+
+    &__published-at {
+        font-style: italic;
     }
 }

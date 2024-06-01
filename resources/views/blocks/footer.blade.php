@@ -8,12 +8,12 @@
         <div class="container container--lg">
             <div class="footer__row">
 
-                <div>Я футер</div>
-                <div>Рыба</div>
-                <div>Еще текст</div>
-                <div>Пункт</div>
-                <div>Соц. сети</div>
-                <div>by alfcrm, {{ now()->format('Y') }}</div>
+                <div>Пункт 1</div>
+                <div>Пункт 2</div>
+                <div>Пункт 3</div>
+                <div>Пункт 4</div>
+                <div>Соцсети</div>
+                <div>{{ now()->format('Y') }}</div>
 
             </div>
         </div>

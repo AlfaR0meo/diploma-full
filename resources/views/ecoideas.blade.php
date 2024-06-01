@@ -25,7 +25,7 @@
                                 <div class="ecoidea__title">{{ $idea->title }}</div>
                                 <div class="ecoidea__content">{{ $idea->content }}</div>
 
-                                <div class="flex fww gap-1">
+                                <div class="ecoidea__footer flex fww gap-1">
                                     <a class="ecoidea__author" href="/profile/{{ $idea->user_id }}">Автор: {{ $idea->user_id }}</a>
                                     <time class="ecoidea__published-at" datetime="{{ $idea->published_at->format('Y-m-d') }}">Опубликовано {{ $idea->published_at->diffForHumans() }}</time>
                                 </div>
@@ -48,7 +48,7 @@
 
                     <fieldset>
                         <label for="ecoidea-content">Описание</label>
-                        <textarea name="content"id="ecoidea-content" required maxlength="255">{{ fake()->text() }}</textarea>
+                        <textarea name="content"id="ecoidea-content" required maxlength="255"></textarea>
                     </fieldset>
 
                     @if (Session::has('ecoidea_success'))

@@ -1,7 +1,7 @@
 /* ■■■■■ PROFILE ■■■■■■■■■■■■■■■■■■■■■ */
 
 .profile {
-    text-align: center;
+    //text-align: center;
 
     // * {
     //     outline: 2px solid rgba(0, 0, 0, 0.15);
@@ -9,13 +9,17 @@
 
     &__info {
         display: grid;
-        justify-items: center;
+        //justify-items: center;
         gap: 1em;
 
         > .info {
             max-width: 600px;
             text-align: left;
             line-height: 1.5;
+
+            b {
+                color: var(--clr-info);
+            }
         }
     }
 
@@ -24,10 +28,10 @@
         aspect-ratio: 1;
         border-radius: 50%;
         overflow: hidden;
-        background-color: color-mix(in srgb, var(--clr-action), transparent 90%);
+        background-color: color-mix(in srgb, var(--clr-info), transparent 90%);
 
-        outline: 4px solid var(--clr-info);
-        outline-offset: 4px;
+        // outline: 4px solid var(--clr-bg);
+        // outline-offset: -8px;
 
         > img {
             width: 100%;
@@ -50,7 +54,7 @@
         form {
             display: grid;
             justify-items: start;
-            gap: 1em;
+            gap: .5em;
     
             textarea {
                 width: 50%;
@@ -66,11 +70,11 @@
                 
                 @supports (scrollbar-width: thin) {
                     scrollbar-width: thin;
-                    scrollbar-color: var(--clr-accent) transparent;
+                    scrollbar-color: var(--clr-info) transparent;
                 }
 
                 &:focus {
-                    border-color: var(--clr-accent);
+                    border-color: var(--clr-info);
                 }
             }
     
@@ -80,16 +84,16 @@
                 border-radius: .25em;
                 font-weight: 500;
                 color: #fff;
-                background-color: var(--clr-accent);
+                background-color: var(--clr-info);
                 will-change: box-shadow;
                 transition: box-shadow var(--tr-dur);
 
-                &.delete-account {
+                &.delete-btn {
                     background-color: hsl(0 60% 60%);
                 }
         
                 &:active {
-                    transform: translateY(1px);
+                    transform: translateY(2px);
                 }
             }
         }
