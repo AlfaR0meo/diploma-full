@@ -2,6 +2,8 @@
 
 @section('head')  
     @include('blocks.head', ['title' => 'Профиль'])
+
+    @vite(['resources/js/profile.js'])
 @endsection
 
 @section('page-content')
@@ -10,87 +12,90 @@
 
         <div class="container container--lg">
 
-            <h1 class="profile__title">Профиль</h1> 
+            <h1 class="profile__title">Личный кабинет</h1> 
 
-            {{-- Информация об аккаунте --}}
-            <div class="profile__group">
-                <h2>Информация об аккаунте</h2>
-
-                <div class="profile__info">
+            <div class="grid">
+                {{-- Информация об аккаунте --}}
+                <div class="profile__group">
+                    <h2>Информация об аккаунте</h2>
 
                     @if (Auth::user()->avatar)
-                        <div class="profile__avatar">
+                        <div class="avatar">
                             <img src="/storage/{{ Auth::user()->avatar }}" alt="">
                         </div>
                     @endif
 
-                    {{-- TODO: table view --}}
                     <div class="info">
                         <div><b>Имя: </b>{{ Auth::user()->name }}</div>
                         <div><b>Email: </b>{{ Auth::user()->email }}</div>
                         <div><b>Дата регистрации: </b>{{ Auth::user()->created_at->format('d.m.Y') }}</div>
-                        
+
                         @if (Auth::user()->bio)
-                        <div><b>О себе: </b>{{ Auth::user()->bio }}</div>
+                            <div><b>О себе: </b>{{ Auth::user()->bio }}</div>
                         @endif
                     </div>
                 </div>
-            </div>
 
-            {{-- Аватар --}}
-            <div class="profile__group">
-                <h2>Аватар</h2>
+                {{-- Аватарка --}}
+                <div class="profile__group">
+                    <h2>Фото профиля</h2>
 
-                <form action="{{ route('user.profile.avatar.create') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    
-                    <input type="file" name="avatar" id="avatar" accept="image/*" required>
-                    @error('avatar')
-                    <div class="block block--error">{{ $message }}</div>
-                    @enderror
-
-                    <button type="submit">Загрузить</button>
-                </form>
-
-                @if (Auth::user()->avatar)
-                    <form action="{{ route('user.profile.avatar.delete') }}" method="POST">
+                    <form action="{{ route('user.profile.avatar.add') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <button class="delete-btn mbs-05" type="submit">Удалить аватар</button>
+                        
+                        <input type="file" name="avatar" id="avatar" accept="image/*" required>
+                        @error('avatar')
+                        <div class="block block--error m-0">{{ $message }}</div>
+                        @enderror
                     </form>
-                @endif
-            </div>
 
-            {{-- О себе --}}
-            <div class="profile__group">
-                <h2>О себе</h2>
+                    @if (Auth::user()->avatar)
+                        <form action="{{ route('user.profile.avatar.delete') }}" method="POST">
+                            @csrf
+                            <button class="delete mbs-05" type="submit">Удалить аватарку</button>
+                        </form>
+                    @endif
+                </div>
 
-                <form action="{{ route('user.profile.bio.add') }}" method="POST">
-                    @csrf
+                {{-- О себе --}}
+                <div class="profile__group">
+                    <h2>О себе</h2>
 
-                    <textarea name="bio" maxlength="200" required>{{ Auth::user()->bio ?? old('bio') }}</textarea>
-                    @error('bio')
-                    <div class="block block--error">{{ $message }}</div>
-                    @enderror
+                    <form class="add-bio-form" action="{{ route('user.profile.bio.add') }}" method="POST">
+                        @csrf
 
-                    <button type="submit">Сохранить</button>
-                </form>
+                        <textarea name="bio" maxlength="200" required placeholder="Расскажите другим немного о себе">{{ Auth::user()->bio ?? old('bio') }}</textarea>
+                        @error('bio')
+                        <div class="block block--error m-0">{{ $message }}</div>
+                        @enderror
+                    </form>
 
-                <form action="{{ route('user.profile.bio.delete') }}" method="POST">
-                    @csrf
-                    <button class="delete-btn mbs-05" type="submit">Удалить о себе</button>
-                </form>
-            </div>
+                    @if (Auth::user()->bio)
+                        <form class="delete-bio-form" action="{{ route('user.profile.bio.delete') }}" method="POST">
+                            @csrf
+                        </form>
+                    @endif
 
-            {{-- Удалить аккаунт --}}
-            <div class="profile__group">
-                <h2>Удалить аккаунт</h2>
+                    <div class="forms-btns flex fww gap-05 mbs-05">
+                        <button class="add-bio-btn" type="button">Сохранить</button>
 
-                <form action="{{ route('user.profile.delete') }}" method="POST">
-                    @csrf
-                    @method('DELETE')
+                        @if (Auth::user()->bio)
+                            <button class="delete-bio-btn delete" type="button">Удалить о себе</button>
+                        @endif
+                    </div>
+                </div>
 
-                    <button class="delete-btn" type="submit">Удалить аккаунт</button>
-                </form>
+                {{-- Удалить аккаунт --}}
+                <div class="profile__group">
+                    <h2>Удалить аккаунт</h2>
+
+                    <form action="{{ route('user.profile.delete') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="delete" type="submit">Удалить аккаунт</button>
+                    </form>
+                </div>
             </div>
 
         </div>

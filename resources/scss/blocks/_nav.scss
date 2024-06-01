@@ -225,7 +225,7 @@
                 
                 @media (any-hover: hover) {
                     &:hover {
-                        color: hsl(0 60% 60%);
+                        color: var(--clr-delete);
                     }
                 }
             }

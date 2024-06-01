@@ -44,7 +44,7 @@ Route::name('user.')->group(function () {
         Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
         Route::delete('/profile/delete', [UserProfileController::class, 'delete'])->name('profile.delete');
 
-        Route::post('/profile/avatar/create', [UserProfileController::class, 'createAvatar'])->name('profile.avatar.create');
+        Route::post('/profile/avatar/add', [UserProfileController::class, 'addAvatar'])->name('profile.avatar.add');
         Route::post('/profile/avatar/delete', [UserProfileController::class, 'deleteAvatar'])->name('profile.avatar.delete');
         
         Route::post('/profile/bio/add', [UserProfileController::class, 'addBio'])->name('profile.bio.add');

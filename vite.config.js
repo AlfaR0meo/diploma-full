@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/index.js',
                 'resources/js/map/ecomap.js',
                 'resources/js/auth.js',
+                'resources/js/profile.js',
 
                 'resources/js/app.js'
             ],

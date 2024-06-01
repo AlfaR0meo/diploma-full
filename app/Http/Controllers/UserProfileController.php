@@ -18,11 +18,12 @@ class UserProfileController extends Controller
         return view('profile-public', compact('publicUser'));
     }
 
-    public function createAvatar(Request $request) {
+    public function addAvatar(Request $request) {
         $request->validate([
             'avatar' => ['required', 'image', 'max:2048']
         ]);
 
+        /** @var \App\Models\User $user **/
         $user = Auth::user();
 
         $avatar = $request->file('avatar');
@@ -36,6 +37,7 @@ class UserProfileController extends Controller
     }
 
     public function deleteAvatar() {
+        /** @var \App\Models\User $user **/
         $user = Auth::user();
 
         $user->avatar = null;
@@ -49,6 +51,7 @@ class UserProfileController extends Controller
             'bio' => ['required', 'string', 'max:200']
         ]);
 
+        /** @var \App\Models\User $user **/
         $user = Auth::user();
 
         $user->bio = $request->bio;
@@ -58,6 +61,7 @@ class UserProfileController extends Controller
     }
 
     public function deleteBio() {
+        /** @var \App\Models\User $user **/
         $user = Auth::user();
 
         $user->bio = null;

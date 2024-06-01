@@ -19,7 +19,7 @@
             @endif
 
             @if (isset($users))
-                {{-- <div class="block block--info">Тестовый вывод БД пользователей сайта</div> --}}
+                <div class="block block--info">Тестовый вывод БД пользователей сайта</div>
                 @if (!$users->count())
                     <div class="block block--empty wfc">Список пользователей пуст.</div>
                 @else

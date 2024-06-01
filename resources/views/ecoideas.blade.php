@@ -64,7 +64,7 @@
             @guest
                 <div class="ecoideas__need-auth">
                     Создавать свои экоидеи могут только зарегистрированные пользователи!
-                    <div class="flex flex-equal justify-center gap-1 fww mbs-1">
+                    <div class="flex flex-equal jcc gap-1 fww mbs-1">
                         <a class="ecoideas__auth-btn" href="{{ route('user.register') }}">Присоединиться</a>
                         <a class="ecoideas__auth-btn" href="{{ route('user.login') }}">Войти</a>
                     </div>

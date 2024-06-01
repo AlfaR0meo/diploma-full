@@ -10,20 +10,20 @@
 
         <div class="container container--lg">
 
-            <h1 class="profile__title">Профиль пользователя<br><span class="info-color">{{ $publicUser->name}}</span></h1> 
+            <h1 class="profile__title profile__title--public">Профиль пользователя<br><span class="info-color">{{ $publicUser->name}}</span></h1> 
 
-            <div class="profile__info">
+            <div class="profile__group profile__group--public">
                 @if ($publicUser->avatar)
-                    <div class="profile__avatar">
+                    <div class="avatar avatar--public">
                         <img src="/storage/{{ $publicUser->avatar }}" alt="">
                     </div>
                 @endif
-
+    
                 <div class="info">
-                    <div class="mbe-1"><b class="info-color">Имя:<br></b>{{ $publicUser->name }}</div>
-                    <div class="mbe-1"><b class="info-color">Дата регистрации:<br></b>{{ $publicUser->created_at->diffForHumans() }}</div>
+                    {{-- <div><b>Имя: <br></b>{{ $publicUser->name }}</div> --}}
+                    <div><b>Дата регистрации: <br></b>{{ $publicUser->created_at->diffForHumans() }}</div>
                     @if ($publicUser->bio)
-                    <div class="mbe-1"><b class="info-color">О себе:<br></b>{{ $publicUser->bio }}</div>
+                        <div><b>О себе: <br></b>{{ $publicUser->bio }}</div>
                     @endif
                 </div>
             </div>

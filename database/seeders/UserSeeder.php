@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'avatars/user_test_5.png',
         ];
 
-        for ($i=0; $i < 300; $i++) {
+        for ($i=0; $i < 100; $i++) {
             DB::table('users')->insert([
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -35,6 +35,7 @@ class UserSeeder extends Seeder
                 'name' => fake()->firstName(),
                 'email' => fake()->email(),
                 'avatar' => fake()->randomElement($testAvatarsPaths),
+                'bio' => fake()->text(),
 
                 'password' => Hash::make('password'),
             ]);
