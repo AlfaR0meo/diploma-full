@@ -72,14 +72,13 @@
 
             <div class="ecomap__intro">
                 <h1 class="ecomap__title"><span class="accent-color">Эко</span>карта<br>Севастополя</h1>
-                <p class="ecomap__description">Экокарта города Севастополя представляет собой инновационный инструмент,
-                    предназначенный для удобного доступа к информации о точках приема отходов и вторсырья в городе.<br>
-                    Помочь городу можно простым действием!
-                    Не выбрасывать мусор, а отдать его на переработку.
+                <p class="ecomap__description">
+                    Экокарта города Севастополя представляет собой инновационный инструмент,
+                    предназначенный для удобного доступа к информации о точках приема отходов и вторсырья в городе.
+                    Помочь городу можно простым действием! Не выбрасывать мусор, а отдать его на переработку.
                     А куда — подскажет интерактивная карта.
-
-                    <img class="ecomap__illustration"
-                        src="{{ Vite::asset('resources/img/ecomap-intro-illustration.svg') }}" alt="">
+                </p>
+                <img class="ecomap__illustration" src="{{ Vite::asset('resources/img/ecomap-intro-illustration.svg') }}" alt="">
             </div>
 
             <div class="ecomap__map">

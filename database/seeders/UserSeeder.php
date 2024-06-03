@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Arr;
 // use Illuminate\Support\Str;
 
-use App\Models\User;
-
 class UserSeeder extends Seeder
 {
     /**

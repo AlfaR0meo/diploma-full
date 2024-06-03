@@ -10,7 +10,7 @@
     &__wrap {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 2em;
+        gap: 1em;
     }
 
     &__form-create {
@@ -76,7 +76,6 @@
     &__need-auth {
         margin-bottom: 1em;
 
-        // font-size: 1.25em;
         text-align: center;
         line-height: 1.5;
         text-wrap: balance;
@@ -114,15 +113,22 @@
     padding: 2em;
 
     display: grid;
-    align-items: start;
     gap: 1em;
 
     line-height: 1.5;
 
-    border-radius: 1em 4em 1em 4em;
-    background-color: color-mix(in srgb, var(--clr-accent), transparent 96%);
-    border: 2px solid var(--clr-accent);
+    border-radius: 1em;
+    border: 1px solid var(--clr-light-grey);
+    outline: 2px solid transparent;
+    outline-offset: -2px;
 
+    transition: outline-color var(--tr-dur);
+
+    @media (any-hover: hover) {
+        &:hover {
+            outline-color: var(--clr-accent);
+        }
+    }
 
     &__title {
         font-size: 1.5em;
@@ -131,10 +137,42 @@
 
     &__footer {
         align-self: end;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+        font-size: var(--fs-400);
     }
 
     &__author {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
         font-weight: 600;
+        border-radius: .25em;
+
+        &-avatar {
+            width: 2em;
+            aspect-ratio: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: var(--clr-accent);
+            color: #fff;
+            
+            border-radius: 50%;
+            transition: box-shadow var(--tr-dur);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                .ecoidea__author-avatar {
+                    box-shadow: 0 0 0 0.25em color-mix(in lab, var(--clr-accent), white 60%);
+                }
+            }
+        }
     }
 
     &__published-at {

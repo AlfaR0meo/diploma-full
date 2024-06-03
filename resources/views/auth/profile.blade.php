@@ -2,7 +2,6 @@
 
 @section('head')  
     @include('blocks.head', ['title' => 'Профиль'])
-
     @vite(['resources/js/profile.js'])
 @endsection
 

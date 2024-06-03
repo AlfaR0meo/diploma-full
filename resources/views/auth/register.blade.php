@@ -7,6 +7,7 @@
 
 @section('page-content')
     <div class="page__wrapper register">
+
         <div class="register__wrapper">
             @include('auth.blocks.link-back-to-main')
             
@@ -56,5 +57,6 @@
 
             <div class="login__have-account">Уже есть аккаунт? <a href="{{ route('user.login') }}">Войти</a></div>
         </div>
+        
     </div>
 @endsection
