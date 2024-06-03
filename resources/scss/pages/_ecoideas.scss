@@ -14,8 +14,6 @@
     }
 
     &__form-create {
-        margin-inline: auto;
-        max-width: 500px;
         display: grid;
         gap: 1em;
 
@@ -25,8 +23,12 @@
 
             &:focus-within {
                 > input, > textarea {
-                    border-color: var(--clr-info);
+                    border-color: var(--clr-accent);
                 }
+            }
+
+            > label {
+                font-weight: 500;
             }
         }
 
@@ -40,20 +42,25 @@
         }
 
         input[type=text] {
-            padding: 0.5em;
+            padding: 1em;
             border: 2px solid var(--clr-light-grey);
             border-radius: .25em;
             outline: none;
         }
 
         textarea {
-            height: 20vh;
+            height: 30vh;
             padding: 1em;
             line-height: 1.5;
             border: 2px solid var(--clr-light-grey);
             border-radius: .25em;
             outline: none;
             resize: none;
+
+            @supports (scrollbar-width: thin) {
+                scrollbar-width: thin;
+                scrollbar-color: var(--clr-accent) transparent;
+            }
         }
 
         button {
@@ -61,13 +68,14 @@
             padding: 1em 2em;
 
             border-radius: .25em;
-            background-color: var(--clr-info);
+            background-color: var(--clr-accent);
             color: #fff;
+            font-weight: 500;
             transition: var(--tr-dur);
 
             @media (any-hover: hover) {
                 &:hover {
-                    box-shadow: 0 .5em 1em color-mix(in lab, var(--clr-info), white);
+                    box-shadow: 0 .5em 1em color-mix(in lab, var(--clr-accent), white);
                 }
             }
         }
@@ -113,6 +121,8 @@
     padding: 2em;
 
     display: grid;
+    grid-auto-rows: auto 1fr auto;
+    align-content: start;
     gap: 1em;
 
     line-height: 1.5;
@@ -127,20 +137,45 @@
     @media (any-hover: hover) {
         &:hover {
             outline-color: var(--clr-accent);
+
+            .ecoidea__title {
+                color: var(--clr-accent);
+            }
         }
     }
 
     &__title {
         font-size: 1.5em;
         font-weight: 700;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        transition: color var(--tr-dur);
+
+        @media (any-hover: hover) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__content {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     &__footer {
-        align-self: end;
         display: flex;
         align-items: center;
+        flex-direction: row-reverse;
         justify-content: space-between;
         gap: 1em;
+
         font-size: var(--fs-400);
     }
 
@@ -148,22 +183,34 @@
         display: flex;
         align-items: center;
         gap: 0.5em;
-        font-weight: 600;
+        font-weight: 500;
         border-radius: .25em;
 
         &-avatar {
             width: 2em;
             aspect-ratio: 1;
+            overflow: hidden;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
+            font-weight: 400;
             background-color: var(--clr-accent);
             color: #fff;
             
             border-radius: 50%;
-            transition: box-shadow var(--tr-dur);
+            transition: box-shadow calc(var(--tr-dur) / 2);
+
+            &:has(> img) {
+                background-color: color-mix(in srgb, var(--clr-accent), transparent 90%);
+            }
+
+            > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
 
         @media (any-hover: hover) {

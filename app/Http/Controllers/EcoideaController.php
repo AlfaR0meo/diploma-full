@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\Auth;
 class EcoideaController extends Controller
 {
     public function index() {
-        $ecoIdeas = Ecoidea::all();
+        //Ecoidea::truncate();
+        $ecoideas = Ecoidea::all();
 
-        return view('ecoideas', compact('ecoIdeas'));
+        return view('ecoideas', compact('ecoideas'));
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'content' => ['required', 'string', 'max:500'],
+        ]);
+
         Ecoidea::create([
             'published_at' => now(),
             'title' => $request->title,
@@ -23,5 +29,11 @@ class EcoideaController extends Controller
         ]);
 
         return back()->with('ecoidea_success', 'Экоидея успешно создана!');
+    }
+
+    public function ecoideaShow($id) {
+        $ecoidea = Ecoidea::findOrFail($id);
+
+        return view('ecoidea-public', compact('ecoidea'));
     }
 }

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
 
-            $table->string('title');
-            $table->string('content');
+            $table->string('title', 100);
+            $table->string('content', 500);
 
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });

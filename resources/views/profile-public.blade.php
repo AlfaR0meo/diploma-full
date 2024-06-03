@@ -20,10 +20,16 @@
                 @endif
     
                 <div class="info">
-                    {{-- <div><b>Имя: <br></b>{{ $publicUser->name }}</div> --}}
-                    <div><b>Дата регистрации: <br></b>{{ $publicUser->created_at->diffForHumans() }}</div>
+                    <div>
+                        <b>Дата регистрации: </b>
+                        <br>
+                        {{ $publicUser->created_at->diffForHumans() }}
+                    </div>
                     @if ($publicUser->bio)
-                        <div><b>О себе: <br></b>{{ $publicUser->bio }}</div>
+                        <div>
+                            <b>О себе: <br></b>
+                            {{ $publicUser->bio }}
+                        </div>
                     @endif
                 </div>
             </div>

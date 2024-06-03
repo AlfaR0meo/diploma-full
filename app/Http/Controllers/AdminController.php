@@ -12,10 +12,4 @@ class AdminController extends Controller
 
         return view('admin', compact('users'));
     }
-
-    public function show($id) {
-        $user = User::findOrFail($id);
-
-        return view('admin', compact('user'));
-    }
 }

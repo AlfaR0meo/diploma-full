@@ -22,15 +22,15 @@ Route::get('/ecomap', [EcomapController::class, 'index'])->name('ecomap');
 
 Route::get('/ecoideas', [EcoideaController::class, 'index'])->name('ecoideas');
 Route::post('/ecoideas', [EcoideaController::class, 'store'])->name('ecoideas');
+Route::get('/ecoideas/{ecoidea_id}', [EcoideaController::class, 'ecoideaShow'])->name('ecoideas.ecoidea-show');
 
 Route::get('/events', [EventController::class, 'index'])->name('events');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin.user');
 
 Route::name('user.')->group(function () {
 
-    Route::get('/profile/{id}', [UserProfileController::class, 'publicShow'])->name('profile-public.show');
+    Route::get('/profile/{user_id}', [UserProfileController::class, 'publicShow'])->name('profile-public.show');
 
     Route::middleware('guest')->group(function () {
         Route::get('/register', [RegisterController::class, 'index'])->name('register');

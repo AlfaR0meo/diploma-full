@@ -29,7 +29,7 @@
 
         &--public {
             margin-inline: auto;
-            width: min(500px, 100%);
+            width: min(600px, 100%);
         }
 
         .avatar {
@@ -55,15 +55,12 @@
             display: grid;
             gap: .5em;
             line-height: 1.5;
-    
-            b {
-                color: var(--clr-info);
-            }
         }
 
         h2 {
             font-size: 1.5em;
             margin-block-end: 1em;
+            color: var(--clr-info);
 
             @media (max-width: 575px) {
                 text-align: center;
@@ -108,13 +105,13 @@
         }
 
         button {
+            font-size: var(--fs-400);
             padding: .5em 1em;
 
-            font-weight: 500;
             color: var(--clr-info);
 
             border-radius: .25em;
-            border: 2px solid var(--clr-light-grey);
+            border: 1px solid;
             transition: calc(var(--tr-dur) / 2);
 
             &.add-bio-btn {
