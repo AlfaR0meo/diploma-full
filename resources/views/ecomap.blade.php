@@ -66,11 +66,10 @@
 @endsection
 
 @section('page-content')
-    <div class="page__wrapper">
+    <div class="page__wrapper ecomap">
         @include('blocks.nav')
 
         <div class="container container--lg">
-
             <div class="ecomap__intro">
                 <h1 class="ecomap__title"><span class="accent-color">Эко</span>карта<br>Севастополя</h1>
                 <p class="ecomap__description">
@@ -81,107 +80,95 @@
                 </p>
                 <img class="ecomap__illustration" src="{{ Vite::asset('resources/img/ecomap-intro-illustration.svg') }}" alt="">
             </div>
-
-            <div class="ecomap__map">
+        </div>
+        
+        <div class="ecomap__map-wrap">
+            
+            <div class="ecomap__information">
 
                 <div class="filter-layers">
                     <div class="filter-layers__header">
                         <div class="filter-layers__title">Что вы хотите сдать?</div>
                         <button class="filter-layers__clear-button" type="button">Сбросить (<span></span>)</button>
                     </div>
-
                     <div class="filter-layers__checkbox-buttons">
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--batteries"
-                            for="batteries-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--batteries" for="batteries-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="batteries-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#batteries-filter-icon') }}"></use>
                             </svg>
                             <span title="Батарейки">Батарейки</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--lightbulbs"
-                            for="lightbulbs-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--lightbulbs" for="lightbulbs-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="lightbulbs-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#lightbulbs-filter-icon') }}"></use>
                             </svg>
                             <span>Лампочки</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--paper"
-                            for="paper-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--paper" for="paper-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="paper-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#paper-filter-icon') }}"></use>
                             </svg>
                             <span>Бумага</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--plastic"
-                            for="plastic-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--plastic" for="plastic-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="plastic-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#plastic-filter-icon') }}"></use>
                             </svg>
                             <span>Пластик</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--glass"
-                            for="glass-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--glass" for="glass-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="glass-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#glass-filter-icon') }}"></use>
                             </svg>
                             <span>Стекло</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--metal"
-                            for="metal-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--metal" for="metal-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="metal-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#metal-filter-icon') }}"></use>
                             </svg>
                             <span>Металл</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--technic"
-                            for="technic-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--technic" for="technic-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="technic-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#technic-filter-icon') }}"></use>
                             </svg>
                             <span>Техника</span>
                         </label>
-
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--clothes"
-                            for="clothes-custom-checkbox">
+        
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--clothes" for="clothes-custom-checkbox">
                             <input class="visually-hidden" type="checkbox" id="clothes-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#clothes-filter-icon') }}"></use>
                             </svg>
                             <span>Одежда</span>
                         </label>
-
+        
                     </div>
-
                 </div>
 
-                {{-- <button class="filter-layers__location-btn" type="button">Показать моё местоположение</button> --}}
+                <div class="points-list">
+                    <div class="points-list__title">Найденные пункты</div>
+                    <div class="points-list__empty">
+                        <img src="{{ Vite::asset('/resources/img/icons/ecomap/points-list-empty.png') }}" alt="">
+                        Нет результатов.
+                    </div>
+                    
+                </div>
 
-                {{-- <div id="map">
-                    <div class="custom-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
-                </div> --}}
-
-            </div>
-
-        </div>
-
-        <div class="map__row">
-
-            <div class="info-about-point">
-                <div class="point-info"></div>
             </div>
 
             <div id="map">

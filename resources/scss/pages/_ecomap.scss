@@ -38,23 +38,38 @@
         }
     }
 
-    &__map {
-        //display: grid;
-        //grid-template-columns: 420px 1fr;
-        gap: 1.5em;
+    &__map-wrap {
+        height: calc(90dvh - var(--nav-height));
+
+        display: grid;
+        grid-template-columns: 1fr 2.7fr;
+    }
+    
+    &__information {
+        padding: 1em;
+        border-top: 2px solid var(--clr-light-grey);
+        overflow-y: auto;
+
+        @supports (scrollbar-width: thin) {
+            scrollbar-width: thin;
+            scrollbar-color: var(--clr-accent) transparent;
+        }
+
+        > .info-about-point {
+            font-size: var(--fs-400);
+            line-height: 1.5;
+        }
     }
 }
 
 .filter-layers {
-    display: grid;
-    align-content: start;
-    gap: 1.5em;
-    margin-block-end: 1.5em;
+    margin-block-end: 2.5em;
 
     &__header {
         display: flex;
         align-items: center;
         gap: 1em;
+        margin-block-end: 1.5em;
     }
 
     &__title {
@@ -196,61 +211,39 @@
             text-overflow: ellipsis;
         }
     }
+}
 
-    &__location-btn {
-        width: fit-content;
-        padding: 0.75em 1em;
-    
+.points-list {
+    &__title {
+        font-size: var(--fs-700);
         font-weight: 500;
-        border-radius: .25em;
+        margin-block-end: 1.5rem;
+    }
     
-        background-color: dodgerblue;
-        color: #fff;
-        transition: opacity 200ms;
-    
-        @media (any-hover: hover) {
-            &:hover {
-                opacity: .8;
-            }
+    &__empty {
+        text-align: center;
+        line-height: 1.5;
+        color: var(--clr-grey);
+
+        img {
+            height: 6em;
+
+            margin-inline: auto;
+            margin-block-end: 1em;
+
+            filter: grayscale(1) drop-shadow(1em 1em 2em hsl(0 0% 30% / 20%));
+
+            pointer-events: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
+    }
+
+    &__item {
+        line-height: 1.5;
     }
 }
 
-.map__row {
-    height: calc(90dvh - var(--nav-height));
-
-    display: grid;
-    grid-template-columns: 420px 1fr;
-
-    > .info-about-point {
-        padding: 1em;
-        font-size: var(--fs-400);
-        border-top: 2px solid hsl(0 0% 95%);
-        overflow-y: auto;
-
-        @supports (scrollbar-width: thin) {
-            scrollbar-width: thin;
-            scrollbar-color: var(--clr-accent) transparent;
-        }
-
-        > .point-info {
-            line-height: 1.6;
-
-            > p {
-                &:not(:last-child) {
-                    margin-block-end: .5em;
-                }
-                &:first-child {
-                    font-size: var(--fs-700);
-                    font-weight: 500;
-                }
-                > span {
-                    font-weight: 700;
-                }
-            }
-        }
-    }
-}
 
 #map {
     position: relative;

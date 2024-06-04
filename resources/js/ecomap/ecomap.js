@@ -37,39 +37,46 @@ const metalIcon = createLeafletCustomIcon('metal-location-icon.svg');
 const technicIcon = createLeafletCustomIcon('technic-location-icon.svg');
 const clothesIcon = createLeafletCustomIcon('clothes-location-icon.svg');
 
-//const userLocationIcon = createLeafletCustomIcon('user-location-icon.svg');
 
-const infoAboutPointElement = document.querySelector('.point-info');
 
-function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
-    infoAboutPointElement.innerHTML = `
-        <p>Информация о пункте</p>
-        <p><span>Название: </span>${pointName}.</p>
-        <p><span>Адрес: </span>${pointAddress}.</p>
-        <p><span>Описание: </span>${pointDescription}.</p>
-    `;
-}
-function resetInfoAboutPoint() {
-    infoAboutPointElement.innerHTML = '';
-}
+
+
+
+
+
+// const infoAboutPointElement = document.querySelector('.point-info');
+
+// function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
+//     infoAboutPointElement.innerHTML = `
+//         <p>Информация о пункте</p>
+//         <p><span>Название: </span>${pointName}.</p>
+//         <p><span>Адрес: </span>${pointAddress}.</p>
+//         <p><span>Описание: </span>${pointDescription}.</p>
+//     `;
+// }
+// function resetInfoAboutPoint() {
+//     if (infoAboutPointElement) {
+//         infoAboutPointElement.innerHTML = '';
+//     }
+// }
+
+
+
+
 
 
 
 const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, { icon: batteriesIcon, title: geoJsonPoint.properties.name })
-        // .bindTooltip(geoJsonPoint.properties.name, {
-        //     opacity: 1,
-        //     sticky: true,
-        // })
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
             displayInfoAboutPoint(feature.properties.name, feature.properties.address, feature.properties.description)
         })
-        // geoJsonPoint.on('mouseover', function (e) {
-        //     this.openPopup();
-        // })
+        geoJsonPoint.on('mouseover', function (e) {
+            this.openPopup();
+        })
     }
 });
 const lightbulbsMarkers = L.geoJSON(lightbulbsGeoJsonPoints, {
@@ -194,7 +201,7 @@ const map = L.map('map', {
 
     attributionControl: true, // TODO
 
-    scrollWheelZoom: true, //TODO: For dev
+    scrollWheelZoom: false, //TODO: For dev
 });
 
 // Layer control adding
@@ -265,7 +272,7 @@ clearFiltersBtn.addEventListener('click', () => {
     clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
     resetLeafletControls();
-    resetInfoAboutPoint();
+    // resetInfoAboutPoint(); FIXME:
 });
 
 
@@ -299,7 +306,7 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
         customCheckbox.addEventListener('change', function () {
             this.checked ? checkedCustomCheckboxesCounter++ : checkedCustomCheckboxesCounter--;
 
-            if (checkedCustomCheckboxesCounter === 0) resetInfoAboutPoint();
+            FIXME: // if (checkedCustomCheckboxesCounter === 0) resetInfoAboutPoint(); 
 
             clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
@@ -314,6 +321,11 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
                 leafletLayersCheckbox.click();
                 leafletLayersCheckbox.click();
             }
+
+            const checkboxLabelClass = this.closest('label').classList.value.toLowerCase();
+            console.log(checkboxLabelClass);
+
+            // if (this.closest('label').classList.value.toLowerCase().contains('batteries'));
         });
     });
 
