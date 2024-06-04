@@ -1,4 +1,5 @@
 'use strict';
+
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import batteriesGeoJsonPoints from './geojson-points/batteries-points.js';
@@ -9,8 +10,6 @@ import glassGeoJsonPoints from './geojson-points/glass-points.js';
 import metalGeoJsonPoints from './geojson-points/metal-points.js';
 import technicGeoJsonPoints from './geojson-points/technic-points.js';
 import clothesGeoJsonPoints from './geojson-points/clothes-points.js';
-
-//TODO: geojson marker clusters
 
 
 
@@ -48,12 +47,7 @@ function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
         <p><span>Название: </span>${pointName}.</p>
         <p><span>Адрес: </span>${pointAddress}.</p>
         <p><span>Описание: </span>${pointDescription}.</p>
-    `
-    console.group('%cИнформация о точке', 'font-size: 1rem; font-weight: bold; color: limegreen');
-    console.log('Название: ', pointName);
-    console.log('Адрес: ', pointAddress);
-    console.log('Описание: ', pointDescription);
-    console.groupEnd();
+    `;
 }
 function resetInfoAboutPoint() {
     infoAboutPointElement.innerHTML = '';
@@ -166,10 +160,9 @@ const SEVASTOPOL_COORDS = [44.556972, 33.526402];
 const INITIAL_MAP_ZOOM = 12;
 const MIN_MAP_ZOOM = 10;
 
-// Tile layer – OSM
-const OSM = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// Tile layer – 2ГИС
+const TwoGIS = L.tileLayer('http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}', {
+    attribution: '&copy; <a href="https://dev.2gis.ru/">2ГИС</a>'
 });
 
 // Tile layer – Esri satellite
@@ -183,9 +176,10 @@ const map = L.map('map', {
     center: SEVASTOPOL_COORDS,
     zoom: INITIAL_MAP_ZOOM,
     minZoom: MIN_MAP_ZOOM,
+
     layers: [
         EsriWorldImagery,
-        OSM,
+        TwoGIS,
 
         batteriesLayer,
         lightbulbsLayer,
@@ -197,15 +191,16 @@ const map = L.map('map', {
         clothesLayer
     ],
     zoomControl: true,
-    attributionControl: false,
-    // scrollWheelZoom: false,
-    // preferCanvas: true,
+
+    attributionControl: true, // TODO
+
+    scrollWheelZoom: true, //TODO: For dev
 });
 
 // Layer control adding
 const baseMaps = {
     "Спутник ESRI": EsriWorldImagery,
-    "OpenStreetMap": OSM,
+    "2ГИС вектор": TwoGIS,
 };
 const overlayLayers = {
     "Батарейки": batteriesLayer,
@@ -217,7 +212,7 @@ const overlayLayers = {
     "Техника": technicLayer,
     "Одежда": clothesLayer,
 };
-const layerControl = L.control.layers(baseMaps, overlayLayers, {
+L.control.layers(baseMaps, overlayLayers, {
     collapsed: true,
     hideSingleBase: true,
     position: 'topright'

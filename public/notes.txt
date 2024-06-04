@@ -1,0 +1,105 @@
+Батарейки batteries
+Лампочки lightbulbs
+Бумага paper
+Пластик plastic
+Стекло glass
+Металл metal
+Техника technic
+Одежда clothes
+
+Кнопка определения местоположения, чтобы на карте отображалась дислокация пользователя отдельным значком
+
+
+npm i
+composer i
+ 
+npm run dev (от Vite)
+npm run build (от Vite)
+
+php artisan serve
+
+php artisan down
+php artisan up
+
+php artisan optimize:clear
+php artisan route:clear
+php artisan cache:clear
+
+php artisan storage:link
+php artisan storage:unlink
+
+php artisan make:model Test -m
+php artisan make:controller TestController
+php artisan make:middleware TestMiddleware
+
+php artisan migrate
+php artisan migrate:rollback --step=1
+php artisan migrate:fresh
+php artisan db:seed
+php artisan make:migration create_flights_table
+
+php artisan optimize
+php artisan list
+php artisan inspire
+
+
+
+
+@if (Session::has('success'))
+<div class="block">{{ Session::get('success') }}</div>
+@endif
+
+// Test::truncate(); // Удалить все записи-объекты в БД
+
+// for ($i=0; $i < 20; $i++) { 
+//     Test::create([
+//         'name' => Arr::random(Test::namesArr),
+//         'color' => Arr::random(Test::colorsArr),
+//     ]);
+// }
+
+$records = Test::all();
+
+
+<div class="error">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+
+
+Извлечение записей через модель из БД
+
+Test::truncate()
+Test::all()
+Test::where()
+Test::whereIn()
+Test::find()
+Test::first()
+->toArray()
+->toJson()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let map = L.map('map').setView(SEVASTOPOL_COORDS, INITIAL_ZOOM);
+
+// L.tileLayer('https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU', {
+//     maxZoom: 21,
+//     //crs: L.CRS.EPSG3395,
+//     attribution: '&copy; <a href="http://www.yandex.ru">Яндекс</a>',
+// }).addTo(map);

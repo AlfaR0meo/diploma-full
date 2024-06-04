@@ -7,7 +7,7 @@ export default defineConfig({
             input: [
                 'resources/scss/index.scss',
                 'resources/js/index.js',
-                'resources/js/map/ecomap.js',
+                'resources/js/ecomap/ecomap.js',
                 'resources/js/auth.js',
                 'resources/js/profile.js',
 

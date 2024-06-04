@@ -3,7 +3,7 @@
 @section('head')  
     @include('blocks.head', ['title' => 'Экокарта'])
 
-    @vite(['resources/js/map/ecomap.js'])
+    @vite(['resources/js/ecomap/ecomap.js'])
 
     <style>
         .leaflet-touch .leaflet-control-layers,
@@ -43,11 +43,12 @@
         }
 
         .leaflet-control-attribution {
+            margin: 10px !important;
             padding: .35em !important;
             font-family: var(--ff-logo) !important;
             font-size: var(--fs-300);
             line-height: 1 !important;
-            border-top-left-radius: .35em;
+            border-radius: .3em;
         }
 
         /* .leaflet-tooltip {
@@ -178,12 +179,15 @@
         </div>
 
         <div class="map__row">
-            <div class="info-about-point-block">
+
+            <div class="info-about-point">
                 <div class="point-info"></div>
             </div>
+
             <div id="map">
                 <div class="custom-map-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
             </div>
+
         </div>
         
         @include('blocks.footer')

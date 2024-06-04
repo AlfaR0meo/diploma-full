@@ -15,9 +15,6 @@
             <li class="nav__item">
                 <a class="nav__link" href="{{ route('ecoideas') }}">Экоидеи</a>
             </li>
-            {{-- <li class="nav__item">
-                <a class="nav__link" href="{{ route('events') }}">Мероприятия</a>
-            </li> --}}
 
             @auth
             <li class="nav__item nav__item--account">
@@ -47,7 +44,7 @@
 
             @guest
             <li class="nav__item nav__item--account">
-                <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Регистрация</a>
+                <a class="nav__btn nav__btn--register" href="{{ route('user.register') }}">Присоединиться</a>
                 <a class="nav__btn nav__btn--login" href="{{ route('user.login') }}">Вход</a>
             </li>
             @endguest

@@ -41,7 +41,8 @@
                                         
                                         <span class="ecoidea__author-name">{{ User::find($ecoidea->user_id)->name }}</span>
                                     </a>
-                                    <time class="ecoidea__published-at" datetime="{{ $ecoidea->published_at->format('Y-m-d') }}">{{ $ecoidea->published_at->translatedFormat('d F, Y') }}</time>
+                                    {{-- <time class="ecoidea__published-at" datetime="{{ $ecoidea->published_at->format('Y-m-d') }}">{{ $ecoidea->published_at->translatedFormat('d F, Y') }}</time> --}}
+                                    <time class="ecoidea__published-at" datetime="{{ $ecoidea->published_at->format('Y-m-d') }}" title="{{ $ecoidea->published_at->translatedFormat('d F, Y') }}">{{ $ecoidea->published_at->diffForHumans() }}</time>
                                 </div>
                             </div>
                         @endforeach

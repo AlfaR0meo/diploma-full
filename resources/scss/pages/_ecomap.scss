@@ -217,17 +217,21 @@
 }
 
 .map__row {
-    // width: 75%;
-    // margin-inline: auto;
     height: calc(90dvh - var(--nav-height));
+
     display: grid;
     grid-template-columns: 420px 1fr;
 
-    > .info-about-point-block {
+    > .info-about-point {
         padding: 1em;
         font-size: var(--fs-400);
         border-top: 2px solid hsl(0 0% 95%);
         overflow-y: auto;
+
+        @supports (scrollbar-width: thin) {
+            scrollbar-width: thin;
+            scrollbar-color: var(--clr-accent) transparent;
+        }
 
         > .point-info {
             line-height: 1.6;

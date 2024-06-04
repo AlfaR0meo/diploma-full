@@ -10,9 +10,15 @@ class EcoideaController extends Controller
 {
     public function index() {
         //Ecoidea::truncate();
-        $ecoideas = Ecoidea::all();
+        $ecoideas = Ecoidea::all()->sortByDesc('published_at');
 
         return view('ecoideas', compact('ecoideas'));
+    }
+
+    public function ecoideaShow($id) {
+        $ecoidea = Ecoidea::findOrFail($id);
+
+        return view('ecoidea-public', compact('ecoidea'));
     }
 
     public function store(Request $request) {
@@ -29,11 +35,5 @@ class EcoideaController extends Controller
         ]);
 
         return back()->with('ecoidea_success', 'Экоидея успешно создана!');
-    }
-
-    public function ecoideaShow($id) {
-        $ecoidea = Ecoidea::findOrFail($id);
-
-        return view('ecoidea-public', compact('ecoidea'));
     }
 }
