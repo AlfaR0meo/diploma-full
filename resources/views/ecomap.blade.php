@@ -62,6 +62,10 @@
             white-space: normal !important;
             box-shadow: 0 0 1em hsl(0 0% 30% / .1) !important;
         } */
+
+        #map > div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div > a:nth-child(1) > svg {
+            display: none !important;
+        }
     </style>
 @endsection
 
@@ -91,9 +95,10 @@
                         <div class="filter-layers__title">Что вы хотите сдать?</div>
                         <button class="filter-layers__clear-button" type="button">Сбросить (<span></span>)</button>
                     </div>
+                    
                     <div class="filter-layers__checkbox-buttons">
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--batteries" for="batteries-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--batteries" for="batteries-custom-checkbox" data-category="batteries">
                             <input class="visually-hidden" type="checkbox" id="batteries-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#batteries-filter-icon') }}"></use>
@@ -101,7 +106,7 @@
                             <span title="Батарейки">Батарейки</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--lightbulbs" for="lightbulbs-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--lightbulbs" for="lightbulbs-custom-checkbox" data-category="lightbulbs">
                             <input class="visually-hidden" type="checkbox" id="lightbulbs-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#lightbulbs-filter-icon') }}"></use>
@@ -109,7 +114,7 @@
                             <span>Лампочки</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--paper" for="paper-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--paper" for="paper-custom-checkbox" data-category="paper">
                             <input class="visually-hidden" type="checkbox" id="paper-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#paper-filter-icon') }}"></use>
@@ -117,7 +122,7 @@
                             <span>Бумага</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--plastic" for="plastic-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--plastic" for="plastic-custom-checkbox" data-category="plastic">
                             <input class="visually-hidden" type="checkbox" id="plastic-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#plastic-filter-icon') }}"></use>
@@ -125,7 +130,7 @@
                             <span>Пластик</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--glass" for="glass-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--glass" for="glass-custom-checkbox" data-category="glass">
                             <input class="visually-hidden" type="checkbox" id="glass-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#glass-filter-icon') }}"></use>
@@ -133,7 +138,7 @@
                             <span>Стекло</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--metal" for="metal-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--metal" for="metal-custom-checkbox" data-category="metal">
                             <input class="visually-hidden" type="checkbox" id="metal-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#metal-filter-icon') }}"></use>
@@ -141,7 +146,7 @@
                             <span>Металл</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--technic" for="technic-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--technic" for="technic-custom-checkbox" data-category="technic">
                             <input class="visually-hidden" type="checkbox" id="technic-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#technic-filter-icon') }}"></use>
@@ -149,7 +154,7 @@
                             <span>Техника</span>
                         </label>
         
-                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--clothes" for="clothes-custom-checkbox">
+                        <label class="filter-layers__custom-checkbox filter-layers__custom-checkbox--clothes" for="clothes-custom-checkbox" data-category="clothes">
                             <input class="visually-hidden" type="checkbox" id="clothes-custom-checkbox">
                             <svg class="filter-icon">
                                 <use href="{{ asset('img/icons/sprite.svg#clothes-filter-icon') }}"></use>
@@ -160,13 +165,17 @@
                     </div>
                 </div>
 
-                <div class="points-list">
-                    <div class="points-list__title">Найденные пункты</div>
-                    <div class="points-list__empty">
+                <div class="points-info">
+                    <div class="points-info__title">Найденные пункты</div>
+
+                    <div class="points-info__empty">
                         <img src="{{ Vite::asset('/resources/img/icons/ecomap/points-list-empty.png') }}" alt="">
-                        Нет результатов.
+                        <span>Нет результатов.</span>
                     </div>
-                    
+
+                    <div class="points-info__list">
+                        {{-- <div class="points-info__item"></div> --}}
+                    </div>
                 </div>
 
             </div>

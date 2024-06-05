@@ -3,24 +3,20 @@
     margin-top: auto;
 
     &__wave {
-        margin-top: -6vw;
+        margin-top: -11vw;
         position: relative;
-        top: 2px;
+        top: 4vw;
         fill: var(--clr-accent);
         pointer-events: none;
     }
     
     &__footer {
         position: relative;
-        padding-block: 0.25em 3em;
         background-color: var(--clr-accent);
-
-        @media (max-width: 700px) {
-            padding-block: 1.25em 2em;
-        }
     }
 
     &__row {
+        padding-block: 1em 2em;
         display: flex;
         align-items: center;
         gap: 1em;

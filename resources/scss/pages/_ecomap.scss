@@ -42,12 +42,12 @@
         height: calc(90dvh - var(--nav-height));
 
         display: grid;
-        grid-template-columns: 1fr 2.7fr;
+        grid-template-columns: 1fr 2.5fr;
     }
     
     &__information {
         padding: 1em;
-        border-top: 2px solid var(--clr-light-grey);
+        border-block: 1px solid var(--clr-light-grey);
         overflow-y: auto;
 
         @supports (scrollbar-width: thin) {
@@ -213,7 +213,7 @@
     }
 }
 
-.points-list {
+.points-info {
     &__title {
         font-size: var(--fs-700);
         font-weight: 500;
@@ -239,11 +239,50 @@
         }
     }
 
+    &__list {
+
+    }
+
     &__item {
+        padding: .75em;
         line-height: 1.5;
+        
+        border-right: 1em solid var(--custom-color);
+        border-radius: .25em;
+        background-color: color-mix(in srgb, var(--custom-color), transparent 92%);
+
+        font-size: var(--fs-400);
+
+        &:not(:first-child) {
+            margin-top: 1em;
+        }
+
+        &--batteries {
+            --custom-color: var(--clr-batteries);
+        }
+        &--lightbulbs {
+            --custom-color: var(--clr-lightbulbs);
+        }
+        &--paper {
+            --custom-color: var(--clr-paper);
+        }
+        &--plastic {
+            --custom-color: var(--clr-plastic);
+        }
+        &--glass {
+            --custom-color: var(--clr-glass);
+        }
+        &--metal {
+            --custom-color: var(--clr-metal);
+        }
+        &--technic {
+            --custom-color: var(--clr-technic);
+        }
+        &--clothes {
+            --custom-color: var(--clr-clothes);
+        }
     }
 }
-
 
 #map {
     position: relative;

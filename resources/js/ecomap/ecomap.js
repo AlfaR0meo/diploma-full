@@ -40,32 +40,6 @@ const clothesIcon = createLeafletCustomIcon('clothes-location-icon.svg');
 
 
 
-
-
-
-
-// const infoAboutPointElement = document.querySelector('.point-info');
-
-// function displayInfoAboutPoint(pointName, pointAddress, pointDescription) {
-//     infoAboutPointElement.innerHTML = `
-//         <p>Информация о пункте</p>
-//         <p><span>Название: </span>${pointName}.</p>
-//         <p><span>Адрес: </span>${pointAddress}.</p>
-//         <p><span>Описание: </span>${pointDescription}.</p>
-//     `;
-// }
-// function resetInfoAboutPoint() {
-//     if (infoAboutPointElement) {
-//         infoAboutPointElement.innerHTML = '';
-//     }
-// }
-
-
-
-
-
-
-
 const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, { icon: batteriesIcon, title: geoJsonPoint.properties.name })
@@ -199,7 +173,7 @@ const map = L.map('map', {
     ],
     zoomControl: true,
 
-    attributionControl: true, // TODO
+    attributionControl: true, // TODO:
 
     scrollWheelZoom: false, //TODO: For dev
 });
@@ -207,7 +181,7 @@ const map = L.map('map', {
 // Layer control adding
 const baseMaps = {
     "Спутник ESRI": EsriWorldImagery,
-    "2ГИС вектор": TwoGIS,
+    "Вектор 2ГИС": TwoGIS,
 };
 const overlayLayers = {
     "Батарейки": batteriesLayer,
@@ -224,31 +198,6 @@ L.control.layers(baseMaps, overlayLayers, {
     hideSingleBase: true,
     position: 'topright'
 }).addTo(map);
-
-
-
-
-// Location btn
-const locationBtn = document.querySelector('.filter-layers__location-btn');
-if (locationBtn) {
-    locationBtn.addEventListener('click', () => {
-        navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-            enableHighAccuracy: true
-        });
-    });
-}
-function successLocation(userPosition) {
-    console.log(userPosition);
-
-    const lat = userPosition.coords.latitude;
-    const lng = userPosition.coords.longitude;
-
-    //FIXME:
-    L.marker([lat, lng], { icon: userLocationIcon, alt: 'Ваше местоположение' }).bindPopup('Ваше местоположение').addTo(map);
-}
-function errorLocation(error) {
-    console.log(error);
-}
 
 
 
@@ -272,7 +221,8 @@ clearFiltersBtn.addEventListener('click', () => {
     clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
     resetLeafletControls();
-    // resetInfoAboutPoint(); FIXME:
+    pointsList.querySelectorAll(POINTS_ITEM_SELECTOR).forEach(item => item.remove());
+    pointsEmpty.classList.remove('none');
 });
 
 
@@ -299,16 +249,55 @@ resetLeafletControls();
 
 
 
+const POINTS_INFO_CLASS = 'points-info';
+const POINTS_INFO_SELECTOR = `.${POINTS_INFO_CLASS}`;
+const POINTS_EMPTY_CLASS = `${POINTS_INFO_CLASS}__empty`;
+const POINTS_EMPTY_SELECTOR = `.${POINTS_EMPTY_CLASS}`;
+const POINTS_LIST_CLASS = `${POINTS_INFO_CLASS}__list`;
+const POINTS_LIST_SELECTOR = `.${POINTS_LIST_CLASS}`;
+const POINTS_ITEM_CLASS = `${POINTS_INFO_CLASS}__item`;
+const POINTS_ITEM_SELECTOR = `.${POINTS_ITEM_CLASS}`;
+
+const pointsEmpty = document.querySelector(POINTS_EMPTY_SELECTOR);
+const pointsList = document.querySelector(POINTS_LIST_SELECTOR);
+
+function createNewPointItem(pointName, pointAddress, pointDescription, classModificator) {
+    const pointsListItemHTML = `
+        <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
+            <div>
+                <b>Название:</b>
+                ${pointName}
+            </div>
+            <div>
+                <b>Адрес:</b>
+                ${pointAddress}
+            </div>
+            <div>
+                <b>Описание:</b>
+                ${pointDescription}
+            </div>
+        </div>
+    `;
+
+    pointsList.insertAdjacentHTML('afterbegin', pointsListItemHTML)
+}
+
 // Filters custom checkboxes 'change' eventlistener
 if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
     customLayersCheckboxes.forEach((customCheckbox, index) => {
-
         customCheckbox.addEventListener('change', function () {
             this.checked ? checkedCustomCheckboxesCounter++ : checkedCustomCheckboxesCounter--;
 
-            FIXME: // if (checkedCustomCheckboxesCounter === 0) resetInfoAboutPoint(); 
+            if (checkedCustomCheckboxesCounter !== 0) {
+                pointsEmpty.classList.add('none');
+            } else {
+                pointsEmpty.classList.remove('none');
+            }
 
             clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
+
+
+
 
             const leafletLayersCheckbox = leafletLayersCheckboxes[index];
 
@@ -322,13 +311,119 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
                 leafletLayersCheckbox.click();
             }
 
-            const checkboxLabelClass = this.closest('label').classList.value.toLowerCase();
-            console.log(checkboxLabelClass);
 
-            // if (this.closest('label').classList.value.toLowerCase().contains('batteries'));
+
+
+            const checkboxLabel = this.closest('label');
+            const checkboxLabelClass = checkboxLabel.classList.value.toLowerCase();
+            const checkboxCategory = checkboxLabel.dataset.category;
+
+            if (this.checked) {
+                if (checkboxLabelClass.includes(checkboxCategory)) {
+
+                    let categoryGeoJsonPoints = [];
+
+                    switch (checkboxCategory) {
+                        case 'batteries':
+                            categoryGeoJsonPoints = batteriesGeoJsonPoints;
+                            break;
+
+                        case 'lightbulbs':
+                            categoryGeoJsonPoints = lightbulbsGeoJsonPoints;
+                            break;
+
+                        case 'paper':
+                            categoryGeoJsonPoints = paperGeoJsonPoints;
+                            break;
+
+                        case 'plastic':
+                            categoryGeoJsonPoints = plasticGeoJsonPoints;
+                            break;
+
+                        case 'glass':
+                            categoryGeoJsonPoints = glassGeoJsonPoints;
+                            break;
+
+                        case 'metal':
+                            categoryGeoJsonPoints = metalGeoJsonPoints;
+                            break;
+
+                        case 'technic':
+                            categoryGeoJsonPoints = technicGeoJsonPoints;
+                            break;
+
+                        case 'clothes':
+                            categoryGeoJsonPoints = clothesGeoJsonPoints;
+                            break;
+
+                        default:
+                            console.error('Проверь data-category у label (custom-checkbox). Там ошибка!');
+                            break;
+                    }
+
+                    categoryGeoJsonPoints.features.forEach(point => {
+                        console.log(point);
+                        createNewPointItem(point.properties.name, point.properties.address, point.properties.description, checkboxCategory);
+                    });
+                };
+            } else {
+                pointsList.querySelectorAll(`${POINTS_ITEM_SELECTOR}--${checkboxCategory}`).forEach(item => item.remove());
+            }
+
         });
     });
-
 } else {
     console.error('Кол-во кастомных и leaflet чекбоксов не совпадает!');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Location btn
+// const locationBtn = document.querySelector('.filter-layers__location-btn');
+// if (locationBtn) {
+//     locationBtn.addEventListener('click', () => {
+//         navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+//             enableHighAccuracy: true
+//         });
+//     });
+// }
+// function successLocation(userPosition) {
+//     console.log(userPosition);
+
+//     const lat = userPosition.coords.latitude;
+//     const lng = userPosition.coords.longitude;
+
+//     //FIXME:
+//     L.marker([lat, lng], { icon: userLocationIcon, alt: 'Ваше местоположение' }).bindPopup('Ваше местоположение').addTo(map);
+// }
+// function errorLocation(error) {
+//     console.log(error);
+// }
+

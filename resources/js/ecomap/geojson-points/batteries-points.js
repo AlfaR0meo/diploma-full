@@ -1,12 +1,13 @@
 const batteriesGeoJsonPoints = {
     "type": "FeatureCollection",
     "features": [
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1",
-                "address": "Address for point 1",
-                "description": "Description for point 1"
+                "name": "Name 1 batteries",
+                "address": "Address for point 1 batteries",
+                "description": "Description for point 1 batteries"
             },
             "geometry": {
                 "coordinates": [
@@ -16,12 +17,13 @@ const batteriesGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2",
-                "address": "Address for point 2",
-                "description": "Description for point 2"
+                "name": "Name 2 batteries",
+                "address": "Address for point 2 batteries",
+                "description": "Description for point 2 batteries"
             },
             "geometry": {
                 "coordinates": [
@@ -31,21 +33,39 @@ const batteriesGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 3",
-                "address": "Address for point 3",
-                "description": "Description for point 3"
+                "name": "Name 3 batteries",
+                "address": "Address for point 3 batteries",
+                "description": "Description for point 3 batteries"
             },
             "geometry": {
                 "coordinates": [
-                    33.52253110365663,
-                    44.55985213666099
+                    33.53147771283281,
+                    44.559849100641486
                 ],
                 "type": "Point"
             }
         },
+
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Name 4 batteries",
+                "address": "Address for point 4 batteries",
+                "description": "Description for point 4 batteries"
+            },
+            "geometry": {
+                "coordinates": [
+                    33.53147771283281,
+                    44.559849100641486
+                ],
+                "type": "Point"
+            }
+        },
+
     ]
 };
 
