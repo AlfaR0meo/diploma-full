@@ -1,10 +1,11 @@
 const paperGeoJsonPoints = {
     "type": "FeatureCollection",
     "features": [
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 paper",
+                "title": "Name 1 paper",
                 "address": "Address for point 1 paper",
                 "description": "Description for point 1 paper"
             },
@@ -16,10 +17,11 @@ const paperGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2 paper",
+                "title": "Name 2 paper",
                 "address": "Address for point 2 paper",
                 "description": "Description for point 2 paper"
             },
@@ -31,6 +33,7 @@ const paperGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
     ]
 };
 

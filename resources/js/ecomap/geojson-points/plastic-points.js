@@ -5,7 +5,7 @@ const plasticGeoJsonPoints = {
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 plastic",
+                "title": "Title 1 plastic",
                 "address": "Address for point 1 plastic",
                 "description": "Description for point 1 plastic"
             },
@@ -21,9 +21,9 @@ const plasticGeoJsonPoints = {
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 plastic",
-                "address": "Address for point 1 plastic",
-                "description": "Description for point 1 plastic"
+                "title": "Title 2 plastic",
+                "address": "Address for point 2 plastic",
+                "description": "Description for point 2 plastic"
             },
             "geometry": {
                 "coordinates": [

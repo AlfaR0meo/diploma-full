@@ -1,10 +1,11 @@
 const glassGeoJsonPoints = {
     "type": "FeatureCollection",
     "features": [
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 glass",
+                "title": "Name 1 glass",
                 "address": "Address for point 1 glass",
                 "description": "Description for point 1 glass"
             },
@@ -16,10 +17,11 @@ const glassGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2 glass",
+                "title": "Name 2 glass",
                 "address": "Address for point 2 glass",
                 "description": "Description for point 2 glass"
             },
@@ -31,6 +33,7 @@ const glassGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
     ]
 };
 

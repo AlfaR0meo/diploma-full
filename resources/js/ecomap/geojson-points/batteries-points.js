@@ -5,14 +5,14 @@ const batteriesGeoJsonPoints = {
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 batteries",
-                "address": "Address for point 1 batteries",
-                "description": "Description for point 1 batteries"
+                "title": "Офис «Севастопольские мамы»",
+                "address": "г. Севастополь, ул.Ленина, 36",
+                "description": "+7 (978) 113-77-12"
             },
             "geometry": {
                 "coordinates": [
-                    33.53246886120584,
-                    44.5496840171071
+                    33.526231,
+                    44.609629
                 ],
                 "type": "Point"
             }
@@ -21,14 +21,14 @@ const batteriesGeoJsonPoints = {
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2 batteries",
-                "address": "Address for point 2 batteries",
-                "description": "Description for point 2 batteries"
+                "title": "Магазин \"Твоя полка\"",
+                "address": "ул. Большая Морская, 23. Справа от ТЦ \"Диалог\"",
+                "description": ""
             },
             "geometry": {
                 "coordinates": [
-                    33.53147771283281,
-                    44.559849100641486
+                    33.522683,
+                    44.605759
                 ],
                 "type": "Point"
             }
@@ -37,14 +37,14 @@ const batteriesGeoJsonPoints = {
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 3 batteries",
-                "address": "Address for point 3 batteries",
-                "description": "Description for point 3 batteries"
+                "title": "Магазин \"Твоя полка\"",
+                "address": "ул. Большая Морская, 6",
+                "description": ""
             },
             "geometry": {
                 "coordinates": [
-                    33.4600617867103,
-                    44.562560030705924
+                    33.520473,
+                    44.610155
                 ],
                 "type": "Point"
             }

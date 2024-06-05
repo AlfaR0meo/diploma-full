@@ -14,6 +14,60 @@ import clothesGeoJsonPoints from './geojson-points/clothes-points.js';
 
 
 
+const POINTS_INFO_CLASS = 'points-info';
+const POINTS_INFO_SELECTOR = `.${POINTS_INFO_CLASS}`;
+const POINTS_EMPTY_CLASS = `${POINTS_INFO_CLASS}__empty`;
+const POINTS_EMPTY_SELECTOR = `.${POINTS_EMPTY_CLASS}`;
+const POINTS_LIST_CLASS = `${POINTS_INFO_CLASS}__list`;
+const POINTS_LIST_SELECTOR = `.${POINTS_LIST_CLASS}`;
+const POINTS_ITEM_CLASS = `${POINTS_INFO_CLASS}__item`;
+const POINTS_ITEM_SELECTOR = `.${POINTS_ITEM_CLASS}`;
+const pointsEmpty = document.querySelector(POINTS_EMPTY_SELECTOR);
+const pointsList = document.querySelector(POINTS_LIST_SELECTOR);
+
+function createNewPointItem(pointName, pointAddress, pointDescription, classModificator) {
+    const pointsItemHTML = `
+        <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
+            <div class="${POINTS_ITEM_CLASS}-title">
+                ${pointName}
+            </div>
+            <div class="${POINTS_ITEM_CLASS}-address">
+                ${pointAddress}
+            </div>
+            
+            <div class="${POINTS_ITEM_CLASS}-description">
+                ${pointDescription}
+            </div>
+        </div>
+    `;
+
+    pointsList.insertAdjacentHTML('afterbegin', pointsItemHTML)
+}
+
+function clickOnMarker(classModificator, feature) {
+    const neededElements = document.querySelectorAll(`${POINTS_ITEM_SELECTOR}--${classModificator}`);
+    const allElements = document.querySelectorAll(POINTS_ITEM_SELECTOR);
+
+    allElements.forEach(elem => {
+        elem.classList.remove('marker-click-active');
+    });
+
+    neededElements.forEach(elem => {
+        const titleDiv = elem.querySelector(`${POINTS_ITEM_SELECTOR}-title`);
+        const addressDiv = elem.querySelector(`${POINTS_ITEM_SELECTOR}-address`);
+
+        if (titleDiv.textContent.includes(feature.properties.title) && addressDiv.textContent.includes(feature.properties.address)) {
+            elem.classList.add('marker-click-active');
+            elem.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    });
+}
+
+
+// Icons creating and configuring
 function createLeafletCustomIcon(iconFileName) {
     const iconWidth = 40; // in px
     const iconHeight = iconWidth;
@@ -40,92 +94,103 @@ const clothesIcon = createLeafletCustomIcon('clothes-location-icon.svg');
 
 
 
+// Markers arrays
 const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: batteriesIcon, title: geoJsonPoint.properties.name })
+        return L.marker(latlng, {
+            icon: batteriesIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            displayInfoAboutPoint(feature.properties.name, feature.properties.address, feature.properties.description)
-        })
-        geoJsonPoint.on('mouseover', function (e) {
-            this.openPopup();
-        })
+            clickOnMarker('batteries', feature);
+        });
     }
 });
 const lightbulbsMarkers = L.geoJSON(lightbulbsGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: lightbulbsIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: lightbulbsIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('lightbulbs', feature);
+        });
     }
 });
 const paperMarkers = L.geoJSON(paperGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: paperIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: paperIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('paper', feature);
+        });
     }
 });
 const plasticMarkers = L.geoJSON(plasticGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: plasticIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: plasticIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('plastic', feature);
+        });
     }
 });
 const glassMarkers = L.geoJSON(glassGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: glassIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: glassIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('glass', feature);
+        });
     }
 });
 const metalMarkers = L.geoJSON(metalGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: metalIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: metalIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('metal', feature);
+        });
     }
 });
 const technicMarkers = L.geoJSON(technicGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: technicIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: technicIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('technic', feature);
+        });
     }
 });
 const clothesMarkers = L.geoJSON(clothesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
-        return L.marker(latlng, { icon: clothesIcon }).bindPopup(geoJsonPoint.geometry.type)
+        return L.marker(latlng, {
+            icon: clothesIcon
+        }).bindTooltip(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
-            console.log(feature.geometry.coordinates);
-        })
+            clickOnMarker('clothes', feature);
+        });
     }
 });
-
-
-
 
 // Overlay layers with markers
 const batteriesLayer = L.layerGroup([batteriesMarkers]);
@@ -136,6 +201,9 @@ const glassLayer = L.layerGroup([glassMarkers]);
 const metalLayer = L.layerGroup([metalMarkers]);
 const technicLayer = L.layerGroup([technicMarkers]);
 const clothesLayer = L.layerGroup([clothesMarkers]);
+
+
+
 
 const SEVASTOPOL_COORDS = [44.556972, 33.526402];
 const INITIAL_MAP_ZOOM = 12;
@@ -175,7 +243,7 @@ const map = L.map('map', {
 
     attributionControl: true, // TODO:
 
-    scrollWheelZoom: false, //TODO: For dev
+    scrollWheelZoom: true, //TODO: For dev
 });
 
 // Layer control adding
@@ -248,39 +316,6 @@ resetLeafletControls();
 
 
 
-
-const POINTS_INFO_CLASS = 'points-info';
-const POINTS_INFO_SELECTOR = `.${POINTS_INFO_CLASS}`;
-const POINTS_EMPTY_CLASS = `${POINTS_INFO_CLASS}__empty`;
-const POINTS_EMPTY_SELECTOR = `.${POINTS_EMPTY_CLASS}`;
-const POINTS_LIST_CLASS = `${POINTS_INFO_CLASS}__list`;
-const POINTS_LIST_SELECTOR = `.${POINTS_LIST_CLASS}`;
-const POINTS_ITEM_CLASS = `${POINTS_INFO_CLASS}__item`;
-const POINTS_ITEM_SELECTOR = `.${POINTS_ITEM_CLASS}`;
-
-const pointsEmpty = document.querySelector(POINTS_EMPTY_SELECTOR);
-const pointsList = document.querySelector(POINTS_LIST_SELECTOR);
-
-function createNewPointItem(pointName, pointAddress, pointDescription, classModificator) {
-    const pointsItemHTML = `
-        <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
-            <div>
-                <b>Название:</b>
-                ${pointName}
-            </div>
-            <div>
-                <b>Адрес:</b>
-                ${pointAddress}
-            </div>
-            <div>
-                <b>Описание:</b>
-                ${pointDescription}
-            </div>
-        </div>
-    `;
-
-    pointsList.insertAdjacentHTML('afterbegin', pointsItemHTML)
-}
 
 // Filters custom checkboxes 'change' eventlistener
 if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
@@ -362,8 +397,7 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
                     }
 
                     categoryGeoJsonPoints.features.forEach(point => {
-                        console.log(point);
-                        createNewPointItem(point.properties.name, point.properties.address, point.properties.description, checkboxCategory);
+                        createNewPointItem(point.properties.title, point.properties.address, point.properties.description, checkboxCategory);
                     });
                 };
             } else {
@@ -426,4 +460,3 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
 // function errorLocation(error) {
 //     console.log(error);
 // }
-

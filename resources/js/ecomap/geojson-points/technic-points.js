@@ -1,10 +1,11 @@
 const technicGeoJsonPoints = {
     "type": "FeatureCollection",
     "features": [
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 technic",
+                "title": "Name 1 technic",
                 "address": "Address for point 1 technic",
                 "description": "Description for point 1 technic"
             },
@@ -16,10 +17,11 @@ const technicGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2 technic",
+                "title": "Name 2 technic",
                 "address": "Address for point 2 technic",
                 "description": "Description for point 2 technic"
             },
@@ -31,6 +33,7 @@ const technicGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
     ]
 };
 

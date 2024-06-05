@@ -1,10 +1,11 @@
 const clothesGeoJsonPoints = {
     "type": "FeatureCollection",
     "features": [
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 clothes",
+                "title": "Name 1 clothes",
                 "address": "Address for point 1 clothes",
                 "description": "Description for point 1 clothes"
             },
@@ -16,10 +17,11 @@ const clothesGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2 clothes",
+                "title": "Name 2 clothes",
                 "address": "Address for point 2 clothes",
                 "description": "Description for point 2 clothes"
             },
@@ -31,6 +33,7 @@ const clothesGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
     ]
 };
 

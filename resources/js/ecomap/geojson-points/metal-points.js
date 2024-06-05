@@ -1,10 +1,11 @@
 const metalGeoJsonPoints = {
     "type": "FeatureCollection",
     "features": [
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 1 metal",
+                "title": "Name 1 metal",
                 "address": "Address for point 1 metal",
                 "description": "Description for point 1 metal"
             },
@@ -16,10 +17,11 @@ const metalGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
         {
             "type": "Feature",
             "properties": {
-                "name": "Name 2 metal",
+                "title": "Name 2 metal",
                 "address": "Address for point 2 metal",
                 "description": "Description for point 2 metal"
             },
@@ -31,6 +33,7 @@ const metalGeoJsonPoints = {
                 "type": "Point"
             }
         },
+
     ]
 };
 

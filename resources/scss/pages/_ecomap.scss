@@ -42,7 +42,7 @@
         height: calc(90dvh - var(--nav-height));
 
         display: grid;
-        grid-template-columns: 1fr 2.5fr;
+        grid-template-columns: 2fr 5fr;
     }
     
     &__information {
@@ -52,7 +52,7 @@
 
         @supports (scrollbar-width: thin) {
             scrollbar-width: thin;
-            scrollbar-color: var(--clr-accent) transparent;
+            scrollbar-color: var(--clr-grey) transparent;
         }
 
         > .info-about-point {
@@ -254,6 +254,20 @@
 
         font-size: var(--fs-400);
 
+        &.marker-click-active {
+            outline: 4px solid var(--custom-color);
+            animation: active_point_item 2s forwards ease-in;
+        }
+
+        @keyframes active_point_item {
+            from {
+                box-shadow: 0 0 3em 2em var(--custom-color);
+            }
+            to {
+                box-shadow: none;
+            }
+        }
+
         &--batteries {
             --custom-color: var(--clr-batteries);
         }
@@ -277,6 +291,16 @@
         }
         &--clothes {
             --custom-color: var(--clr-clothes);
+        }
+
+        &-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            margin-bottom: 0.25em;
+        }
+
+        &-address {
+            font-style: italic;
         }
     }
 }
