@@ -240,11 +240,12 @@
     }
 
     &__list {
-
+        display: grid;
+        gap: 1em;
     }
 
     &__item {
-        padding: .75em;
+        padding: 1em;
         line-height: 1.5;
         
         border-right: 1em solid var(--custom-color);
@@ -252,10 +253,6 @@
         background-color: color-mix(in srgb, var(--custom-color), transparent 92%);
 
         font-size: var(--fs-400);
-
-        &:not(:first-child) {
-            margin-top: 1em;
-        }
 
         &--batteries {
             --custom-color: var(--clr-batteries);

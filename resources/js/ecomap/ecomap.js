@@ -262,7 +262,7 @@ const pointsEmpty = document.querySelector(POINTS_EMPTY_SELECTOR);
 const pointsList = document.querySelector(POINTS_LIST_SELECTOR);
 
 function createNewPointItem(pointName, pointAddress, pointDescription, classModificator) {
-    const pointsListItemHTML = `
+    const pointsItemHTML = `
         <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
             <div>
                 <b>Название:</b>
@@ -279,7 +279,7 @@ function createNewPointItem(pointName, pointAddress, pointDescription, classModi
         </div>
     `;
 
-    pointsList.insertAdjacentHTML('afterbegin', pointsListItemHTML)
+    pointsList.insertAdjacentHTML('afterbegin', pointsItemHTML)
 }
 
 // Filters custom checkboxes 'change' eventlistener

@@ -43,24 +43,8 @@ const batteriesGeoJsonPoints = {
             },
             "geometry": {
                 "coordinates": [
-                    33.53147771283281,
-                    44.559849100641486
-                ],
-                "type": "Point"
-            }
-        },
-
-        {
-            "type": "Feature",
-            "properties": {
-                "name": "Name 4 batteries",
-                "address": "Address for point 4 batteries",
-                "description": "Description for point 4 batteries"
-            },
-            "geometry": {
-                "coordinates": [
-                    33.53147771283281,
-                    44.559849100641486
+                    33.4600617867103,
+                    44.562560030705924
                 ],
                 "type": "Point"
             }

@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'avatars/user_test_5.png',
         ];
 
-        for ($i=0; $i < 100; $i++) {
+        for ($i=0; $i < 500; $i++) {
             DB::table('users')->insert([
                 'created_at' => now(),
                 'updated_at' => now(),
