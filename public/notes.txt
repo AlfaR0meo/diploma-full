@@ -103,3 +103,32 @@ Test::first()
 //     //crs: L.CRS.EPSG3395,
 //     attribution: '&copy; <a href="http://www.yandex.ru">Яндекс</a>',
 // }).addTo(map);
+
+
+// const locationBtn = document.querySelector('.location-btn');
+
+// if (locationBtn) {
+//     locationBtn.addEventListener('click', () => {
+//         navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+//             enableHighAccuracy: true
+//         });
+//     });
+// }
+
+// function successLocation(userPosition) {
+//     console.log(userPosition);
+
+//     const lat = userPosition.coords.latitude;
+//     const lng = userPosition.coords.longitude;
+
+//     L.marker([lat, lng], {
+//         icon: userLocationIcon,
+//         alt: 'Ваше местоположение'
+//     })
+//         .bindPopup('Ваше местоположение')
+//         .addTo(map);
+// }
+
+// function errorLocation(error) {
+//     console.log(error);
+// }

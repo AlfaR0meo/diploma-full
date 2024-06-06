@@ -26,24 +26,38 @@ const pointsEmpty = document.querySelector(POINTS_EMPTY_SELECTOR);
 const pointsList = document.querySelector(POINTS_LIST_SELECTOR);
 
 function createNewPointItem(pointName, pointAddress, pointDescription, classModificator) {
-    const pointsItemHTML = `
-        <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
-            <div class="${POINTS_ITEM_CLASS}-title">
-                ${pointName}
+
+    let pointsItemHTML = '';
+
+    if (!pointDescription) {
+        pointsItemHTML = `
+            <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
+                <div class="${POINTS_ITEM_CLASS}-title">
+                    ${pointName}
+                </div>
+                <div class="${POINTS_ITEM_CLASS}-address">
+                    ${pointAddress}
+                </div>
             </div>
-            <div class="${POINTS_ITEM_CLASS}-address">
-                ${pointAddress}
+        `;
+    } else {
+        pointsItemHTML = `
+            <div class="${POINTS_ITEM_CLASS} ${POINTS_ITEM_CLASS}--${classModificator}">
+                <div class="${POINTS_ITEM_CLASS}-title">
+                    ${pointName}
+                </div>
+                <div class="${POINTS_ITEM_CLASS}-address">
+                    ${pointAddress}
+                </div>
+                <div class="${POINTS_ITEM_CLASS}-description">
+                    ${pointDescription}
+                </div>
             </div>
-            
-            <div class="${POINTS_ITEM_CLASS}-description">
-                ${pointDescription}
-            </div>
-        </div>
-    `;
+        `;
+    }
 
     pointsList.insertAdjacentHTML('afterbegin', pointsItemHTML)
 }
-
 function clickOnMarker(classModificator, feature) {
     const neededElements = document.querySelectorAll(`${POINTS_ITEM_SELECTOR}--${classModificator}`);
     const allElements = document.querySelectorAll(POINTS_ITEM_SELECTOR);
@@ -67,9 +81,11 @@ function clickOnMarker(classModificator, feature) {
 }
 
 
+
+
 // Icons creating and configuring
 function createLeafletCustomIcon(iconFileName) {
-    const iconWidth = 40; // in px
+    const iconWidth = 40;
     const iconHeight = iconWidth;
     const iconFolderPath = './../../img/icons/ecomap/location-markers/';
 
@@ -91,15 +107,14 @@ const metalIcon = createLeafletCustomIcon('metal-location-icon.svg');
 const technicIcon = createLeafletCustomIcon('technic-location-icon.svg');
 const clothesIcon = createLeafletCustomIcon('clothes-location-icon.svg');
 
-
-
-
 // Markers arrays
 const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: batteriesIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: batteriesIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title);
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -110,8 +125,10 @@ const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
 const lightbulbsMarkers = L.geoJSON(lightbulbsGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: lightbulbsIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: lightbulbsIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title);
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -122,8 +139,10 @@ const lightbulbsMarkers = L.geoJSON(lightbulbsGeoJsonPoints, {
 const paperMarkers = L.geoJSON(paperGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: paperIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: paperIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -134,8 +153,10 @@ const paperMarkers = L.geoJSON(paperGeoJsonPoints, {
 const plasticMarkers = L.geoJSON(plasticGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: plasticIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: plasticIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -146,8 +167,10 @@ const plasticMarkers = L.geoJSON(plasticGeoJsonPoints, {
 const glassMarkers = L.geoJSON(glassGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: glassIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: glassIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -158,8 +181,10 @@ const glassMarkers = L.geoJSON(glassGeoJsonPoints, {
 const metalMarkers = L.geoJSON(metalGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: metalIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: metalIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -170,8 +195,10 @@ const metalMarkers = L.geoJSON(metalGeoJsonPoints, {
 const technicMarkers = L.geoJSON(technicGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: technicIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: technicIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -182,8 +209,10 @@ const technicMarkers = L.geoJSON(technicGeoJsonPoints, {
 const clothesMarkers = L.geoJSON(clothesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
-            icon: clothesIcon
-        }).bindTooltip(geoJsonPoint.properties.title)
+            icon: clothesIcon,
+            title: geoJsonPoint.properties.title,
+            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+        }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
         geoJsonPoint.on('click', function () {
@@ -270,6 +299,10 @@ L.control.layers(baseMaps, overlayLayers, {
 
 
 
+
+
+
+
 // Custom layers checkboxes
 const customLayersCheckboxes = document.querySelectorAll('.filter-layers__custom-checkbox input[type=checkbox]');
 let checkedCustomCheckboxesCounter = 0;
@@ -282,13 +315,11 @@ clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
 // Кнопка очистки фильтров
 clearFiltersBtn.addEventListener('click', () => {
-    customLayersCheckboxes.forEach(customCheckbox => {
-        customCheckbox.checked = false;
-    });
     checkedCustomCheckboxesCounter = 0;
     clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
 
-    resetLeafletControls();
+    resetEcomapControls();
+
     pointsList.querySelectorAll(POINTS_ITEM_SELECTOR).forEach(item => item.remove());
     pointsEmpty.classList.remove('none');
 });
@@ -299,20 +330,32 @@ clearFiltersBtn.addEventListener('click', () => {
 // Leaflet layers checkboxes
 const leafletLayersCheckboxes = document.querySelectorAll('.leaflet-control-layers-overlays .leaflet-control-layers-selector');
 const leafletMarkersPane = document.querySelector('.leaflet-pane .leaflet-marker-pane');
+const leafletPopupsPane = document.querySelector('.leaflet-pane .leaflet-popup-pane');
 
-function resetLeafletControls() {
+function resetEcomapControls() {
+    resetCustomCheckboxes();
+
     resetLeafletLayersCheckboxes();
-    clearAllLeafletMarkers();
+    clearLeafletMarkers();
+    clearLeafletPopups();
 }
 function resetLeafletLayersCheckboxes() {
     leafletLayersCheckboxes.forEach(layerCheckbox => {
         layerCheckbox.checked = false;
     });
 }
-function clearAllLeafletMarkers() {
+function resetCustomCheckboxes() {
+    customLayersCheckboxes.forEach(customCheckbox => {
+        customCheckbox.checked = false;
+    });
+}
+function clearLeafletMarkers() {
     leafletMarkersPane.innerHTML = '';
 }
-resetLeafletControls();
+function clearLeafletPopups() {
+    leafletPopupsPane.innerHTML = '';
+}
+resetEcomapControls();
 
 
 
@@ -409,54 +452,3 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
 } else {
     console.error('Кол-во кастомных и leaflet чекбоксов не совпадает!');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Location btn
-// const locationBtn = document.querySelector('.filter-layers__location-btn');
-// if (locationBtn) {
-//     locationBtn.addEventListener('click', () => {
-//         navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-//             enableHighAccuracy: true
-//         });
-//     });
-// }
-// function successLocation(userPosition) {
-//     console.log(userPosition);
-
-//     const lat = userPosition.coords.latitude;
-//     const lng = userPosition.coords.longitude;
-
-//     //FIXME:
-//     L.marker([lat, lng], { icon: userLocationIcon, alt: 'Ваше местоположение' }).bindPopup('Ваше местоположение').addTo(map);
-// }
-// function errorLocation(error) {
-//     console.log(error);
-// }

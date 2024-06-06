@@ -6,7 +6,7 @@
     --ff-system: system-ui;
     --ff-mono: "Consolas", monospace;
 
-    --container-lg-width: 1200px; //1300px
+    --container-lg-width: 1300px; //1300px
 
     --tr-dur: 200ms;
 
@@ -30,6 +30,10 @@
     --clr-metal: #00305a;
     --clr-technic: #796138;
     --clr-clothes: #ff1d23;
+
+    --clr-vk: #0077ff;
+    --clr-telegram: #2CA4E3;
+    --clr-youtube: red;
 
     --fs-100: calc(var(--fs-400) * 0.625);  //10px
     --fs-200: calc(var(--fs-400) * 0.75);   //12px

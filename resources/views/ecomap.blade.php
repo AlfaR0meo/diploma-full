@@ -51,8 +51,8 @@
             border-radius: .3em;
         }
 
-        /* .leaflet-tooltip {
-            max-width: 150px;
+        .leaflet-tooltip {
+            width: max-content !important;
             padding: 1em !important;
             background-color: white !important;
             border: none !important;
@@ -61,7 +61,15 @@
             color: var(--clr-text) !important;
             white-space: normal !important;
             box-shadow: 0 0 1em hsl(0 0% 30% / .1) !important;
-        } */
+        }
+
+        .leaflet-popup-content {
+            font-size: var(--fs-400) !important;
+        }
+
+        .leaflet-popup-close-button {
+            font-size: var(--fs-500) !important;
+        }
 
         #map > div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div > a:nth-child(1) > svg {
             display: none !important;
@@ -185,7 +193,7 @@
             </div>
 
         </div>
-        
+    
         @include('blocks.footer')
     </div>
 @endsection

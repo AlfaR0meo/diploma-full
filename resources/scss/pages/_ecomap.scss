@@ -246,22 +246,27 @@
 
     &__item {
         padding: 1em;
-        line-height: 1.5;
-        
-        border-right: 1em solid var(--custom-color);
-        border-radius: .25em;
-        background-color: color-mix(in srgb, var(--custom-color), transparent 92%);
 
+        display: grid;
+        gap: .5em;
+        
+        border-right: .5em solid var(--custom-color);
+        border-radius: .5em;
+        background-color: color-mix(in srgb, var(--custom-color), transparent 92%);
+        
         font-size: var(--fs-400);
+        font-family: var(--ff-logo);
+        line-height: 1.5;
 
         &.marker-click-active {
             outline: 4px solid var(--custom-color);
-            animation: active_point_item 2s forwards ease-in;
+            outline-offset: -4px;
+            animation: active_point_item 1.5s forwards ease-in;
         }
 
         @keyframes active_point_item {
             from {
-                box-shadow: 0 0 3em 2em var(--custom-color);
+                box-shadow: 0 0 3em var(--custom-color);
             }
             to {
                 box-shadow: none;
@@ -301,6 +306,24 @@
 
         &-address {
             font-style: italic;
+
+            padding-left: 1.75em;
+            position: relative;
+
+            &::before {
+                content: "";
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                width: 1lh;
+                aspect-ratio: 1;
+
+                pointer-events: none;
+
+                background: url("/resources/img/icons/ecomap/point-address.svg") no-repeat center / contain;
+            }
         }
     }
 }

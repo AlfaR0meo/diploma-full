@@ -12,7 +12,7 @@
 
         <div class="container container--lg">
 
-            <h1><span class="accent-color">Эко</span>идеи</h1>
+            <h1><span class="accent-color">Эко</span>идеи и предложения</h1>
 
             {{-- Здесь выводится список экоидей для всех пользователей --}}
             @if (isset($ecoideas))
