@@ -250,7 +250,7 @@
         display: grid;
         gap: .5em;
         
-        border-right: .5em solid var(--custom-color);
+        border-left: .75em solid var(--custom-color);
         border-radius: .5em;
         background-color: color-mix(in srgb, var(--custom-color), transparent 92%);
         
@@ -261,15 +261,15 @@
         &.marker-click-active {
             outline: 4px solid var(--custom-color);
             outline-offset: -4px;
-            animation: active_point_item 1.5s forwards ease-in;
+            animation: active_point_item 1200ms forwards ease-in;
         }
 
         @keyframes active_point_item {
             from {
-                box-shadow: 0 0 3em var(--custom-color);
+                box-shadow: 0 0 5em 1em var(--custom-color);
             }
             to {
-                box-shadow: none;
+                box-shadow: 0 0 5em 1em transparent;
             }
         }
 

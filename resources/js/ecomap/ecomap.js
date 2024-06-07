@@ -72,8 +72,9 @@ function clickOnMarker(classModificator, feature) {
 
         if (titleDiv.textContent.includes(feature.properties.title) && addressDiv.textContent.includes(feature.properties.address)) {
             elem.classList.add('marker-click-active');
+
             elem.scrollIntoView({
-                behavior: 'smooth',
+                behavior: 'instant', // "smooth" bag in chromium
                 block: 'center'
             });
         }

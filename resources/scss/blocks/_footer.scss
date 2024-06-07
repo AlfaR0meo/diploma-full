@@ -24,10 +24,9 @@
     &__ecotaxi {
         margin-left: auto;
         padding: 0.5em 1em 0.5em 3em;
-        // border: 4px dashed;
-        border-radius: 1em;
         font-weight: 500;
-        transition: border-color var(--tr-dur);
+        border-radius: 1em;
+        transition: background-color var(--tr-dur);
         position: relative;
 
         &::before {
@@ -84,6 +83,7 @@
                 object-fit: cover;
 
                 fill: var(--clr-accent);
+                transition: fill calc(var(--tr-dur) / 2);
             }
         }
     }
