@@ -74,6 +74,11 @@
         #map > div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div > a:nth-child(1) > svg {
             display: none !important;
         }
+
+        /* .leaflet-marker-icon.active {
+            outline: 5px solid red;
+            outline-offset: 5px;
+        } */
     </style>
 @endsection
 

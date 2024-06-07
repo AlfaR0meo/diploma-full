@@ -14,6 +14,8 @@ import clothesGeoJsonPoints from './geojson-points/clothes-points.js';
 
 
 
+const LEAFLET_MARKER_CLASS = 'leaflet-marker-icon';
+const LEAFLET_MARKER_SELECTOR = `.${LEAFLET_MARKER_CLASS}`;
 const POINTS_INFO_CLASS = 'points-info';
 const POINTS_INFO_SELECTOR = `.${POINTS_INFO_CLASS}`;
 const POINTS_EMPTY_CLASS = `${POINTS_INFO_CLASS}__empty`;
@@ -80,6 +82,24 @@ function clickOnMarker(classModificator, feature) {
         }
     });
 }
+function clickOnPointItem() {
+    let leafletMarkers = document.querySelectorAll(LEAFLET_MARKER_SELECTOR);
+    let pointsItems = document.querySelectorAll(POINTS_ITEM_SELECTOR);
+
+    pointsItems.forEach(item => {
+        item.addEventListener('click', () => {
+            leafletMarkers.forEach(marker => {
+                marker.classList.remove('active');
+                const pointTitle = item.querySelector(`${POINTS_ITEM_SELECTOR}-title`);
+
+                if (pointTitle.textContent.includes(marker.title)) {
+                    marker.classList.add('active');
+                    marker.click();
+                }
+            });
+        });
+    });
+}
 
 
 
@@ -113,8 +133,7 @@ const batteriesMarkers = L.geoJSON(batteriesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: batteriesIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title);
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -127,8 +146,7 @@ const lightbulbsMarkers = L.geoJSON(lightbulbsGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: lightbulbsIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title);
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -141,8 +159,7 @@ const paperMarkers = L.geoJSON(paperGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: paperIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -155,8 +172,7 @@ const plasticMarkers = L.geoJSON(plasticGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: plasticIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -169,8 +185,7 @@ const glassMarkers = L.geoJSON(glassGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: glassIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -183,8 +198,7 @@ const metalMarkers = L.geoJSON(metalGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: metalIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -197,8 +211,7 @@ const technicMarkers = L.geoJSON(technicGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: technicIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -211,8 +224,7 @@ const clothesMarkers = L.geoJSON(clothesGeoJsonPoints, {
     pointToLayer: function (geoJsonPoint, latlng) {
         return L.marker(latlng, {
             icon: clothesIcon,
-            title: geoJsonPoint.properties.title,
-            alt: `Пункт приёма ${geoJsonPoint.properties.title}`
+            title: geoJsonPoint.properties.title
         }).bindPopup(geoJsonPoint.properties.title)
     },
     onEachFeature: function (feature, geoJsonPoint) {
@@ -300,16 +312,16 @@ L.control.layers(baseMaps, overlayLayers, {
 
 
 
-
-
-
-
 // Custom layers checkboxes
 const customLayersCheckboxes = document.querySelectorAll('.filter-layers__custom-checkbox input[type=checkbox]');
 let checkedCustomCheckboxesCounter = 0;
 const clearFiltersBtn = document.querySelector('.filter-layers__clear-button');
 const clearFiltersBtnSpan = clearFiltersBtn.querySelector('span');
 clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
+// Leaflet layers checkboxes
+const leafletLayersCheckboxes = document.querySelectorAll('.leaflet-control-layers-overlays .leaflet-control-layers-selector');
+const leafletMarkersPane = document.querySelector('.leaflet-pane .leaflet-marker-pane');
+const leafletPopupsPane = document.querySelector('.leaflet-pane .leaflet-popup-pane');
 
 
 
@@ -324,15 +336,6 @@ clearFiltersBtn.addEventListener('click', () => {
     pointsList.querySelectorAll(POINTS_ITEM_SELECTOR).forEach(item => item.remove());
     pointsEmpty.classList.remove('none');
 });
-
-
-
-
-// Leaflet layers checkboxes
-const leafletLayersCheckboxes = document.querySelectorAll('.leaflet-control-layers-overlays .leaflet-control-layers-selector');
-const leafletMarkersPane = document.querySelector('.leaflet-pane .leaflet-marker-pane');
-const leafletPopupsPane = document.querySelector('.leaflet-pane .leaflet-popup-pane');
-
 function resetEcomapControls() {
     resetCustomCheckboxes();
 
@@ -365,18 +368,10 @@ resetEcomapControls();
 if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
     customLayersCheckboxes.forEach((customCheckbox, index) => {
         customCheckbox.addEventListener('change', function () {
+
             this.checked ? checkedCustomCheckboxesCounter++ : checkedCustomCheckboxesCounter--;
-
-            if (checkedCustomCheckboxesCounter !== 0) {
-                pointsEmpty.classList.add('none');
-            } else {
-                pointsEmpty.classList.remove('none');
-            }
-
             clearFiltersBtnSpan.textContent = checkedCustomCheckboxesCounter || '';
-
-
-
+            checkedCustomCheckboxesCounter ? pointsEmpty.classList.add('none') : pointsEmpty.classList.remove('none');
 
             const leafletLayersCheckbox = leafletLayersCheckboxes[index];
 
@@ -390,16 +385,12 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
                 leafletLayersCheckbox.click();
             }
 
-
-
-
             const checkboxLabel = this.closest('label');
             const checkboxLabelClass = checkboxLabel.classList.value.toLowerCase();
             const checkboxCategory = checkboxLabel.dataset.category;
 
             if (this.checked) {
                 if (checkboxLabelClass.includes(checkboxCategory)) {
-
                     let categoryGeoJsonPoints = [];
 
                     switch (checkboxCategory) {
@@ -444,6 +435,7 @@ if (customLayersCheckboxes.length === leafletLayersCheckboxes.length) {
                         createNewPointItem(point.properties.title, point.properties.address, point.properties.description, checkboxCategory);
                     });
                 };
+                clickOnPointItem();
             } else {
                 pointsList.querySelectorAll(`${POINTS_ITEM_SELECTOR}--${checkboxCategory}`).forEach(item => item.remove());
             }

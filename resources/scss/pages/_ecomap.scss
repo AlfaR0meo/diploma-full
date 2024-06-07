@@ -43,6 +43,7 @@
 
         display: grid;
         grid-template-columns: 2fr 5fr;
+        grid-template-columns: 1fr 2fr;
     }
     
     &__information {
@@ -258,6 +259,9 @@
         font-family: var(--ff-logo);
         line-height: 1.5;
 
+        transition: background-color var(--tr-dur);
+        cursor: pointer;
+
         &.marker-click-active {
             outline: 4px solid var(--custom-color);
             outline-offset: -4px;
@@ -271,6 +275,16 @@
             to {
                 box-shadow: 0 0 5em 1em transparent;
             }
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: color-mix(in srgb, var(--custom-color), transparent 88%);
+            }
+        }
+
+        &:active {
+            background-color: color-mix(in srgb, var(--custom-color), transparent 84%);
         }
 
         &--batteries {
