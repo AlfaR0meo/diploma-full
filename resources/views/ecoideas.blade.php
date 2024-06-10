@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('head')  
-    @include('blocks.head', ['title' => 'Мероприятия'])
+    @include('blocks.head', ['title' => 'Экоидеи'])
 @endsection
 
 @section('page-content')
@@ -12,7 +12,9 @@
 
         <div class="container container--lg">
 
-            <h1><span class="accent-color">Эко</span>идеи и предложения</h1>
+            <div class="ecoideas__intro">
+                <h1 class="ecoideas__title"><span class="accent-color">Эко</span>идеи и предложения</h1>
+            </div>
 
             {{-- Здесь выводится список экоидей для всех пользователей --}}
             @if (isset($ecoideas))
@@ -24,8 +26,8 @@
                     <div class="ecoideas__wrap">
                         @foreach ($ecoideas as $ecoidea)
                             <div class="ecoidea">
-                                <a class="ecoidea__title" href="{{ route('ecoideas.ecoidea-show', ['ecoidea_id' => $ecoidea->id]) }}">{{ $ecoidea->title }}</a>
-                                <div class="ecoidea__content">{{ $ecoidea->content }}</div>
+                                <a class="ecoidea__title" href="{{ route('ecoideas.ecoidea-show', ['ecoidea_id' => $ecoidea->id]) }}">{{ Str::of($ecoidea->title)->words(12) }}</a>
+                                <div class="ecoidea__content">{{ Str::of($ecoidea->content)->words(24) }}</div>
 
                                 <div class="ecoidea__footer">
                                     <a class="ecoidea__author" href="{{ route('user.profile-public.show', ['user_id' => $ecoidea->user_id]) }}">
@@ -50,7 +52,7 @@
                 @endif
             @endif
 
-            <h2>Создать свою <span class="accent-color">эко</span>идею</h2>
+            <h2 class="ecoideas__create-title">Создать свою <span class="accent-color">эко</span>идею</h2>
 
             @auth
                 <form class="ecoideas__form-create" action="{{ route('ecoideas') }}" method="POST" novalidate>
@@ -67,7 +69,7 @@
 
                     <fieldset>
                         <label for="ecoidea-content">Описание</label>
-                        <textarea name="content" id="ecoidea-content" required maxlength="500">{{ fake()->text(500) }}</textarea>
+                        <textarea name="content" id="ecoidea-content" required maxlength="1200">{{ fake()->text(1200) }}</textarea>
                         
                         @error('content')
                             <div class="block block--error m-0">{{ $message }}</div>

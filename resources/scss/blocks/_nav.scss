@@ -15,10 +15,9 @@
     background-color: hsl(0 0% 100% / 70%);
     box-shadow: 0 0 1em hsl(0 0% 30% / .1);
 
-    font-size: 1.125rem;
-    color: var(--clr-text);
     line-height: 1;
     text-align: center;
+    color: var(--clr-text);
 
     &__list {
         display: flex;
@@ -181,7 +180,7 @@
     &__user-account-menu {
         position: absolute;
         top: calc(100% + .5em);
-        right: 0;
+        right: 50%;
         
         display: grid;
         padding: .5em 1em;
@@ -191,7 +190,7 @@
         border: 1px solid var(--clr-light-grey);
         background-color: #fff;
 
-        transform: translateY(-0.5em);
+        transform: translateY(-0.5em) translateX(50%);
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
@@ -202,7 +201,7 @@
             visibility: visible;
             opacity: 1;
             pointer-events: auto;
-            transform: translateY(0);
+            transform: translateY(0) translateX(50%);
         }
 
         > .profile-link {

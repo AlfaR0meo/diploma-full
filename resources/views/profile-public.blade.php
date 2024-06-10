@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')  
-    @include('blocks.head', ['title' => 'Профиль'])
+    @include('blocks.head', ['title' => 'Профиль пользователя'])
 @endsection
 
 @section('page-content')
@@ -10,7 +10,9 @@
 
         <div class="container container--lg">
 
-            <h1 class="profile__title profile__title--public">Профиль пользователя<br><span class="info-color">{{ $publicUser->name}}</span></h1> 
+            <div class="profile__intro">
+                <h1 class="profile__title profile__title--public">Профиль пользователя<br><span class="info-color">{{ $publicUser->name}}</span></h1> 
+            </div>
 
             <div class="profile__group profile__group--public">
                 @if ($publicUser->avatar)

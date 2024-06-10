@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EcomapController;
 use App\Http\Controllers\EcoideaController;
 use App\Http\Controllers\EventController;
@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController;
 
 
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::redirect('/home', '/');
 
 Route::get('/ecomap', [EcomapController::class, 'index'])->name('ecomap');

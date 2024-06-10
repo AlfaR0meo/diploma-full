@@ -1,16 +1,20 @@
 /* ■■■■■ ECOIDEAS ■■■■■■■■■■■■■■■■■■■■ */
 
 .ecoideas {
-    h2 {
-        text-align: center;
-        margin-block: 1em .5em;
-        font-size: 3em;
+    &__intro {
+        margin-block: 3em;
     }
 
     &__wrap {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1em;
+    }
+
+    &__create-title {
+        text-align: center;
+        margin-block: 1em .5em;
+        font-size: 3em;
     }
 
     &__form-create {
@@ -82,7 +86,6 @@
     }
 
     &__need-auth {
-        margin-block-end: 3em;
         text-align: center;
         line-height: 1.5;
         text-wrap: balance;
@@ -146,12 +149,6 @@
     &__title {
         font-size: 1.5em;
         font-weight: 700;
-
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-
         transition: color var(--tr-dur);
 
         @media (any-hover: hover) {
@@ -159,13 +156,6 @@
                 text-decoration: underline;
             }
         }
-    }
-
-    &__content {
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     &__footer {

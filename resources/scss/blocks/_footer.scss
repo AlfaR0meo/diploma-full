@@ -1,9 +1,10 @@
 /* ■■■■■ ФУТЕР ■■■■■■■■■■■■■■■■■■■■■■■ */
 .footer {
     margin-top: 3em;
+    box-shadow: 0 0 1em hsl(0 0% 30% / .1);
 
     &__row {
-        padding-block: 2em;
+        padding-block: 1.75em;
 
         display: flex;
         align-items: center;
@@ -11,6 +12,7 @@
         flex-wrap: wrap;
 
         line-height: 1.5;
+        font-size: var(--fs-600);
     }
 
     &__copyright {

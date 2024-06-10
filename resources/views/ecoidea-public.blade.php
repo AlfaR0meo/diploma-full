@@ -10,7 +10,9 @@
 
         <div class="container container--lg">
 
-            <h1 class="profile__title profile__title--public">Экоидея <br> от пользователя {user_id}</h1> 
+            <div class="profile__intro">
+                <h1 class="profile__title profile__title--public"><span class="accent-color">Эко</span>идея <br> от пользователя {user_id}</h1> 
+            </div>
 
             <div class="profile__group profile__group--public">
                 <div class="info">

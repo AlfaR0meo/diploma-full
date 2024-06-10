@@ -1,6 +1,10 @@
 /* ■■■■■ PROFILE ■■■■■■■■■■■■■■■■■■■■■ */
 
 .profile {
+    &__intro {
+        margin-block: 3em;
+    }
+
     &__title {
         &--public {
             text-align: center;
@@ -9,7 +13,6 @@
 
     .grid {
         display: grid;
-        align-items: start;
         grid-template-columns: 1fr 1fr;
         gap: 2em;
 

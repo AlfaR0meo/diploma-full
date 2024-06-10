@@ -14,6 +14,7 @@
     &__description {
         max-width: 55ch;
         line-height: 1.6;
+        font-size: var(--fs-600);
     }
     
     &__illustration {
@@ -43,7 +44,6 @@
 
         display: grid;
         grid-template-columns: 2fr 5fr;
-        grid-template-columns: 1fr 2fr;
     }
     
     &__information {
@@ -354,26 +354,14 @@
 
     .leaflet-marker-icon {
         background-color: transparent !important;
+        transition: filter var(--tr-dur);
 
         @media (any-hover: hover) {
             &:hover {
-                filter: brightness(1.25);
+                filter: brightness(1.2) drop-shadow(0 0 .2em hsl(0 0% 0% / 30%));
             }
         }
     }
-
-    // .leaflet-control-layers {
-    //     .leaflet-control-layers-overlays {
-    //         > label {
-    //             > span {
-    //                 display: flex;
-    //                 gap: 0.5em;
-    //                 -webkit-user-select: none;
-    //                 user-select: none;
-    //             }
-    //         }
-    //     }
-    // }
 
     .custom-map-watermark {
         position: absolute;

@@ -24,7 +24,7 @@ class EcoideaController extends Controller
     public function store(Request $request) {
         $request->validate([
             'title' => ['required', 'string', 'max:100'],
-            'content' => ['required', 'string', 'max:500'],
+            'content' => ['required', 'string', 'max:1200'],
         ]);
 
         Ecoidea::create([

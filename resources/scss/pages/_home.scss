@@ -1,6 +1,84 @@
 /* ■■■■■ ГЛАВНАЯ ■■■■■■■■■■■■■■■■■■■■■ */
 .home {
     &__title {
-        width: 80%;
+        max-width: 700px;
+        margin-block-end: .5em;
+        color: white;
+    }
+
+    &__block {
+        min-height: 470px;
+        padding: 2em;
+        border-radius: 1em 4em 1em 4em;
+        
+        &--intro {
+            background: linear-gradient(to right, var(--clr-accent) 10ch, transparent 70%), url("/resources/img/home-intro.jpg") no-repeat center -7em / cover;
+        }
+
+        &--community {
+            background: linear-gradient(to left, var(--clr-info) 10ch, transparent 70%), url("/resources/img/home-community.jpg") no-repeat center / cover;
+        }
+
+        &--together {
+            background: linear-gradient(to right, var(--clr-ground) 10ch, transparent 70%), url("/resources/img/home-together.jpg") no-repeat 2em center / cover;
+        }
+
+        &--ecomap {
+            background: linear-gradient(to left, color-mix(in srgb, var(--clr-accent), black 20%) 15ch, transparent), url("/resources/img/home-ecomap-left.jpg") no-repeat -2em center / cover;
+        }
+
+        &--ecoideas {
+            background: linear-gradient(to right, color-mix(in srgb, var(--clr-info), black 20%) 15ch, transparent), url("/resources/img/home-ecoideas.jpg") no-repeat 2em center / cover;
+        }
+
+        &:nth-child(2n) {
+            p {
+                margin-left: auto;
+                text-align: right;
+            }
+
+            a {
+                margin-left: auto;   
+            }
+        }
+
+        &:first-child {
+            margin-block-start: 3em;
+        }
+
+        &:not(:last-child) {
+            margin-block-end: 3em;
+        }
+
+        p {
+            max-width: 40ch;
+            font-size: var(--fs-700);
+            line-height: 1.6;
+            color: #fff;
+            text-wrap: pretty;
+        }
+    }
+
+    &__btn-link--to {
+        display: block;
+        width: fit-content;
+        margin-block-start: 1em;
+        padding: .75em 1em;
+        font-size: var(--fs-700);
+        border: 2px solid white;
+        color: #fff;
+        border-radius: .25em;
+        transition: background-color var(--tr-dur), color var(--tr-dur), transform calc(var(--tr-dur) / 2);
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #fff;
+                color: var(--clr-text);
+            }
+        }
+
+        &:active {
+            transform: translateY(2px);
+        }
     }
 }

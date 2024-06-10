@@ -11,7 +11,9 @@
 
         <div class="container container--lg">
 
-            <h1 class="profile__title">Личный кабинет</h1> 
+            <div class="profile__intro">        
+                <h1 class="profile__title">Личный кабинет</h1> 
+            </div>
 
             <div class="grid">
                 {{-- Информация об аккаунте --}}
@@ -33,27 +35,6 @@
                             <div><b>О себе: </b>{{ Auth::user()->bio }}</div>
                         @endif
                     </div>
-                </div>
-
-                {{-- Аватарка --}}
-                <div class="profile__group">
-                    <h2>Фото профиля</h2>
-
-                    <form action="{{ route('user.profile.avatar.add') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        
-                        <input type="file" name="avatar" id="avatar" accept="image/*" required>
-                        @error('avatar')
-                        <div class="block block--error m-0">{{ $message }}</div>
-                        @enderror
-                    </form>
-
-                    @if (Auth::user()->avatar)
-                        <form action="{{ route('user.profile.avatar.delete') }}" method="POST">
-                            @csrf
-                            <button class="delete mbs-05" type="submit">Удалить аватарку</button>
-                        </form>
-                    @endif
                 </div>
 
                 {{-- О себе --}}
@@ -82,6 +63,31 @@
                             <button class="delete-bio-btn delete" type="button">Удалить о себе</button>
                         @endif
                     </div>
+
+                    {{-- TODO: --}}
+                    <h2 class="mb-05">Статус аккаунта</h2>
+
+                </div>
+
+                {{-- Аватарка --}}
+                <div class="profile__group">
+                    <h2>Фото профиля</h2>
+
+                    <form action="{{ route('user.profile.avatar.add') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        
+                        <input type="file" name="avatar" id="avatar" accept="image/*" required>
+                        @error('avatar')
+                        <div class="block block--error m-0">{{ $message }}</div>
+                        @enderror
+                    </form>
+
+                    @if (Auth::user()->avatar)
+                        <form action="{{ route('user.profile.avatar.delete') }}" method="POST">
+                            @csrf
+                            <button class="delete mbs-05" type="submit">Удалить аватарку</button>
+                        </form>
+                    @endif
                 </div>
 
                 {{-- Удалить аккаунт --}}
