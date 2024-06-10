@@ -9,6 +9,17 @@
         &--public {
             text-align: center;
         }
+
+        &-username {
+            color: var(--clr-info);
+            text-underline-offset: .15em;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
     }
 
     .grid {
@@ -147,6 +158,51 @@
     
             &:active {
                 transform: translateY(2px);
+            }
+        }
+
+        .user-ecostatus-name {
+            text-align: center;
+            width: fit-content;
+            padding: .75em 1em;
+            padding-left: 2.5em;
+            border-radius: 100vmin;
+            font-weight: 500;
+            color: #fff;
+            background-color: var(--clr-accent);
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 1em;
+                width: 1em;
+                aspect-ratio: 1;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                pointer-events: none;
+            }
+            
+            &--1 {
+                padding-left: 1em;
+            }
+            &--2, &--3 {
+                &::before {
+                    background-image: url('/resources/img/icons/ecostatus-star-level-2-3.svg');
+                }
+            }
+            &--4 {
+                &::before {
+                    background-image: url('/resources/img/icons/ecostatus-star-level-4.svg');
+                }
+            }
+            &--5 {
+                &::before {
+                    background-image: url('/resources/img/icons/ecostatus-star-level-5.svg');
+                }
             }
         }
     }

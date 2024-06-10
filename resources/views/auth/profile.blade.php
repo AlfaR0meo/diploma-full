@@ -1,3 +1,8 @@
+@use('App\Models\Ecoidea')
+@php
+    $userEcoideasCount = Ecoidea::where('user_id', Auth::user()->id)->count();
+@endphp
+
 @extends('layouts.app')
 
 @section('head')  
@@ -64,9 +69,6 @@
                         @endif
                     </div>
 
-                    {{-- TODO: --}}
-                    <h2 class="mb-05">Статус аккаунта</h2>
-
                 </div>
 
                 {{-- Аватарка --}}
@@ -94,12 +96,58 @@
                 <div class="profile__group">
                     <h2>Удалить аккаунт</h2>
 
-                    <form action="{{ route('user.profile.delete') }}" method="POST">
+                    <form class="delete-account-form" action="{{ route('user.profile.delete') }}" method="POST">
                         @csrf
                         @method('DELETE')
 
-                        <button class="delete" type="submit">Удалить аккаунт</button>
+                        <button class="delete-account-btn delete" type="submit">Удалить аккаунт</button>
                     </form>
+                </div>
+
+                {{-- Экостатус аккаунта --}}
+                <div class="profile__group">
+                    <h2>
+                        Экостатус аккаунта (уровень
+
+                        @if ($userEcoideasCount === 0)
+                            1
+                        @elseif ($userEcoideasCount > 0 && $userEcoideasCount < 5)
+                            2
+                        @elseif ($userEcoideasCount >= 5 && $userEcoideasCount < 10)
+                            3
+                        @elseif ($userEcoideasCount >= 10 && $userEcoideasCount < 20)
+                            4
+                        @elseif ($userEcoideasCount >= 20)
+                            5
+                        @endif
+
+                        из 5)
+                    </h2>
+
+                    <div>Количество созданных экоидей: <b>{{ $userEcoideasCount }}</b></div>
+
+                    <div class="mbs-1">
+                        @if ($userEcoideasCount === 0)
+                            <div class="user-ecostatus-name user-ecostatus-name--1">ЭкоПользователь</div>
+                        @elseif ($userEcoideasCount > 0 && $userEcoideasCount < 5)
+                            <div class="user-ecostatus-name user-ecostatus-name--2">ЭкоНовичок</div>
+                        @elseif ($userEcoideasCount >= 5 && $userEcoideasCount < 10)
+                            <div class="user-ecostatus-name user-ecostatus-name--3">ЭкоАктивист</div>
+                        @elseif ($userEcoideasCount >= 10 && $userEcoideasCount < 20)
+                            <div class="user-ecostatus-name user-ecostatus-name--4">ЭкоЛидер</div>
+                        @elseif ($userEcoideasCount >= 20)
+                            <div class="user-ecostatus-name user-ecostatus-name--5">ЭкоМастер</div>
+                        @endif
+                    </div>
+
+                    <div style="margin-top: 10em" none>
+                        <div style="margin-bottom: 1em">Все экостатусы (demo):</div>
+                        <div class="mbe-1 user-ecostatus-name user-ecostatus-name--1">ЭкоПользователь</div>
+                        <div class="mbe-1 user-ecostatus-name user-ecostatus-name--2">ЭкоНовичок</div>
+                        <div class="mbe-1 user-ecostatus-name user-ecostatus-name--3">ЭкоАктивист</div>
+                        <div class="mbe-1 user-ecostatus-name user-ecostatus-name--4">ЭкоЛидер</div>
+                        <div class="user-ecostatus-name user-ecostatus-name--5">ЭкоМастер</div>
+                    </div>
                 </div>
             </div>
 

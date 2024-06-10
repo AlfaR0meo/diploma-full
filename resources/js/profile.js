@@ -39,3 +39,13 @@ if (textarea) {
         }
     });
 }
+
+const deleteAccountForm = document.querySelector('.delete-account-form');
+
+if (deleteAccountForm) {
+    deleteAccountForm.addEventListener('submit', (e) => {
+        if (!confirm("Вы уверены, что хотите удалить аккаунт? Все данные об аккаунте, а также ваши экоидеи будут удалены. Это действие нельзя будет отменить.")) {
+            e.preventDefault();
+        }
+    });
+}

@@ -60,7 +60,7 @@
 
                     <fieldset>
                         <label for="ecoidea-title">Название экоидеи</label>
-                        <input name="title" type="text" id="ecoidea-title" required maxlength="100" value="{{ fake()->text(100) }}">
+                        <input name="title" type="text" id="ecoidea-title" required maxlength="100">
                         
                         @error('title')
                             <div class="block block--error m-0">{{ $message }}</div>
@@ -69,7 +69,7 @@
 
                     <fieldset>
                         <label for="ecoidea-content">Описание</label>
-                        <textarea name="content" id="ecoidea-content" required maxlength="1200">{{ fake()->text(1200) }}</textarea>
+                        <textarea name="content" id="ecoidea-content" required maxlength="1200"></textarea>
                         
                         @error('content')
                             <div class="block block--error m-0">{{ $message }}</div>

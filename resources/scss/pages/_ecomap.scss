@@ -354,7 +354,7 @@
 
     .leaflet-marker-icon {
         background-color: transparent !important;
-        transition: filter var(--tr-dur);
+        // transition: filter var(--tr-dur); // всё ломается!
 
         @media (any-hover: hover) {
             &:hover {

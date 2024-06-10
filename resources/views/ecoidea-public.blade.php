@@ -1,7 +1,9 @@
+@use('App\Models\User')
+
 @extends('layouts.app')
 
 @section('head')  
-    @include('blocks.head', ['title' => 'Экоидея'])
+    @include('blocks.head', ['title' => 'Экоидея от пользователя'])
 @endsection
 
 @section('page-content')
@@ -11,7 +13,11 @@
         <div class="container container--lg">
 
             <div class="profile__intro">
-                <h1 class="profile__title profile__title--public"><span class="accent-color">Эко</span>идея <br> от пользователя {user_id}</h1> 
+                <h1 class="profile__title profile__title--public">
+                    <span class="accent-color">Эко</span>идея<br> 
+                    от пользователя
+                    <a class="profile__title-username" href="{{ route('user.profile-public.show', ['user_id' => $ecoidea->user_id]) }}">{{ User::find($ecoidea->user_id)->name }}</a>
+                </h1> 
             </div>
 
             <div class="profile__group profile__group--public">

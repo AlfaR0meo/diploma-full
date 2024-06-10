@@ -5,12 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EcomapController;
 use App\Http\Controllers\EcoideaController;
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-
-use App\Http\Controllers\AdminController;
 
 
 
@@ -23,10 +20,6 @@ Route::get('/ecomap', [EcomapController::class, 'index'])->name('ecomap');
 Route::get('/ecoideas', [EcoideaController::class, 'index'])->name('ecoideas');
 Route::post('/ecoideas', [EcoideaController::class, 'store'])->name('ecoideas');
 Route::get('/ecoideas/{ecoidea_id}', [EcoideaController::class, 'ecoideaShow'])->name('ecoideas.ecoidea-show');
-
-Route::get('/events', [EventController::class, 'index'])->name('events');
-
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::name('user.')->group(function () {
 
