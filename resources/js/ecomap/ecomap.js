@@ -271,7 +271,6 @@ const map = L.map('map', {
     layers: [
         EsriWorldImagery,
         TwoGIS,
-
         batteriesLayer,
         lightbulbsLayer,
         paperLayer,
@@ -282,10 +281,8 @@ const map = L.map('map', {
         clothesLayer
     ],
     zoomControl: true,
-
-    attributionControl: true, // TODO:
-
-    scrollWheelZoom: true, //TODO: For dev
+    attributionControl: true,
+    scrollWheelZoom: true,
 });
 
 // Layer control adding
